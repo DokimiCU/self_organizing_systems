@@ -1,11 +1,11 @@
 WHAT IS THIS?
 These blocks create limited self replicating structures that may be useful to the player
 
-	Self Replicating Road: randomly goes building a level 	surface, over the land, through the air, through 	mountainsides.
+	- Self Replicating Road: randomly goes building a level surface, over the land, through the air, through mountainsides.
 
-	Tower: a vertical version of the road. 
+	- Tower: a vertical version of the road. 
 
-Sponge: when placed in water it will spontaneously build walls around you to keep the water out. You can then walk through the ocean with ease and/or get yourself stuck in an endless maze of your own creation.
+	- Sponge: when placed in water it will spontaneously build walls around you to keep the water out. You can then walk through the ocean with ease and/or get yourself stuck in an endless maze of your own creation.
 
 
 

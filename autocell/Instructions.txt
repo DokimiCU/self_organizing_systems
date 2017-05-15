@@ -1,0 +1,31 @@
+WHAT IS THIS?
+This is a cellular automation made from light blocks. It is a very simple demonstration of how order can arise from self replication governed by a simple rule set.
+
+Usually these are done in 2D. Bringing it into minetest allows you to build a house out of one! 
+
+
+
+
+
+
+HOW TO USE:
+
+Arrange the blocks in a large connected structure, such as a wall.
+
+Punch dark blocks to turn them on, lit blocks to turn them off.
+
+If set up right it will create a spontaneous self sustaining light show across the whole structure.
+
+The pattern is interactive. Punching blocks on or off, or adding and removing blocks will cause the pattern to rearrange itself in response to your actions.
+
+
+HOW THIS WORKS:
+Blocks turn on if between two and four of their neighbours are on. They then go into a resting state, and then turn back off.
+
+This simple rule set is enough to allow complex patterns to emerge just by turning on two blocks.
+
+The on blocks trigger others to turn on, causing waves of light. But because blocks turn off again the wave can continue forever.
+
+
+CAUTIONS: 
+Cannot be turned off. You have to destroy the structure.

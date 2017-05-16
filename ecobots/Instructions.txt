@@ -1,0 +1,134 @@
+
+WHAT IS THIS?
+This mod applies the principles of ecology and complexity theory to create a functional, self sustaining, adaptive ecosystem out of self replicating blocks.
+
+
+This system exists in that sweet spot between order and chaos that we call life.
+
+It is alive.
+
+These particular blocks are set to create a forest system, complete with trees, herbivores, predators, and nutrient cycling.
+
+These three blocks are the minimum to create an ecosystem 
+
+	- Photosynthetic Bot: grows trees in the presence of light
+	- Herbivore Bot: eats photosynthetic bots
+	- Decomposer Bot: eats dead matter
+
+Additional bots add to the system's ability.	
+	- Detritivore Bot: eats decomposers
+	- Apex Predator Bot: eats herbivores and detritivores
+	- Pioneer Bot: a fast growing ground plant. Helps gets new forests established.
+	
+
+
+HOW TO USE:
+
+Spawner:
+This is off by default. To turn it on open the init.lua file and unblock the line for dofile spawner.
+
+The spawner can be used to spawn bots on grass in new maps. However this doesn't ensure all bot types will be established. Animals need a food supply, so may starve.
+
+
+Grow your own:
+All bots can be crafted.
+1. Start by placing plenty of photosynthetic and pioneer bots around.
+2. Let them grow. Hit leaves to make them fall and encourage soil formation and new growth.
+3. Introduce herbivores.
+4. If you're getting lots of dead matter then introduce decomposers.
+5. When the herbivores and decomposers have reached a good number you can introduce their predators, the detritivores and the apex predator.
+6. Leave it be, or become a part of the forest. You will act as another component of the system: an omnivorous ecosystem engineer - just like you are in reality.
+
+Note - things can take a while to get established, be patient.
+
+
+HOW THIS WORKS:
+I think this is how... I made this by copying nature. I figured this stuff out later.
+
+
+
+- The Complexity Theory Stuff
+
+
+On their own the trees form immortal semi-static structures. They reach their limit then they are locked in place unable to grow or change.
+
+The animals rearrange and destroy nodes. This pushes the trees below their limit, which allows them to grow again. Essentially the trees are allowed to roll the dice again, try a new shape, and possibly find one that is better or even expands them into a new area. 
+
+This change sets off waves of reorganisation through the whole system, allowing the whole thing to constantly change by small degrees. It never becomes locked into a static crystal, yet it never explodes into chaos. It exists in that beautiful place between the two, the place in which life exists.
+
+
+- The Ecology Stuff
+The trees are the basis of everything. They limit all the other populations by controling everything's food supply.
+
+The herbivores clear old plant growth thereby stimulating new plant growth, and they redistribute plant matter dispersing it to new areas (by making it fall), and turning it into dead matter.
+
+The dead matter and wood feeds decomposers who break down all the mass which the plants are adding to the system. They stop the overall system from accumulating enormous amounts of mass. However they do create some persistent soil which can in turn support more trees - essentially they enable the ecosystem to do terraforming, making even bare rock suitable for life.
+
+The predators add stability. They create a negative feedback loop on the growth of herbivore populations. Without this there is the potential for plague like explosions of herbivores killing all the trees and making the system collapse.
+
+The pioneer adds for ecological succession, the means by which ecosystems repair themselves with fast growing "weeds" which are then shaded out by trees. The player building and chopping acts as a disturbance (e.g. like a tornado) which open up new territory creating a shifting mosaic which increases the diversity of the system overall.
+
+The pioneers also raise the possibility of alternate stable states, that is a conflict between existing in a grassland state or a forest state depending on how effectively the herbivores open up the canopy letting the fast growing pioneers increase give a boost in food supply to the herbivores which will then also browse the trees out of existence.
+
+
+CAUTIONS:
+Like real living organisms an established ecobot forest is difficult to eliminate. If you don't want one, don't plant one.
+
+The forest tends to slowly spread into new areas. Like real living things it will eventually get everywhere.
+
+The ecobots can cause some damage to structures. They will also bury things in vegetation and soil. Therefore if you don't want your buildings to go the way of lost Mayan temples swallowed by the jungle, then you'll have to do pruning, or make some kind of barrier.
+
+
+
+KEY PARAMETERS
+This is a finely balanced system. Changing paramaters can have unpredictable effects.
+
+
+These control growth (most important parameters of all):
+- Population radius: how large of an area around each bot is considered part of it's population
+
+- Population limit: how many bots are allowed in one population area.
+
+- Dispersal radius: how far away new bots can be spawned.
+
+
+For a dispersal radius of 1, Population limit = ((Radius x 3 ) -1) is static. It cannot escape the pop limit by spreading. Some configurations do spread further than others, but I don't think infinite growth is possible at 3r - 1. Either way it lucks out eventually chooses a bad shape and stops growing.
+
+
+- For photosynths: radius = 4, pop limit = 11, dispersal = 1, seems to work. Seems to creates self limited structures of a variable tree-like size.
+
+- For animals: radius = 2, pop lim = 5, dispersal radius = 7 (i.e. 3r + 1), seems to work. Should be creating stable local groups but allowing it to spread to new food sources.
+
+Note: larger a radius should give bigger structures, but use only for trees. Animals seem to fare poorly with a large radius.
+
+the pop radius also controls density, a smaller radius allows them to pack themselves into one place (e.g. like ants ranging over centimetres, vs lions ranging over miles)
+
+
+These control balance between species:
+-interval: how quick it grows
+-chance: how likely it is to grow.
+
+chances and intervals should be set relatively long and low or it chews up too much computing power.
+
+Currently tuned by ear.
+
+
+
+
+Tree growth form:
+-Four ways of spreading
+	-Up
+	-Branching(requires wood to attach to, extends a wood branch and air under)(Set pop lim to 4 x r to encourage a canopy. As long as it is below the threshold at which all shapes lead to exponential growth it will stop growing somewhere.)
+	- Leafy (requires "leaves" to attach to and air under extends only leaves). (set pop area large to encourage canopy) 
+	- ground (needs dirt with grass underneath)
+- changing interval and chance for these types of growth should influence the shape of trees.
+
+
+
+Currently tuned by ear
+
+
+
+
+
+

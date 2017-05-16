@@ -1,18 +1,10 @@
 WHAT IS THIS?
 This demonstrates the power of uncontrolled exponential growth. The effects are extreme, hence the name Doomsday.
 
-Grey Goo:
-Creates a complex organic looking structure which grows from a single block to cover over.... everything in the universe.
-
-Spreads into air and water, covers rather than destroys.
-
-The resulting structure is able to be explored and is full of mese, in case you needed an incentive to go in there.
+  - Grey Goo: Creates a complex organic looking structure which grows from a single block to cover over.... everything in the universe. Spreads into air and water. Covers rather than destroys. The resulting structure is able to be explored, and is full of mese ore, in case you needed an incentive to go in there.
 
 
-The Weapon:
-Destroys the world by implacably converting all neighbouring blocks into flaming sludge. This thing eats mountains.
-
-You can run from it. You can fight it. But you can never win.
+  - The Weapon: Destroys the world by implacably converting all neighbouring blocks into flaming sludge. This thing eats mountains. You can run from it. You can fight it. But you can never win.
 
 
 HOW TO USE:
@@ -26,7 +18,7 @@ As with all exponential growth it starts very innocently, then becomes concernin
 
 
 CAUTION:
-Doomsday means Doomsday. These blocks will time out in unloaded map areas, but that is the only way to stop them. If you want to stop it from growing, then run. Run very fast. 
+Doomsday means Doomsday. While these blocks will time out in unloaded map areas, that is the only way to stop them. If you want to stop it from growing, run. Run very fast. 
 
-Alternatively you can try survive within the growing structure, and let it timeout when it reaches the edges of the current map area.
+Alternatively you can try survive within the growing structure, and let it timeout when it reaches the edges of the current map area. But let's face it, the weapon will kill you before that.
 

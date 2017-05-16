@@ -15,7 +15,7 @@ These mods can be fun to use in a general game, or they can used as a hands on w
   
   - Ecobots: creates a functional forest ecosystem of selfreplicating blocks. Self replication exists in the sweet spot between the limits of Selfrep and the mayhem of Selfrep Doomsday. Once established the ecobots simulate the behaviour of real ecosystems. They are alive!
 
-
+See the instructions in each mod folder for more details on how these work and how to use them.
 
 License:
 

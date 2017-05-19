@@ -4,7 +4,12 @@
 ---------------------------------------------------------------
 ---SPAWNER
 ---------------------------------------------------------------
+-- clear default mapgen decorations
 
+
+minetest.clear_registered_decorations()
+
+------------------------------------------------------------
 
 minetest.register_decoration({
 	deco_type = "schematic",

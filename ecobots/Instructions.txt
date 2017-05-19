@@ -8,14 +8,14 @@ These particular blocks are set to create a forest system, complete with trees, 
 
 These three blocks are the minimum to create an ecosystem 
 
-	- Photosynthetic Bot: grows trees in the presence of light
+	- Tree Bot: grows trees in the presence of light
 	- Herbivore Bot: eats photosynthetic bots
 	- Decomposer Bot: eats dead matter
 
 Additional bots add to the system's abilities.	
 	- Detritivore Bot: eats decomposers
 	- Apex Predator Bot: eats herbivores and detritivores
-	- Pioneer Bot: a fast growing ground plant.
+	- Pioneer Bot: a fast growing ground plant. (used as either an alternative or a compliment to the tree).
 
 Note - while this so far seems to create realistic ecosystems, it creates a system so complicated that what it will end up becoming in long term is any one's guess!
 
@@ -79,6 +79,15 @@ The ecobots can cause some damage to structures. They will also bury things in v
 
 
 KEY PARAMETERS
+
+Settings are included for:
+-pioneer plant growth rates
+-tree growth rates for each of it's for growth types
+
+You may wish to raise growth rates early on to get the forest established, then lower them later to reduce the need to clear overgrowth from swamping buildings.
+
+Change other parameters at your own risk.
+
 This is a finely balanced system. Changing paramaters can have unpredictable effects. This is what I think each of the controlling parameters are doing.
 
 

@@ -24,6 +24,8 @@ Code is licensed under GNU LGPLv2+.
 Textures and sound are licensed under CC BY-SA 3.0 Unported.
 
 
+
 Current Version: 0.1
+
 
 Change log:

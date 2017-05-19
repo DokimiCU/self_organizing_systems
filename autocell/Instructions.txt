@@ -20,7 +20,7 @@ The pattern is interactive. Punching blocks on or off, or adding and removing bl
 
 
 HOW THIS WORKS:
-Blocks turn on if between two and four of their neighbours are on. They then go into a resting state, and then turn back off.
+Blocks turn on if between two and five of their neighbours are on. They then go into a resting state, and then turn back off.
 
 This simple rule set is enough to allow complex patterns to emerge just by turning on two blocks.
 

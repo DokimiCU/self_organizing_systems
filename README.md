@@ -29,8 +29,11 @@ Current Version: 0.1.1
 
 
 Change log:
-0.1.1
-- added "The Theory Behind Ecobots" pdf
+
+Version 0.1.1
+
+Ecobots:
+ -  added "The Theory Behind Ecobots" pdf
 - added settings for plant growth rates
 - changed pioneer to a grass that can be walked through (compatibility -  causes a slight bug with old maps, making them display as black, but corrects itself over time)
 - Tidied up the way animals reproduce, parents must now eat food to produce offspring.
@@ -38,3 +41,5 @@ Change log:
 - made plants intolerant to seawater (compatibility - any existing swamp plants will die, but they will re-grow once the soil is above water level)
 - many other minor improvements
 
+Autocells:
+- improved performance (I think!)

@@ -8,14 +8,14 @@ These particular blocks are set to create a forest system, complete with trees, 
 
 These three blocks are the minimum to create an ecosystem 
 
-	- Photosynthetic Bot: grows trees in the presence of light
+	- Tree Bot: grows trees in the presence of light
 	- Herbivore Bot: eats photosynthetic bots
 	- Decomposer Bot: eats dead matter
 
 Additional bots add to the system's abilities.	
 	- Detritivore Bot: eats decomposers
 	- Apex Predator Bot: eats herbivores and detritivores
-	- Pioneer Bot: a fast growing ground plant.
+	- Pioneer Bot: a fast growing ground plant. (used as either an alternative or a compliment to the tree).
 
 Note - while this so far seems to create realistic ecosystems, it creates a system so complicated that what it will end up becoming in long term is any one's guess!
 
@@ -43,29 +43,7 @@ Note - things can take a while to get established, be patient. It is growing. Sl
 
 
 HOW THIS WORKS:
-I think this is how... I made this by copying nature. I figured out why it worked later.
-
-
-- The Complexity Theory Stuff
-
-
-On their own the trees form immortal static structures. They reach their limit then they are locked in place unable to grow or change.
-
-The animals rearrange and destroy nodes. This pushes the trees below their limit, which allows them to grow again. Essentially the trees are allowed to roll the dice once more, try a new shape, and possibly find one that is better.
-
-This change sets off waves of reorganisation through the whole system, allowing the entire system to constantly change by small degrees. It never becomes locked into a static crystal, yet it never explodes into chaos. It exists in that beautiful place between the two, the place in which life exists.
-
-
-- The Ecology Stuff
-The trees are the basis of everything. They limit all the other populations by controling everything's food supply.
-
-The herbivores clear old plant growth thereby stimulating new plant growth, and they redistribute plant matter dispersing it to new areas (by making it fall), and sending it to the forest floor to feed the decomposers.
-
-The dead matter and wood feeds the decomposers who break down all the mass which the plants are adding to the system. They stop the overall system from accumulating enormous amounts of mass. However they do create some persistent soil - this enables the ecosystem to do terraforming, coating even bare rock in soil.
-
-The predators should add stability. They create negative feedback loops on the growth of their prey populations. Without this there is the potential for plague like explosions of herbivores killing all the trees, or outbreaks of fungus eating all the wood both of which could make the system collapse.
-
-The pioneer allows a number of things. First it aids in ecological succession, the means by which ecosystems repair themselves with fast growing "weeds" which are later shaded out by trees. They also create competitive effects with the trees. In the extreme this may lead to alternative stable states for the system - an open "grassland" where trees get smothered to death, or a dense forest where pioneers are shaded to death.
+See the pdf "The Theory Behind Ecobots"
 
 
 
@@ -79,6 +57,15 @@ The ecobots can cause some damage to structures. They will also bury things in v
 
 
 KEY PARAMETERS
+
+Settings are included for:
+-pioneer plant growth rates
+-tree growth rates for each of it's for growth types
+
+You may wish to raise growth rates early on to get the forest established, then lower them later to reduce the need to clear overgrowth from swamping buildings.
+
+Change other parameters at your own risk.
+
 This is a finely balanced system. Changing paramaters can have unpredictable effects. This is what I think each of the controlling parameters are doing.
 
 

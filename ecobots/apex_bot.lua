@@ -15,10 +15,10 @@
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_apex_bot"},
-	interval = 5,
-	chance = 20,
+	interval = 6,
+	chance = 22,
 	action = function(pos)
-	
+	----SETTINGS
 	--dispersal radius up and horizontal
 		local upradius_ap = 7
 		local horizradius_ap = 7
@@ -29,6 +29,7 @@ minetest.register_abm{
 		local apex_poprad = 2
 
 
+----POP LIMITS
 	--count apex bots
 
 		local num_apex_bot = {}
@@ -38,7 +39,7 @@ minetest.register_abm{
 		num_apex_bot = (cn["ecobots:ecobots_apex_bot"] or 0)
 		
 		
-
+----POSITIONS
 -- get random position for new bot
 
 	local randpos = {x = pos.x + math.random(-horizradius_ap,horizradius_ap), y = pos.y + math.random(-upradius_ap,upradius_ap), z = pos.z + math.random(-horizradius_ap,horizradius_ap)}
@@ -49,27 +50,43 @@ minetest.register_abm{
 	local	randpos_below = {x = randpos.x, y = randpos.y - 1, z = randpos.z}
 
 
+-- find what the parent will eat inorder to reproduce
+
+		local pos_eat = {x = pos.x + math.random(-1,1), y = pos.y + math.random(-1,1), z = pos.z + math.random(-1,1)}
+
+
+
+----CONDITIONAL REPLICATION
 		
 	-- create if under pop limit
-	if (num_apex_bot) < apex_poplim then
+		if (num_apex_bot) < apex_poplim then
 
 
+--- if selected nearby node is edible
+		if minetest.get_node(pos_eat).name == "ecobots:ecobots_predator_bot" or minetest.get_node(pos_eat).name == "ecobots:ecobots_detritivore_bot" then
 
-		-- Create new apex bot if prey available
+
+		-- if new location has prey available under
 				
 
 		if minetest.get_node(randpos_below).name == "ecobots:ecobots_predator_bot" or minetest.get_node(randpos_below).name == "ecobots:ecobots_detritivore_bot" then
 
+
+--- Create Child on top of prey
+
 			minetest.set_node(randpos, {name = "ecobots:ecobots_apex_bot"})
 
-			-- eat the creature beneath
-			
-			minetest.set_node(randpos_below, {name = "air"})
 
-		--road apex cry sound
+			--parent eats food
+		
+			minetest.dig_node(pos_eat)
+
+
+		-- apex cry sound
 			minetest.sound_play("ecobots_chirp_dark", {pos = pos, gain = 2, max_hear_distance = 50,})
 			
-		end	
+	end	
+	end
 	end
 end,
 }

@@ -1,17 +1,20 @@
 
 
 ----------------------------------------------------------------
---PHOTOSYNTH BOT RULES
+--PHOTOSYNTH BOT aka Tree bot
 ----------------------------------------------------------------
-
+local tree_upgrowth = minetest.setting_get('tree_upgrowth')
+local tree_branchgrowth = minetest.setting_get('branch_upgrowth')
+local tree_leafygrowth = minetest.setting_get('tree_leafygrowth')
+local tree_rootgrowth = minetest.setting_get('tree_rootgrowth')
 
 ----------------------------------------------------------------
 -- UPWARDS REPLICATION
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_photosynth_bot"},
-	interval = 3,
-	chance = 10,
+	interval = tree_upgrowth,
+	chance = 12,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -65,13 +68,17 @@ local randpos_belowthat = {x = randpos.x, y = randpos.y - 2, z = randpos.z}
 		local light_level = {}
 		local light_level = ((minetest.get_node_light({x = pos.x, y = pos.y + 1, z = pos.z})) or 0)
 
-	
+	-- for check light level above destination
+	 
+		local light_level_ranpos = {}
+		local light_level_ranpos  = ((minetest.get_node_light(randpos_above)) or 0)
+
 
 		
 -- do if well lit
 ---high level so shading becomes a factor but lower than others so can get from floor up
 
-if  light_level >= 12 
+if  light_level >= 12 and light_level_ranpos >=10
 then
 
 -- do if below pop limits
@@ -114,8 +121,8 @@ end,
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_photosynth_bot"},
-	interval = 5,
-	chance = 20,
+	interval = tree_branchgrowth,
+	chance = 24,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -191,8 +198,8 @@ end,
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_photosynth_bot"},
-	interval = 2,
-	chance = 10,
+	interval = tree_leafygrowth,
+	chance = 12,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -268,8 +275,8 @@ end,
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_photosynth_bot"},
-	interval = 5,
-	chance = 20,
+	interval = tree_rootgrowth,
+	chance = 24,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -315,12 +322,12 @@ minetest.register_abm{
 -- do if lit and below pop limit
 ---high level so shading becomes a factor
 
-if  light_level >= 14 and (num_photosynth_bot) < photosynth_poplim then
+if  light_level >= 13 and (num_photosynth_bot) < photosynth_poplim then
 
 				
 --- if grounded or a pioneer bot
 
-	if minetest.get_node(randpos_below).name == "default:dirt_with_grass" or minetest.get_node(randpos_below).name == "ecobots:ecobots_pioneer_bot" then
+	if minetest.get_node(randpos_below).name == "default:dirt_with_grass" or minetest.get_node(randpos_below).name == "ecobots:ecobots_bot_dead" then
 
 --- if the side of a tree
 
@@ -347,7 +354,7 @@ end,
 
 
 ----------------------------------------------------------------
--- KILL PHOTOSYNTH BOT 
+-- KILL PHOTOSYNTH BOT SHADE
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_photosynth_bot"},
@@ -368,7 +375,7 @@ minetest.register_abm{
 
 		-- kill if shaded
 
-				if  lightsmother_level < 13 then
+				if  lightsmother_level < 12 then
 		
 		--check if got shaded by another photobot or wood
 		local pos_above = {x = pos.x, y = pos.y + 1, z = pos.z}
@@ -386,6 +393,63 @@ minetest.register_abm{
 end,
 }
 
+
+
+
+----------------------------------------------------------------
+-- KILL PHOTSYNTH BOT SEAWATER gives tolerance for salt water
+
+minetest.register_abm{
+     	nodenames = {"ecobots:ecobots_photosynth_bot"},
+	interval = 1,
+	chance = 1,
+	action = function(pos)
+	
+	-- to kill if within radius
+		local searadius = 1
+
+
+	--count seawater
+
+		local num_seawater= {}
+		local ps, cn = minetest.find_nodes_in_area(
+			{x = pos.x - searadius, y = pos.y - searadius, z = pos.z - searadius},
+			{x = pos.x + searadius, y = pos.y + searadius, z = pos.z + searadius}, {"default:water_source"})
+		num_seawater = (cn["default:water_source"] or 0)
+		
+
+		
+
+		if (num_seawater) > 1 then
+		
+		-- kill bot 
+			
+			minetest.set_node(pos, {name = "ecobots:ecobots_bot_dead"})	
+						
+		end
+	
+end,
+}
+
+
+----------------------------------------------------------------
+-- KILL PHOTSYNTH BOT RANDOMLY to add dynamism
+
+minetest.register_abm{
+     	nodenames = {"ecobots:ecobots_photosynth_bot"},
+	interval = 120,
+	chance = 1500,
+	action = function(pos)
+	
+		pos = {x = pos.x, y = pos.y, z = pos.z},
+
+			
+		-- dig bot 
+			
+			minetest.dig_node(pos)	
+		
+end,
+}
 
 
 

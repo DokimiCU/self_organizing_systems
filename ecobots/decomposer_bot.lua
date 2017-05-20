@@ -12,10 +12,12 @@
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_decomposer_bot"},
-	interval = 5,
-	chance = 30,
+	interval = 6,
+	chance = 36,
 	action = function(pos)
 	
+
+	---SETTINGS
 	--dispersal radius up and horizontal
 		local upradius_de = 7
 		local horizradius_de = 7
@@ -26,6 +28,7 @@ minetest.register_abm{
 		local decom_poprad = 2
 
 
+	---POP LIMITS
 	--count decomposer bots for pop limits
 
 		local num_decom_bot = {}
@@ -35,46 +38,63 @@ minetest.register_abm{
 		num_decom_bot = (cn["ecobots:ecobots_decomposer_bot"] or 0)
 		
 		
-
+---LOCATIONS
 -- get random position for new bot
 
 	local randpos = {x = pos.x + math.random(-horizradius_de,horizradius_de), y = pos.y + math.random(-upradius_de,upradius_de), z = pos.z + math.random(-horizradius_de,horizradius_de)}
 
 
--- for check randpos is food above below is dirt currently unused
+-- for check if food is above
 	local randpos_above = {x = randpos.x, y = randpos.y + 1, z = randpos.z}
 
-	local randpos_below = {x = randpos.x, y = randpos.y - 1, z = randpos.z}
+	
+-- for check if too damp to grow for parent 
+	local pos_side = {x = pos.x + math.random (-1,1), y = pos.y, z = pos.z + math.random (-1,1)}
 
-	local randpos_side = {x = randpos.x + math.random (-1,1), y = randpos.y, z = randpos.z + math.random (-1,1)}
+-- find what the parent will eat inorder to reproduce
+
+	local pos_eat = {x = pos.x + math.random(-1,1), y = pos.y + math.random(-1,1), z = pos.z + math.random(-1,1)}
 
 
+----CONDITIONAL REPLICATION
 		
-	-- create if under pop limit and new node dead are below
-	if (num_decom_bot) < decom_poplim and minetest.get_node(randpos_below).name == "ecobots:ecobots_bot_dead" then
+	-- if under pop limit
+
+	if (num_decom_bot) < decom_poplim then
 
 
-		-- Create new decom bot if location suitable
-		---check for water as wet inhibits decomp		
-if minetest.get_node(randpos_side).name ~= "default:water_source" and  minetest.get_node(randpos_side).name ~= "default:river_water_source" then
+	-- if parent has found food
+
+	if minetest.get_node(pos_eat).name == "ecobots:ecobots_bot_dead" then
 		
-		if minetest.get_node(randpos_above).name == "ecobots:ecobots_bot_dead" or minetest.get_node(randpos_above).name == "default:tree" then
+	---if parent doesn't get inhibited by water nearby
+		
+	if minetest.get_node(pos_side).name ~= "default:water_source" and  minetest.get_node(pos_side).name ~= "default:river_water_source" then
+		
+
+--- if child will have food
+
+	if minetest.get_node(randpos_above).name == "ecobots:ecobots_bot_dead" or minetest.get_node(randpos_above).name == "default:tree" then
+
+
+---create child below food
 
 			minetest.set_node(randpos, {name = "ecobots:ecobots_decomposer_bot"})
+
 			
-			--eat above if not under tree 
-			local eatpos_above = {x = randpos.x, y = randpos.y + 1, z = randpos.z}
-			local eatpos_abovethat = {x = randpos.x, y = randpos.y + 2, z = randpos.z}
-		if minetest.get_node(eatpos_abovethat).name ~= "default:tree" then
-			minetest.dig_node(eatpos_above)
+--parent eats food
+		
+			minetest.dig_node(pos_eat)
+
 
 			
 		--decomposer sludge sound
 			minetest.sound_play("ecobots_sludge", {pos = pos, gain = 0.4, max_hear_distance = 6,})
+		end
 		end	
 		end	
 		end
-	end
+
 end,
 }
 

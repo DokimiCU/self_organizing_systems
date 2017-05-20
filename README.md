@@ -25,7 +25,21 @@ Textures and sound are licensed under CC BY-SA 3.0 Unported.
 
 
 
-Current Version: 0.1
+Current Version: 0.1.1
 
 
 Change log:
+
+Version 0.1.1
+
+Ecobots:
+ -  added "The Theory Behind Ecobots" pdf
+- added settings for plant growth rates
+- changed pioneer to a grass that can be walked through (compatibility -  causes a slight bug with old maps, making them display as black, but corrects itself over time)
+- Tidied up the way animals reproduce, parents must now eat food to produce offspring.
+- added rare random plant death to simulate leaf fall and aging, creating dynamism in the plants independent of the need for animals
+- made plants intolerant to seawater (compatibility - any existing swamp plants will die, but they will re-grow once the soil is above water level)
+- many other minor improvements
+
+Autocells:
+- improved performance (I think!)

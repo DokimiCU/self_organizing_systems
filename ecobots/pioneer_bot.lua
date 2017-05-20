@@ -4,14 +4,15 @@
 --PIONEER BOT RULES
 ----------------------------------------------------------------
 
+local pioneer_growth = minetest.setting_get('pioneer_growth')
 
 ----------------------------------------------------------------
 -- SPREADING REPLICATION
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_pioneer_bot"},
-	interval = 3,
-	chance = 3,
+	interval = pioneer_growth,
+	chance = 5,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -57,22 +58,44 @@ minetest.register_abm{
 		local light_level = {}
 		local light_level = ((minetest.get_node_light({x = pos.x, y = pos.y + 1, z = pos.z})) or 0)
 
-	
+	-- for check light level above destination
+	 
+		local light_level_ranpos = {}
+		local light_level_ranpos  = ((minetest.get_node_light(randpos_above)) or 0)
+
 
 		
 -- do if well lit and on ground
 
 
-if  light_level >= 14 and minetest.get_node(randpos_below).name ~= "air" then
+if  light_level >= 14 and light_level_ranpos >= 14  then
+
+
+-- do if not above air
+
+if minetest.get_node(randpos_below).name ~= "air" then
+
+
+--do if not above seawater
+
+	if minetest.get_node(randpos_below).name ~= "default:water_source" then
+
 
 -- do if below pop limits and position is empty
 
 if (num_pioneer_bot) < pioneer_poplim and minetest.get_node(randpos).name == "air" then
 
--- Create new bot if location doesn't have an older bot below
+
+-- do is below air and location doesn't have an older bot below
 				
 	if minetest.get_node(randpos_below).name ~= "ecobots:ecobots_pioneer_bot" and  minetest.get_node(randpos_above).name == "air" then
+
+-- don't hover above snow
 	
+	if minetest.get_node(randpos_below).name == "default:snow" then
+ 		minetest.set_node(randpos_below, {name = "ecobots:ecobots_pioneer_bot"})
+
+else   
 
 
 --create bot 
@@ -83,7 +106,9 @@ if (num_pioneer_bot) < pioneer_poplim and minetest.get_node(randpos).name == "ai
 --tree growth sound
 		minetest.sound_play("ecobots_wind", {pos = pos, gain = 0.7, max_hear_distance = 30,})
 		
-			
+		end
+		end	
+		end
 		end
 		end
 	end
@@ -98,8 +123,8 @@ end,
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_pioneer_bot"},
-	interval = 5,
-	chance = 60,
+	interval = 10,
+	chance = 100,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -157,15 +182,16 @@ if  light_level >= 14 and minetest.get_node(randpos_below).name ~= "air" then
 
 if (num_pioneer_bot) < pioneer_poplim and minetest.get_node(randpos).name == "air" then
 
--- Create new bot if location does have an older bot below
+-- do if location does have an older bot below
 				
 	if minetest.get_node(randpos_below).name == "ecobots:ecobots_pioneer_bot" and  minetest.get_node(randpos_above).name == "air" then
-	
 
+	
 
 --create bot 
 
 		minetest.set_node(randpos, {name = "ecobots:ecobots_pioneer_bot"})
+		minetest.set_node(randpos_below, {name = "ecobots:ecobots_bot_dead"})
 	
 			
 --tree growth sound
@@ -181,7 +207,7 @@ end,
 
 
 ----------------------------------------------------------------
--- KILL PIONEER BOT 
+-- KILL PIONEER BOT SHADE
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_pioneer_bot"},
@@ -214,6 +240,58 @@ end,
 
 
 
+----------------------------------------------------------------
+-- KILL PIONEER BOT SEAWATER gives tolerance for salt water
+
+minetest.register_abm{
+     	nodenames = {"ecobots:ecobots_pioneer_bot"},
+	interval = 1,
+	chance = 1,
+	action = function(pos)
+	
+	-- to kill if within radius
+		local searadius = 1
 
 
+	--count seawater
+
+		local num_seawater= {}
+		local ps, cn = minetest.find_nodes_in_area(
+			{x = pos.x - searadius, y = pos.y - searadius, z = pos.z - searadius},
+			{x = pos.x + searadius, y = pos.y + searadius, z = pos.z + searadius}, {"default:water_source"})
+		num_seawater = (cn["default:water_source"] or 0)
+		
+
+		
+
+		if (num_seawater) > 1 then
+		
+		-- kill bot 
+			
+			minetest.set_node(pos, {name = "ecobots:ecobots_bot_dead"})	
+						
+		end
+	
+end,
+}
+
+
+----------------------------------------------------------------
+-- KILL PIONEER BOT RANDOMLY to add dynamism
+
+minetest.register_abm{
+     	nodenames = {"ecobots:ecobots_pioneer_bot"},
+	interval = 120,
+	chance = 1500,
+	action = function(pos)
+	
+		pos = {x = pos.x, y = pos.y, z = pos.z},
+
+			
+		-- mulch bot 
+			
+			minetest.set_node(pos, {name = "ecobots:ecobots_bot_dead"})
+		
+end,
+}
 

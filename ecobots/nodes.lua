@@ -4,9 +4,9 @@
 -- Node photosynth bot
 
 minetest.register_node('ecobots:ecobots_photosynth_bot', {
-	description = 'Photosynthetic Bot',
+	description = 'Tree Bot',
 	tiles = {"ecobots_photosynthetic_bot.png"},
-	groups = {snappy = 3, flammable = 2, falling_node = 1, oddly_breakable_by_hand=1, tree =1, leaves = 1},
+	groups = {snappy = 3, flammable = 2, flora = 1, falling_node = 1, attached_node = 1, oddly_breakable_by_hand=1, tree =1, leaves = 1},
 	sounds = default.node_sound_leaves_defaults(),
 	})
 
@@ -15,9 +15,22 @@ minetest.register_node('ecobots:ecobots_photosynth_bot', {
 
 minetest.register_node('ecobots:ecobots_pioneer_bot', {
 	description = 'Pioneer Bot',
+	drawtype = "plantlike",
+	waving = 1,
+	visual_scale = 1.5,
 	tiles = {"ecobots_pioneer_bot.png"},
-	groups = {snappy = 3, flammable = 2, falling_node = 1, oddly_breakable_by_hand=1, tree =1, leaves = 1},
+	inventory_image = "ecobots_pioneer_bot.png",
+	wield_image = "ecobots_pioneer_bot.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	groups = {snappy = 3, flammable = 1, flora = 1, attached_node = 1, grass = 1, falling_node = 1, oddly_breakable_by_hand=1, tree =1, leaves = 1},
 	sounds = default.node_sound_leaves_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-7 / 16, -0.5, -7 / 16, 7 / 16, 1.3, 7 / 16},
+		},
 	})
 
 
@@ -42,6 +55,7 @@ minetest.register_node('ecobots:ecobots_predator_bot', {
 
 minetest.register_node('ecobots:ecobots_decomposer_bot', {
 	description = 'Decomposer Bot',
+	light_source = 3,
 	tiles = {"ecobots_decomposer_bot.png"},
 	groups = {crumbly = 2, flammable = 2, falling_node = 1},
 	sounds = default.node_sound_dirt_defaults(),

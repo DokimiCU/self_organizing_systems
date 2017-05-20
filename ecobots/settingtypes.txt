@@ -1,0 +1,57 @@
+
+
+
+
+# The pioneer plant's growth rate.
+# Interval in seconds between actions.
+# Lower numbers will lead to faster growth.
+# You may wish to set this fast during early growth,
+# then raise it after the forest is established.
+# default is 10.
+pioneer_growth(Pioneer Growth) int 10
+
+
+
+
+
+
+# Tree's upward growth rate.
+# Interval in seconds between actions.
+# Grows the tree's trunk.
+# Lower numbers will lead to faster growth.
+# Caution: changing this will have an impact on tree shape
+# default is 4.
+tree_upgrowth(Tree Upwards Growth) int 4
+
+
+
+# Tree's branching growth rate.
+# Interval in seconds between actions.
+# Grows the tree's woody branches.
+# Lower numbers will lead to faster growth.
+# Caution: changing this will have an impact on tree shape
+# default is 6.
+tree_branchgrowth(Tree Branching Growth) int 6
+
+
+
+# Tree's leafy growth rate.
+# Interval in seconds between actions.
+# Grows the tree's overhanging leaves.
+# Lower numbers will lead to faster growth.
+# Caution: changing this will have an impact on tree shape
+# default is 3.
+tree_leafygrowth(Tree Leafy Growth) int 3
+
+
+# Tree's root spreading growth rate.
+# Interval in seconds between actions.
+# Grows the tree at ground level.
+# Lower numbers will lead to faster growth.
+# Caution: changing this will have an impact on tree shape
+# default is 6.
+tree_rootgrowth(Tree Root Growth) int 6
+
+
+
+

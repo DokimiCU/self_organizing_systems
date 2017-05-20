@@ -10,10 +10,11 @@
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_detritivore_bot"},
-	interval = 5,
-	chance = 40,
+	interval = 6,
+	chance = 48,
 	action = function(pos)
 	
+	---SETTINGS
 	--dispersal radius up and horizontal
 		local upradius_detrit = 7
 		local horizradius_detrit = 7
@@ -23,6 +24,7 @@ minetest.register_abm{
 		local detrit_poplim = 5
 		local detrit_poprad = 2
 
+	---POP LIMITS
 	--count detritivore bots
 
 		local num_detrit_bot = {}
@@ -32,7 +34,7 @@ minetest.register_abm{
 		num_detrit_bot = (cn["ecobots:ecobots_detritivore_bot"] or 0)
 		
 		
-
+---POSITIONS
 -- get random position for new bot
 
 	local randpos = {x = pos.x + math.random(-horizradius_detrit,horizradius_detrit), y = pos.y + math.random(-upradius_detrit,upradius_detrit), z = pos.z + math.random(-horizradius_detrit,horizradius_detrit)}
@@ -42,32 +44,46 @@ minetest.register_abm{
 	local randpos_above = {x = randpos.x, y = randpos.y + 1, z = randpos.z}
 
 	local randpos_below = {x = randpos.x, y = randpos.y - 1, z = randpos.z}
-		
+	
+-- find what the parent will eat inorder to reproduce
+
+	local pos_eat = {x = pos.x + math.random(-1,1), y = pos.y + math.random(-1,1), z = pos.z + math.random(-1,1)}
+
+
+
+---CONDITIONAL REPLICATION	
 
 		
 	-- create if under pop limit
 	if (num_detrit_bot) < detrit_poplim then
 
 
-		-- Create detrit bot if location suitable...tunnel 
-				
+	--- if selected nearby node is edible
+		if minetest.get_node(pos_eat).name == "ecobots:ecobots_decomposer_bot" then
+
+
+
+		-- if new location has food and is at surface
 		
 		if minetest.get_node(randpos_below).name == "ecobots:ecobots_decomposer_bot" and minetest.get_node(randpos_above).name == "air" then
 
+
+-- Create child above food
+
 			minetest.set_node(randpos, {name = "ecobots:ecobots_detritivore_bot"})
 
-			-- for eat the creature beneath
-			local eatpos_below = {x = randpos.x, y = randpos.y - 1, z = randpos.z}
 
-		--- dig so it collapses
-			minetest.dig_node(eatpos_below)
-
+	--parent eats food
+		
+			minetest.dig_node(pos_eat)
+		
 
 
 		--predator cry sound
 			minetest.sound_play("ecobots_muffled_dig", {pos = pos, gain = 0.3, max_hear_distance = 6,})
 		
-		end	
+	end	
+	end
 	end
 end,
 }

@@ -9,10 +9,10 @@
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_predator_bot"},
-	interval = 3,
+	interval = 4,
 	chance = 10,
 	action = function(pos)
-	
+	-----SETTINGS
 	--dispersal radius up and horizontal
 		local upradius_pr = 7
 		local horizradius_pr = 7
@@ -22,7 +22,9 @@ minetest.register_abm{
 		local pred_poplim = 5
 		local pred_poprad = 2
 
-	--count pred bots
+
+-----POP LIMITS
+--count pred bots for pop limits
 
 		local num_pred_bot = {}
 		local ps, cn = minetest.find_nodes_in_area(
@@ -32,47 +34,52 @@ minetest.register_abm{
 		
 		
 
+----POSITIONS
 -- get random position for new bot
 
 	local randpos = {x = pos.x + math.random(-horizradius_pr,horizradius_pr), y = pos.y + math.random(-upradius_pr,upradius_pr), z = pos.z + math.random(-horizradius_pr,horizradius_pr)}
 
 
--- for check randpos is prey below... above currently unused
-	local randpos_above = {x = randpos.x, y = randpos.y + 1, z = randpos.z}
+-- find what the parent will eat inorder to reproduce
 
-	local randpos_below = {x = randpos.x, y = randpos.y - 1, z = randpos.z}
-	local randpos_belowthat = {x = randpos.x, y = randpos.y - 2, z = randpos.z}
+		local pos_eat = {x = pos.x + math.random(-1,1), y = pos.y + math.random(-1,1), z = pos.z + math.random(-1,1)}
 
+
+
+
+----CONDITIONAL REPLICATION		
 	
-
-		
-	-- create if under pop limit
+-- create if under pop limit
 	if (num_pred_bot) < pred_poplim then
 
+	
+	
 
-		-- Create new pred bot if location suitable
-				
-		
-		if minetest.get_node(randpos_below).name == "ecobots:ecobots_photosynth_bot" or minetest.get_node(randpos_below).name == "ecobots:ecobots_pioneer_bot" then
+	
+--- if parent finds food in nearby node
+		if minetest.get_node(pos_eat).name == "ecobots:ecobots_photosynth_bot" or minetest.get_node(pos_eat).name == "ecobots:ecobots_pioneer_bot" then
+
+
+-- if new location has food child				
+		if minetest.get_node(randpos).name == "ecobots:ecobots_photosynth_bot" or minetest.get_node(randpos).name == "ecobots:ecobots_pioneer_bot" then
+
+
+-- displace food item to create child
 
 			minetest.set_node(randpos, {name = "ecobots:ecobots_predator_bot"})
 
-			-- for eat the creature beneath
-			local eatpos_below = {x = randpos.x, y = randpos.y - 1, z = randpos.z}
 
-		--- for canopy above air and water dig so it collapses
-				if minetest.get_node(randpos_belowthat).name == "air" or minetest.get_node(randpos_belowthat).name == "default:water_source" then
-			minetest.dig_node(eatpos_below)
+--parent eats food
+		
+			minetest.dig_node(pos_eat)
 
 
-				else
-			minetest.set_node(eatpos_below, {name = "air"})
-
-		--predator cry sound
+--herbivore cry sound
 			minetest.sound_play("ecobots_chirp", {pos = pos, gain = 0.5, max_hear_distance = 40,})
+		
 		end	
+		end
 		end	
-	end
 end,
 }
 

@@ -6,18 +6,13 @@
 
 -- Node on
 
+
 minetest.register_node('autocell:autocell_on', {
 	description = 'Autocell On',
 	light_source = 14,
 	tiles = {"autocell_on.png"},
 	groups = {cracky = 3, oddly_breakable_by_hand=1},
 	sounds = default.node_sound_glass_defaults(),
-	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(2)
-		end,
-	on_timer = function(pos, elapsed)
-		minetest.set_node(pos, {name = "autocell:autocell_dying"})
-	end,
 	on_punch = function(pos, node)
 		minetest.set_node(pos, {name = 	"autocell:autocell_off"})
 	end,
@@ -32,13 +27,7 @@ minetest.register_node('autocell:autocell_dying', {
 	tiles = {"autocell_dying.png"},
 	groups = {cracky = 3, oddly_breakable_by_hand=1},
 	sounds = default.node_sound_glass_defaults(),
-	on_construct = function(pos)
-		minetest.get_node_timer(pos):start(1)
-		end,
-	on_timer = function(pos, elapsed)
-		minetest.set_node(pos, {name = 	"autocell:autocell_off"})
-	end,
-
+	
 })
 
 
@@ -78,12 +67,45 @@ minetest.register_abm{
 		
 		
 		--Triggered by neighbours
-		if (num_on) >= 2 and (num_on) <= 4 then
+		if (num_on) >= 2 and (num_on) <= 5 
+then
 
+---changed rules... the 4 limit only allowed it to oscillate 
+--
 			minetest.set_node(pos, {name = "autocell:autocell_on"})	
-		---minetest.sound_play("autocell_on", {pos = pos, gain = 0.3, max_hear_distance = 7,})				
+					
 		end
 		
+end,
+}
+
+
+-- Turn to resting Rule
+
+
+minetest.register_abm{
+     	nodenames = {"autocell:autocell_on"},
+	interval = 2,
+	chance = 1,
+	action = function(pos)
+		
+
+			minetest.set_node(pos, {name = "autocell:autocell_dying"})	
+				
+end,
+}
+
+
+--Turn to off Rule
+
+minetest.register_abm{
+     	nodenames = {"autocell:autocell_dying"},
+	interval = 2,
+	chance = 1,
+	action = function(pos)
+		
+
+			minetest.set_node(pos, {name = "autocell:autocell_off"})	
 end,
 }
 

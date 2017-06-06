@@ -32,7 +32,7 @@ Textures and sound are licensed under CC BY-SA 3.0 Unported.
 
 # Change log:
 
-# Version 0.1.1
+Version 0.1.1
 
 Ecobots:
  -  added "The Theory Behind Ecobots" pdf
@@ -46,14 +46,14 @@ Ecobots:
 Autocells:
 - improved performance (I think!)
 
-# Version 0.2
+Version 0.2
 
 Selfrep_doomsday:
-  - added Blight device.
-	- added Terraformer device.
-	- changed from automatic timeouts to a kill-switch in settings.
-	- made weapon more effective.
-	- gave the weapon a weakness to ice.
-	- gave the Grey Goo additional growth forms controlled by light levels to add variety.
-	- many minor improvements.
+- added Blight device.
+- added Terraformer device.
+- changed from automatic timeouts to a kill-switch in settings.
+- made weapon more effective.
+- gave the weapon a weakness to ice.
+- gave the Grey Goo additional growth forms controlled by light levels to add variety.
+- many minor improvements.
 

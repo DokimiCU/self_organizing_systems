@@ -13,7 +13,7 @@ These mods can be fun to use in a general game, or they can used as a hands on w
 
   - Selfrep: adds a number a highly constrained self replicating "tools" that build useful controlled structures. A self replicating road, a self replicating tower, and a self replicating "sponge" which builds walls around the player when they walk through water, forming a water proof tunnel.
   
-  - Selfrep_doomsday: explores the power of exponential growth. Self replication is entirely unconstrained. These structures take over the world, hence "doomsday". Grey Goo - grows an organic looking structure that covers the world. The Weapon - tries to destroy the world by turning it into flaming sludge.
+  - Selfrep_doomsday: explores the power of exponential growth. Self replication is entirely unconstrained. These structures take over the world, hence "doomsday". Grey Goo - grows an organic looking structure that covers the world. The Weapon - tries to destroy the world by turning it into flaming sludge. Blight - consumes organic matter. Terraformer - fixes all the damage you just done!
   
   - Ecobots: creates a functional forest ecosystem of selfreplicating blocks. Self replication exists in the sweet spot between the limits of Selfrep and the mayhem of Selfrep Doomsday. Once established the ecobots simulate the behaviour of real ecosystems. They are alive!
 

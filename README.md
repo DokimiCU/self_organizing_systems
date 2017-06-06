@@ -1,6 +1,8 @@
 # self_organizing_systems
 # by Dokimi
 
+Current Version: 0.2
+
 Adds a number of self organizing systems to Minetest. These use self replicating blocks and the scientific principles underlying complex systems in the real world to create unpredictable and often astonishing results. The blocks spontenously create their own strutures, and adapt and change in response to their own actions and those of the player. They mimic the behaviour of living things. They are the closest a Minetest block will ever come to being alive.
 
 These mods can be fun to use in a general game, or they can used as a hands on way to explore some of the most fundamental laws of nature.
@@ -17,7 +19,7 @@ These mods can be fun to use in a general game, or they can used as a hands on w
 
 See the instructions in each mod folder for more details on how these work and how to use them.
 
-License:
+# License:
 
 Code is licensed under GNU LGPLv2+.
 
@@ -25,12 +27,12 @@ Textures and sound are licensed under CC BY-SA 3.0 Unported.
 
 
 
-Current Version: 0.1.1
 
 
-Change log:
 
-Version 0.1.1
+# Change log:
+
+# Version 0.1.1
 
 Ecobots:
  -  added "The Theory Behind Ecobots" pdf
@@ -43,3 +45,15 @@ Ecobots:
 
 Autocells:
 - improved performance (I think!)
+
+# Version 0.2
+
+Selfrep_doomsday:
+  - added Blight device.
+	- added Terraformer device.
+	- changed from automatic timeouts to a kill-switch in settings.
+	- made weapon more effective.
+	- gave the weapon a weakness to ice.
+	- gave the Grey Goo additional growth forms controlled by light levels to add variety.
+	- many minor improvements.
+

@@ -54,6 +54,7 @@ Selfrep_doomsday:
 - changed from automatic timeouts to a kill-switch in settings.
 - made weapon more effective.
 - gave the weapon a weakness to ice.
-- gave the Grey Goo additional growth forms controlled by light levels to add variety.
+- gave the Grey Goo additional growth forms controlled by light levels and height to add variety.
+- added diamond ore, gold ore, and mese lamps to Grey Goo.
 - many minor improvements.
 

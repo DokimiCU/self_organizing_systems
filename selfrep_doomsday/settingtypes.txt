@@ -1,0 +1,49 @@
+
+
+
+
+
+# The intervals at which live bots solidify
+# Low values can lead to catastrophic die offs
+# Setting extremely low will act as a crude kill switch
+# If the Goo still wont die,
+# combine this setting with a slow growth rate
+# default = 30
+greygoo_killrate(Grey Goo solidification rate) float 30
+
+
+# The intervals at which live bots grow
+# High values can lead to catastrophic die offs
+# Setting very high will act as a crude kill switch
+# If the Goo still wont die,
+# combine this setting with the a fast solidification rate
+# default = 1
+greygoo_growthrate (Grey Goo growth rate) float 1
+
+
+# The intervals at which live bots turn to residue
+# and residue disappears
+# Low values can lead to catastrophic die offs
+# Setting extremely low will act as a crude kill switch
+# default = 15
+weapon_killrate(Weapon Lifespan) float 15
+
+
+
+# The intervals at which live bots die
+# Low values can lead to catastrophic die offs
+# Setting extremely low will act as a crude kill switch
+# default = 15
+blight_killrate(Blight Lifespan) float 15
+
+
+# The intervals at which live bots die
+# Low values can lead to catastrophic die offs
+# Setting extremely low will act as a crude kill switch
+# default = 15
+terraformer_killrate(Terraformer Lifespan) float 15
+
+
+
+
+

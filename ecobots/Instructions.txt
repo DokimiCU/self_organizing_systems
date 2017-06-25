@@ -1,0 +1,139 @@
+
+WHAT IS THIS?
+This mod applies the principles of ecology and complex systems to create a functional, self sustaining, adaptive ecosystem out of self replicating blocks.
+
+It simulates the behaviour of a real ecosystem.
+
+These particular blocks fill out every habitable biome in Minestest, doing a complete replacement of the static default vegetation.
+
+
+
+HOW TO USE:
+
+Spawner:
+
+The spawner will create semi-mature ecosystems across the map. You don't need to do anything.
+
+However it is less than perfect, and because it is trying to establish living populations rather than static decorations it occassionally starts out looking a bit odd. But it will evolve!
+
+Either way getting a new ecosystem going can benefit from some help...
+
+Help a forest grow:
+Save the animals. Seriously, they suffer most in the early stages. Without food they die. They risk extinction.
+
+Good. You saved the animals.
+
+Now you might need to slaughter the animals. Damn animals. Ecobots' food web is very simple, and therefore could be unstable - you need to be a part of it, forest ranger.
+
+Plant things. The spawner doesn't put things in all the places they can grow. Spread them around. Make a botanical garden. Save the endangered Swamp herb. Become one with the forest.
+
+
+Grow your own forest from scratch:
+
+These three blocks are the minimum needed to create an ecosystem 
+
+	- A plant bot (there are many to choose from): grows in the presence of light.
+	- Herbivore Bot: eats plant bots
+	- Decomposer Bot: eats dead matter
+
+As long as you have these in three in place it will vaguely act like a real ecosystem. Here's how to get a forest going...
+
+
+1. Choose a plant that is suitable for the site. If it dies, it wasn't suitable! The pioneers are a good choice for most places... they are pioneers after all.
+2. Start by placing plenty of plants around. Then place more. And more. No... I meant more than that. More!
+3. Let them grow. Forests take a long time to get established. Hit leaves to make them fall and encourage soil formation and new growth. Destruction breeds creation, so go wild.
+3. Introduce herbivores. Note - all animals must be placed beside a food source or they die.
+4. Once you're getting lots of dead matter introduce decomposers.
+5. When the herbivores and decomposers have reached a good number you can introduce their predators, the detritivores and the apex predator.
+6. Leave it be, or become a part of the forest. You will act as another component of the system: an omnivorous super-predator and ecosystem engineer - just like you are in reality.
+
+Note - things can take a while to get established, be patient. It is growing. Slowly.
+
+
+Settings:
+Species growth rates can be set under the settings menu. Early on you may want plants to grow faster, later you may want to slow things right down. (very larger numbers of bots may use up a lot of computing power). This may also help with balance if something starts growing out of control.
+
+
+HOW THIS WORKS:
+See the pdf "The Theory Behind Ecobots"
+
+
+SPECIES LIST:
+
+Animals
+
+- herbivore: eats plants.
+
+- decomposer: eats dead bots.
+
+- detritivore: eats decomposers.
+
+- apex predator: eats all other animals.
+
+- eusocial: a eusocial swarm intelligent bot, which mimics ants. Eats pioneer grass and lives in Savannahs.
+
+Pioneer Plants
+
+- pioneer grass: a fast growing light-loving grass. Tolerant of dry conditions.
+
+- pioneer shrub: a fast growing light-loving grass. Tolerant of dry conditions.
+
+- pioneer tree: a fast growing light-loving grass. Tolerant of dry conditions.
+
+Swamp Forest
+
+- swamp forest herb: a slow growing shade-loving herb. Tolerant of wet conditions.
+
+- swamp forest shrub: a slow growing shade-loving shrub. Tolerant of wet conditions.
+
+- swamp forest tree: a slow growing shade-loving herb. Tolerant of wet conditions.
+
+
+Generalist Plants
+
+- generalist tree: A balanced tree between the fast growth of the pioneers and the shade tolerance of swamp forest.
+
+- generalist flower: A balanced ground growing plant between the fast growth of the pioneers and the shade tolerance of swamp forest.
+
+Snow Plants
+
+- snow tree: a slow growing snow tolerant tree.
+
+- snow shrub: a slow growing snow and cold desert tolerant shrub.
+
+- snow flower: a slow growing snow tolerant flower.
+
+Hill Plants
+
+- hill tree: a cliff and climbing adapted tree.
+
+Sand Plants
+
+- sand grass: a slow growing sand tolerant grass. Builds and erodes sand dunes.
+
+- sand cactus: a slow growing desert cactus.
+
+- sand palm: a slow growing sand tolerant palm.
+
+Sea Creatures
+
+- coral: grows coral reefs
+
+- beach shellfish: grows shellfish beds in sand.
+
+- estuary shellfish: grows shellfish beds in dirt.
+
+
+
+CAUTIONS:
+Like real living organisms an established ecobot ecosystem is difficult to eliminate. If you don't want one, don't plant one.
+
+You might need to do some weeding. The Ecobots bury things in vegetation and soil. Therefore if you don't want your buildings to go the way of lost Mayan temples swallowed by the jungle, then you'll have to do pruning, or make some kind of barrier.
+
+
+
+
+
+
+
+

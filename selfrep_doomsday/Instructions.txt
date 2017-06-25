@@ -4,11 +4,17 @@ This demonstrates the power of uncontrolled exponential growth. The effects are 
   - Grey Goo: Creates a complex organic looking structure which grows from a single block to cover over.... everything in the universe. Spreads into air and water. Covers rather than destroys. The resulting structure is able to be explored, and is full of mese ore, in case you needed an incentive to go in there.
 
 
-  - The Weapon: Destroys the world by implacably converting all neighbouring blocks into flaming sludge. This thing eats mountains. You can run from it. You can fight it. But you can never win.
+  - The Weapon: Destroys the world by implacably eating away all neighbouring blocks with flaming sludge and toxic gas. This thing eats mountains... and oceans... and the entire planet. You can run from it. You can fight it. But you can never win. It does have a partial weakness to ice, just to give you some vain hope.
+
+
+ - The Blight: Spreads through organic matter (approximated by "soil" and "flammable" groups), turning it into a harzardous wasteland filled with toxic spore gas, then a desert filled with hidden dormant spores waiting for someone to accidently reactivate them.
+
+ 
+ - The Terraformer: Covers stone and sand in a layer of dirt, plant life, and the occassional pond. Transforms barren lands into a thriving forest. 
 
 
 HOW TO USE:
-Place one block. Wait. Then run for your life.
+Place one block. Wait. Then run, if you value your life. (Unless it's the Terraformer, in which case... run and sniff the roses).
 
 
 HOW THIS WORKS:
@@ -17,8 +23,27 @@ One block creates two blocks creates four blocks creates the end of the world.
 As with all exponential growth it starts very innocently, then becomes concerning, then suddenly it is everywhere.
 
 
-CAUTION:
-Doomsday means Doomsday. While these blocks will time out in unloaded map areas, that is the only way to stop them. If you want to stop it from growing, run. Run very fast. 
 
-Alternatively you can try survive within the growing structure, and let it timeout when it reaches the edges of the current map area. But let's face it, the weapon will kill you before that.
+SETTINGS:
+These blocks will grow forever. Fighting them is usually futile. Inorder to turn them off there is a crude killswitch in the settings. Set the block's lifespan very low (e.g. 1) then block death will overwhelm block growth.
+
+
+CAUTION:
+Doomsday means Doomsday. They are designed to take over the world. Be careful where you put them.
+
+
+HOW TO SURVIVE DOOMSDAY:
+
+1) Blocks only grow in loaded map areas... you can run away and never return.
+
+2) Prepare:
+	- The weapon can't spread through air. Build floating platforms above it.
+	- The weapon can't spread through ice, but it can destroy ice. Use ice if you need to move around, but don't count on it lasting.
+	- The Grey Goo can't spread through solids. You can wall it out or in.
+	- The Blight requires soil and flammables to spread. You can build "fire-breaks". Make them wide. It can jump gaps.
+	- The Terraformer only covers sand and stone. A wall of anything else will stop it. It doesn't climb well either.
+
+3) Fight fire with fire:
+	- The Grey Goo and Weapon cancel eachother out. One creates, the other destroys.
+	- Same deal for The Blight and the Terraformer.
 

@@ -70,7 +70,7 @@ minetest.register_abm{
 		if (num_on) >= 2 and (num_on) <= 5 
 then
 
----changed rules... the 4 limit only allowed it to oscillate 
+---a number of different rules could be set for this...but it works
 --
 			minetest.set_node(pos, {name = "autocell:autocell_on"})	
 					

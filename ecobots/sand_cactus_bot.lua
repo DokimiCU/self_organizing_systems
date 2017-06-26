@@ -9,7 +9,7 @@
 --sand_growth controls the rate for all sand plants
 
 --Grows the tree's up
-local tree_upgrowth = minetest.settings:get('sand_growth')
+local tree_upgrowth = minetest.settings:get('ecobots_sand_growth') or 20
 
 
 --Grows the tree's out

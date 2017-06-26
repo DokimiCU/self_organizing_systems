@@ -10,7 +10,7 @@
 --generalist_growth controls the rate for all generalist plants
 
 --Grows the tree's overhanging leaves
-local tree_leafygrowth = minetest.settings:get('generalist_growth')
+local tree_leafygrowth = minetest.settings:get('ecobots_generalist_growth') or 30
 
 --Grows the tree's trunk
 local tree_upgrowth = tree_leafygrowth

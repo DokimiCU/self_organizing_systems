@@ -5,7 +5,7 @@
 -- a herbaceous snow adapted forest flower, slower growing than generalist flower
 ----------------------------------------------------------------
 --SETTINGS
-local snow_growth = minetest.settings:get('snow_growth')
+local snow_growth = minetest.settings:get('ecobots_snow_growth') or 35
 
 -- Spreads to distant areas
 local seed_spread = snow_growth * 10

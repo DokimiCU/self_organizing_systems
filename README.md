@@ -74,4 +74,4 @@ Ecobots:
 - Created two examples of self organizing intelligence.
 - Expanded theory document to explain self organizing intelligence and to give a crash course in ecology.
 - Many, many, many other improvements.
-- (Compatibility: may cause a crash on start if earlier versions of Ecobots have been used previously. If so try re-entering values for the settings - seems they need to get updated. On previously grown forests some textures may need refreshing, and new growth will clash with older growth - the previous main tree has morphed into a new species.)
+- (Compatibility: On previously grown forests some textures may need refreshing, and new growth will clash with older growth - the previous main tree has morphed into a new species.)

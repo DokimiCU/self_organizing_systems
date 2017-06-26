@@ -1,5 +1,5 @@
-local killrate = minetest.setting_get("greygoo_killrate")
-local growthrate = minetest.setting_get("greygoo_growthrate")
+local killrate = minetest.setting_get("selfrep_doomsday_greygoo_killrate") or 30
+local growthrate = minetest.setting_get("selfrep_doomsday_greygoo_growthrate") or 1
 
 
 ----------------------------------------------------------------

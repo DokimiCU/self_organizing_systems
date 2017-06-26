@@ -1,4 +1,4 @@
-local killrate = minetest.setting_get("weapon_killrate")
+local killrate = minetest.setting_get("selfrep_doomsday_weapon_killrate") or 15
 
 ----------------------------------------------------------------
 -- WEAPON RULE SET

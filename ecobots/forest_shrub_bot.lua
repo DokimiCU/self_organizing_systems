@@ -9,7 +9,7 @@
 --forest_growth controls the rate for all forest plants
 
 --Grows the tree's overhanging leaves
-local tree_leafygrowth = minetest.settings:get('forest_growth')
+local tree_leafygrowth = minetest.settings:get('ecobots_forest_growth') or 31
 
 --Grows the tree's trunk
 local tree_upgrowth = tree_leafygrowth * 2

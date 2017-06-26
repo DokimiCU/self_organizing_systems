@@ -5,7 +5,7 @@
 -- a grass that grows only in sand. An extremophile. Doesn't produce organic matter (i.e. when dead it's gone). Builds sand dunes
 ----------------------------------------------------------------
 --SETTINGS
-local sand_growth = minetest.settings:get('sand_growth')
+local sand_growth = minetest.settings:get('ecobots_sand_growth') or 20
 
 --formation of dunes
 local dune_growth = sand_growth * 3

@@ -9,7 +9,7 @@
 --sea_growth controls the rate for all sea species
 
 --Grows the coral
-local coral_growth = minetest.settings:get('sea_growth')
+local coral_growth = minetest.settings:get('ecobots_sea_growth') or 5
 
 --long distance spread
 local seed_spread = coral_growth * 10

@@ -5,7 +5,7 @@
 -- a shade loving ground cover herbaceous plant
 ----------------------------------------------------------------
 --SETTINGS
-local forest_growth = minetest.settings:get('forest_growth')
+local forest_growth = minetest.settings:get('ecobots_forest_growth') or 31
 
 -- Spreads to distant areas
 local seed_spread = forest_growth * 10

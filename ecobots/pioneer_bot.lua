@@ -4,7 +4,7 @@
 --PIONEER BOT RULES
 ----------------------------------------------------------------
 --SETTINGS
-local pioneer_growth = minetest.settings:get('pioneer_growth')
+local pioneer_growth = minetest.settings:get('ecobots_pioneer_growth') or 10
 
 -- Spreads to distant areas
 local seed_spread = pioneer_growth * 10

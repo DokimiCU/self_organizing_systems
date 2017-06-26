@@ -5,7 +5,7 @@
 -- a herbaceous forest flower, able to tolerate full light and some shade, slower growing than pioneer grass
 ----------------------------------------------------------------
 --SETTINGS
-local generalist_growth = minetest.settings:get('generalist_growth')
+local generalist_growth = minetest.settings:get('ecobots_generalist_growth') or 30
 
 -- Spreads to distant areas
 local seed_spread = generalist_growth * 10

@@ -5,7 +5,7 @@
 -- a snow adapted shrub, can also grow in cold deserts
 ----------------------------------------------------------------
 --SETTINGS
-local snow_growth = minetest.settings:get('snow_growth')
+local snow_growth = minetest.settings:get('ecobots_snow_growth') or 35
 
 -- Spreads to distant areas
 local seed_spread = snow_growth * 10

@@ -10,7 +10,7 @@
 --hill_growth controls the rate for all generalist plants
 
 --Grows the tree's overhanging leaves
-local tree_leafygrowth = minetest.settings:get('hill_growth')
+local tree_leafygrowth = minetest.settings:get('ecobots_hill_growth') or 32
 
 --Grows the tree's trunk
 local tree_upgrowth = tree_leafygrowth

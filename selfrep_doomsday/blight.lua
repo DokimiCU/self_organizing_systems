@@ -1,4 +1,4 @@
-local killrate = minetest.setting_get("blight_killrate")
+local killrate = minetest.setting_get("selfrep_doomsday_blight_killrate") or 15
 
 
 

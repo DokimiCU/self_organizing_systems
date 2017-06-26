@@ -9,7 +9,7 @@
 --pioneer_growth controls the rate for all pioneer plants
 
 --Grows the tree's overhanging leaves
-local tree_leafygrowth = minetest.settings:get('pioneer_growth')
+local tree_leafygrowth = minetest.settings:get('ecobots_pioneer_growth') or 10
 
 --Grows the tree's trunk
 local tree_upgrowth = tree_leafygrowth * 3

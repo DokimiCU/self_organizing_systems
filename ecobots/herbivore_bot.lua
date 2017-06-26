@@ -8,7 +8,7 @@
 --SETTINGS
 -- fastest growing of the animals. Other animals will be based on this.
 
-local animal_growth = minetest.settings:get('animal_growth')
+local animal_growth = minetest.settings:get('ecobots_animal_growth') or 5
 
 
 local animal_move = 7

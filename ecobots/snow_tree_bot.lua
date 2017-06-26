@@ -9,7 +9,7 @@
 --snow_growth controls the rate for all snow plants
 
 --Grows the tree's overhanging leaves
-local tree_leafygrowth = minetest.settings:get('snow_growth')
+local tree_leafygrowth = minetest.settings:get('ecobots_snow_growth') or 35
 
 --Grows the tree's trunk
 local tree_upgrowth = tree_leafygrowth

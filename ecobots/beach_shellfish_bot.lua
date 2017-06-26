@@ -1,15 +1,14 @@
 
 
 ----------------------------------------------------------------
---CORAL BOT
--- A shallow water coral.
--- Death chain... live to brown to skeleton to (slowly) gravel
+--BEACH SHELLFISH BOT
+--Grows shellfish in shallow water sand
 ----------------------------------------------------------------
 --SETTINGS
 --sea_growth controls the rate for all sea species
 
---Grows the coral
-local sea_growth = minetest.settings:get('sea_growth')
+--Grows the shellfish
+local sea_growth = minetest.settings:get('ecobots_sea_growth') or 5
 
 --long distance spread
 local seed_spread = sea_growth * 10

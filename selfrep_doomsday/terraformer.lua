@@ -1,4 +1,4 @@
-local killrate = minetest.setting_get("terraformer_killrate")
+local killrate = minetest.setting_get("selfrep_doomsday_terraformer_killrate") or 15
 
 
 

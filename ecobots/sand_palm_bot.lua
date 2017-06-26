@@ -5,7 +5,7 @@
 -- a sand adapted palm,
 ----------------------------------------------------------------
 --SETTINGS
-local sand_growth = minetest.settings:get('sand_growth')
+local sand_growth = minetest.settings:get('ecobots_sand_growth') or 20
 
 -- Spreads to distant areas
 local seed_spread = sand_growth * 10

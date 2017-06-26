@@ -15,7 +15,7 @@
 ---------------------------------------------------------------
 --SETTINGS
 
-local animal_growth = minetest.settings:get('animal_growth')
+local animal_growth = minetest.settings:get('ecobots_animal_growth') or 5
 
 --MOVING
 

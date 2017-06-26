@@ -9,7 +9,7 @@
 # If the Goo still wont die,
 # combine this setting with a slow growth rate
 # default = 30
-greygoo_killrate(Grey Goo solidification rate) float 30
+selfrep_doomsday_greygoo_killrate(Grey Goo solidification rate) float 30
 
 
 # The intervals at which live bots grow
@@ -18,7 +18,7 @@ greygoo_killrate(Grey Goo solidification rate) float 30
 # If the Goo still wont die,
 # combine this setting with the a fast solidification rate
 # default = 1
-greygoo_growthrate (Grey Goo growth rate) float 1
+selfrep_doomsday_greygoo_growthrate (Grey Goo growth rate) float 1
 
 
 # The intervals at which live bots turn to residue
@@ -26,7 +26,7 @@ greygoo_growthrate (Grey Goo growth rate) float 1
 # Low values can lead to catastrophic die offs
 # Setting extremely low will act as a crude kill switch
 # default = 15
-weapon_killrate(Weapon Lifespan) float 15
+selfrep_doomsday_weapon_killrate(Weapon Lifespan) float 15
 
 
 
@@ -34,14 +34,14 @@ weapon_killrate(Weapon Lifespan) float 15
 # Low values can lead to catastrophic die offs
 # Setting extremely low will act as a crude kill switch
 # default = 15
-blight_killrate(Blight Lifespan) float 15
+selfrep_doomsday_blight_killrate(Blight Lifespan) float 15
 
 
 # The intervals at which live bots die
 # Low values can lead to catastrophic die offs
 # Setting extremely low will act as a crude kill switch
 # default = 15
-terraformer_killrate(Terraformer Lifespan) float 15
+selfrep_doomsday_terraformer_killrate(Terraformer Lifespan) float 15
 
 
 

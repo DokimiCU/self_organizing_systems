@@ -378,8 +378,8 @@ end,
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_predator_bot"},
 	neighbors = {"group:flora"},
-	interval = 20,
-	chance = 25,
+	interval = 5,
+	chance = 5,
 	catch_up = false,
 	action = function(pos)
 			
@@ -390,14 +390,16 @@ minetest.register_abm{
 		local timer = 0
 		minetest.register_globalstep(function(dtime)
 		timer = timer + dtime;
-			if timer >= math.random(3,10) then
+		randflash = math.random(2,10)
+		randflash_limit = randflash + 1
+			if if timer > randflash and timer < randflash_limit then
 
 			--- do at night
 			local tod = minetest.get_timeofday()
 			if tod < 0.25 or tod > 0.75 then
 
 			minetest.set_node(pos, {name = "ecobots:ecobots_predator_bot_flashing"})
-			timer = 0
+			timer = randflash_limit
 			end
 			end
 		end)	

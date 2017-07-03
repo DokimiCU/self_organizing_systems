@@ -390,8 +390,8 @@ minetest.register_abm{
 		local timer = 0
 		minetest.register_globalstep(function(dtime)
 		timer = timer + dtime;
-		randflash = math.random(2,10)
-		randflash_limit = randflash + 1
+		local randflash = math.random(2,10)
+		local randflash_limit = randflash + 1
 			if if timer > randflash and timer < randflash_limit then
 
 			--- do at night

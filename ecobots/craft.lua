@@ -34,6 +34,15 @@ minetest.register_craft({
 	}
 })
 
+-- make grass into paper (as a substitute for displacing papyrus)
+minetest.register_craft({
+	output = 'default:paper',
+	recipe = {
+		{'ecobots:ecobots_pioneer_bot','ecobots:ecobots_pioneer_bot','ecobots:ecobots_pioneer_bot'}, 	{'ecobots:ecobots_pioneer_bot','ecobots:ecobots_pioneer_bot','ecobots:ecobots_pioneer_bot'},
+	{'ecobots:ecobots_pioneer_bot','ecobots:ecobots_pioneer_bot','ecobots:ecobots_pioneer_bot'},
+	}
+})
+
 
 
 

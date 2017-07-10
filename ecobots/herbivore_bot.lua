@@ -18,7 +18,7 @@ local animal_old = animal_growth * 100
 
 --Maintenance eating needs to be ten times more common than eating for growth to reflect how little energy goes up the food web
 ---chance to eat
-local animal_eat = 15
+local animal_eat = 5
 local eat_breed = animal_eat * 10
 
 

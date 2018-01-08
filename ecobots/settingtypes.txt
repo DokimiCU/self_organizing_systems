@@ -1,0 +1,95 @@
+
+
+
+
+# Growth rate for pioneer species.
+# These species are adapted to open areas.
+# Lower numbers will lead to faster growth.
+# You may wish to set this fast during early growth,
+# then raise it after the forest is established.
+# default is 10.
+ecobots_pioneer_growth(Pioneer Growth) int 10
+
+
+
+
+# Growth rate for swamp forest species.
+# These species are adapted wet dark areas.
+# Lower numbers will lead to faster growth.
+# You may wish to set this fast during early growth,
+# then raise it after the forest is established.
+# default is 31.
+ecobots_forest_growth(Swamp Forest Growth) int 31
+
+
+
+# Growth rate for generalist forest species.
+# These species are adapted general forest conditions.
+# Lower numbers will lead to faster growth.
+# You may wish to set this fast during early growth,
+# then raise it after the forest is established.
+# default is 30.
+ecobots_generalist_growth(Generalist Forest Growth) int 30
+
+
+# Growth rate for snow forest species.
+# These species are adapted snow.
+# Lower numbers will lead to faster growth.
+# You may wish to set this fast during early growth,
+# then raise it after the forest is established.
+# default is 35.
+ecobots_snow_growth(Snow Forest Growth) int 35
+
+
+# Growth rate for hill forest species.
+# These species are adapted to climbing and cliffs.
+# Lower numbers will lead to faster growth.
+# You may wish to set this fast during early growth,
+# then raise it after the forest is established.
+# default is 32.
+ecobots_hill_growth(Hill Forest Growth) int 32
+
+
+# Growth rate for sand species.
+# These species are adapted to deserts and sand.
+# Lower numbers will lead to faster growth.
+# You may wish to set this fast during early growth,
+# then raise it after the forest is established.
+# default is 20.
+ecobots_sand_growth(Sand Growth) int 20
+
+
+# Growth rate for sea species.
+# These species grow in the ocean.
+# Lower numbers will lead to faster growth.
+# You may wish to set this fast during early growth,
+# then raise it after they are established.
+# default is 5.
+ecobots_sea_growth(Sea Growth) int 5
+
+# Growth rate for cave species.
+# These species grow underground.
+# Lower numbers will lead to faster growth.
+# You may wish to set this fast during early growth,
+# then raise it after they are established.
+# default is 5.
+ecobots_cave_growth(Cave Growth) int 5
+
+
+
+# Growth rate for animal species.
+# These species eat plants, dead matter, and eachother.
+# If animals are too rare or too abundant
+# then you may wish to change this
+# default is 5.
+ecobots_animal_growth(Animal Growth) int 5
+
+
+# Growth rate for the evolving vine.
+# Lower numbers will lead to faster growth.
+# Large numbers of the vine may reduce performance,
+# you may wish to raise this value if that is happening.
+# Note, chaning this will impact it's evolution.
+# default is 18.
+ecobots_evolve_growth(Evolve Growth) int 18
+

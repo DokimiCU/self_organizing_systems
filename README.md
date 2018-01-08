@@ -1,7 +1,7 @@
 # self_organizing_systems
 # by Dokimi
 
-Current Version: 0.2
+Current Version: 0.2.1
 
 Adds a number of self organizing systems to Minetest. These use self replicating blocks and the scientific principles underlying real world complex systems to create unpredictable and often astonishing results. These blocks spontenously create their own strutures, and adapt and change in response to their own actions and those of the player. They mimic the behaviour of living things. Some even possess rudimentary intelligence... and that's not a joke. 
 
@@ -17,7 +17,7 @@ These mods can be fun to use in a general game, or they can used as a hands on w
   
   - Selfrep_doomsday: explores the power of exponential growth. Self replication is entirely unconstrained. These structures take over the world, hence "doomsday". Grey Goo - grows an organic looking structure that covers the world. The Weapon - tries to destroy the world by turning it into flaming sludge. Blight - consumes organic matter. Terraformer - fixes all the damage you just done!
   
-  - Ecobots: replaces the default vegetation with a biodiverse functional ecosystem of selfreplicating blocks. Self replication exists in the sweet spot between the limits of Selfrep and the mayhem of Selfrep Doomsday. Once established the ecobots simulate the behaviour of real ecosystems. Also incudes examples of network and swarm intelligence. They are alive!
+  - Ecobots: replaces the default vegetation with a biodiverse functional ecosystem of selfreplicating blocks. Self replication exists in the sweet spot between the limits of Selfrep and the mayhem of Selfrep Doomsday. Once established the ecobots simulate the behaviour of real ecosystems. Also incudes examples of network and swarm intelligence, and evolution. They are alive!
 
 See the instructions in each mod folder for more details on how these work and how to use them.
 
@@ -75,3 +75,13 @@ Ecobots:
 - Expanded theory document to explain self organizing intelligence and to give a crash course in ecology.
 - Many, many, many other improvements.
 - (Compatibility: On previously grown forests some textures may need refreshing, and new growth will clash with older growth - the previous main tree has morphed into a new species.)
+
+
+Verion 0.2.1
+
+Ecobots:
+- an evolving vine species.
+- a flying swarming species.
+- a cave slime species.
+- tweaks and new adaptations for the animals to help with longterm survival and balance.
+- many other tweaks mostly aimed at longterm balance.

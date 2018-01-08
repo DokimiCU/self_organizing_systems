@@ -34,7 +34,7 @@ Textures and sound are licensed under CC BY-SA 3.0 Unported.
 
 # Change log:
 
-Version 0.1.1
+# Version 0.1.1
 
 Ecobots:
  -  added "The Theory Behind Ecobots" pdf
@@ -48,7 +48,7 @@ Ecobots:
 Autocells:
 - improved performance (I think!)
 
-Version 0.2
+# Version 0.2
 
 Selfrep_doomsday:
 - added Blight device.
@@ -77,7 +77,7 @@ Ecobots:
 - (Compatibility: On previously grown forests some textures may need refreshing, and new growth will clash with older growth - the previous main tree has morphed into a new species.)
 
 
-Verion 0.2.1
+# Verion 0.2.1
 
 Ecobots:
 - an evolving vine species.

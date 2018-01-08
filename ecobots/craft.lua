@@ -34,6 +34,7 @@ minetest.register_craft({
 	}
 })
 
+
 -- make grass into paper (as a substitute for displacing papyrus)
 minetest.register_craft({
 	output = 'default:paper',
@@ -44,5 +45,14 @@ minetest.register_craft({
 })
 
 
+--make evine into ladders for a sturdier climbing thing
+minetest.register_craft({
+	output = "default:ladder_wood 5",
+	recipe = {
+		{"ecobots:ecobots_evine_bot", "", "ecobots:ecobots_evine_bot"},
+		{"ecobots:ecobots_evine_bot", "ecobots:ecobots_evine_bot", "ecobots:ecobots_evine_bot"},
+		{"ecobots:ecobots_evine_bot", "", "ecobots:ecobots_evine_bot"},
+	}
+})
 
 

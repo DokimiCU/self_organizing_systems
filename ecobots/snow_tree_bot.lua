@@ -31,6 +31,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_tree_bot"},
 	interval = tree_upgrowth,
 	chance = 24,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -140,6 +141,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_tree_bot"},
 	interval = tree_branchgrowth,
 	chance = 18,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -229,6 +231,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_tree_bot"},
 	interval = tree_leafygrowth,
 	chance = 18,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -310,6 +313,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_tree_bot"},
 	interval = tree_rootgrowth,
 	chance = 20,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -456,6 +460,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_tree_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -492,6 +497,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_tree_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -528,6 +534,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_tree_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -563,6 +570,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_tree_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -632,6 +640,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_tree_bot"},
 	interval = seed_spread,
 	chance = 300,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius

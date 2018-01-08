@@ -24,11 +24,12 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_shrub_bot"},
 	interval = tree_upgrowth,
 	chance = 12,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
 		local upradius_ph = 1
-		local horizradius_ph = 1
+		local horizradius_ph = 0
 
 		
 	-- population limit within area	
@@ -138,92 +139,6 @@ end,
 
 
 
-----------------------------------------------------------------
---LEAFY REPLICATION
-
-
-minetest.register_abm{
-     	nodenames = {"ecobots:ecobots_forest_shrub_bot"},
-	interval = tree_leafygrowth,
-	chance = 10,
-	action = function(pos)
-	
-	--dispersal radius up and horizontal
-		local upradius_ph = 1
-		local horizradius_ph = 1
-
-		
-	-- population limit within area	
-		local poplim = 5
-		local poprad = 2
-
-	--count bots
-
-		local num_bot = {}
-		local ps, cn = minetest.find_nodes_in_area(
-			{x = pos.x - poprad, y = pos.y - poprad, z = pos.z - poprad},
-			{x = pos.x + poprad, y = pos.y + poprad, z = pos.z + poprad}, {"ecobots:ecobots_forest_shrub_bot"})
-		num_bot = (cn["ecobots:ecobots_forest_shrub_bot"] or 0)
-		
-		
-
--- get same level random position for new bot
-
-	local randpos = {x = pos.x + math.random(-horizradius_ph,horizradius_ph), y = pos.y + math.random(-upradius_ph, upradius_ph), z = pos.z + math.random(-horizradius_ph,horizradius_ph)}
-
--- for check randpos is below air side another bot
-
-	local randpos_below = {x = randpos.x, y = randpos.y - 1, z = randpos.z}
-
-	local randpos_ranside = {x = randpos.x + math.random(-1,1), y = randpos.y + math.random(-1,1), z = randpos.z + math.random(-1,1)}
-
-	
-
-
-	--check light level above
-	
-		local light_level = {}
-		local light_level = ((minetest.get_node_light({x = pos.x, y = pos.y + 1, z = pos.z})) or 0)
-
-	
-
-		
-		-- do if enviro suitable and below pop limit
-
----high level so shading becomes a factor
-if  light_level >= 12 and (num_bot) < poplim then
-
-
--- not if too bright
-if  light_level <= 14 then
-
-
-
-		-- Create new bot if location suitable
-				
-		--- above empty space and grounded side growth
-
-	if minetest.get_node(randpos_below).name == "air" and
-	minetest.get_node(randpos_ranside).name == "ecobots:ecobots_forest_shrub_bot" then
-
-			minetest.set_node(randpos, {name = "ecobots:ecobots_forest_shrub_bot"})
-
-			
-		--tree build sound
-			minetest.sound_play("ecobots_wind", {pos = pos, gain = 0.7, max_hear_distance = 30,})
-			
-		end
-		end
-	end
-end,
-}
-
-
-
-
-
-
-
 
 ----------------------------------------------------------------
 -- KILL BOT SHADE
@@ -276,6 +191,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_shrub_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -312,6 +228,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_shrub_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -341,6 +258,83 @@ end,
 }
 
 
+
+----------------------------------------------------------------
+-- CLEAR TRUNK IN SEAWATER
+
+minetest.register_abm{
+     	nodenames = {"ecobots:ecobots_forest_shrub_trunk"},
+	interval = 1,
+	chance = 5,
+	catch_up = false,
+	action = function(pos)
+	
+	-- to kill if within radius
+		local searadius = 1
+
+
+	--count seawater
+
+		local num_seawater= {}
+		local ps, cn = minetest.find_nodes_in_area(
+			{x = pos.x - searadius, y = pos.y - searadius, z = pos.z - searadius},
+			{x = pos.x + searadius, y = pos.y + searadius, z = pos.z + searadius}, {"default:water_source"})
+		num_seawater = (cn["default:water_source"] or 0)
+		
+
+		
+
+		if (num_seawater) > 1 then
+		
+		-- kill bot 
+			
+			minetest.set_node(pos, {name = "ecobots:ecobots_bot_dead"})	
+						
+		end
+	
+end,
+}
+
+
+----------------------------------------------------------------
+-- CLEAR TRUNK IN RIVER WATER
+
+minetest.register_abm{
+     	nodenames = {"ecobots:ecobots_forest_shrub_trunk"},
+	interval = 1,
+	chance = 5,
+	catch_up = false,
+	action = function(pos)
+	
+	-- to kill if within radius
+		local searadius = 1
+
+
+	--count seawater
+
+		local num_seawater= {}
+		local ps, cn = minetest.find_nodes_in_area(
+			{x = pos.x - searadius, y = pos.y - searadius, z = pos.z - searadius},
+			{x = pos.x + searadius, y = pos.y + searadius, z = pos.z + searadius}, {"default:river_water_source"})
+		num_seawater = (cn["default:river_water_source"] or 0)
+		
+
+		
+
+		if (num_seawater) > 1 then
+		
+		-- kill bot 
+			
+			minetest.set_node(pos, {name = "ecobots:ecobots_bot_dead"})	
+						
+		end
+	
+end,
+}
+
+
+
+
 ----------------------------------------------------------------
 -- KILL BOT SNOW.
 
@@ -348,6 +342,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_shrub_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -391,6 +386,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_shrub_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -459,7 +455,8 @@ end,
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_shrub_bot"},
 	interval = seed_spread,
-	chance = 200,
+	chance = 90,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius

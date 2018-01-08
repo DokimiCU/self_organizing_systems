@@ -17,6 +17,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_flower_bot"},
 	interval = generalist_growth,
 	chance = 7,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -156,6 +157,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_flower_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -192,6 +194,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_flower_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -228,6 +231,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_flower_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -270,6 +274,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_flower_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -337,6 +342,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_flower_bot"},
 	interval = seed_spread,
 	chance = 100,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius

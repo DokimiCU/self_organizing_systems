@@ -22,6 +22,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_coral_bot"},
 	interval = coral_growth,
 	chance = 8,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -228,6 +229,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_coral_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -263,6 +265,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_coral_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -304,6 +307,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_coral_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -339,6 +343,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_coral_bot"},
 	interval = 3,
 	chance = 1.5,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -374,6 +379,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_coral_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -409,6 +415,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_coral_bot", "default:coral_skeleton"},
 	interval = 10,
 	chance = 2,
+	catch_up = false,
 	action = function(pos)
 	
 		--ocean below	
@@ -533,6 +540,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_coral_bot"},
 	interval = seed_spread,
 	chance = 100,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius

@@ -25,6 +25,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_cactus_bot"},
 	interval = tree_upgrowth,
 	chance = 34,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -125,6 +126,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_cactus_bot"},
 	interval = tree_branchgrowth,
 	chance = 23,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -264,6 +266,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_cactus_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -300,6 +303,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_cactus_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -336,6 +340,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_cactus_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -378,6 +383,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_cactus_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -439,6 +445,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_cactus_bot"},
 	interval = seed_spread,
 	chance = 650,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius
@@ -533,6 +540,27 @@ minetest.register_abm{
 						
 		end
 	
+end,
+}
+
+
+----------------------------------------------------------------
+-- GET RID OF THE BLOODY DEFAULT DRY SHRUBS
+-- Kill them off!
+
+minetest.register_abm{
+     	nodenames = {"default:dry_shrub"},
+	interval = 10,
+	chance = 2,
+	catch_up = false,
+	action = function(pos)
+	
+	
+				
+		-- replace shrub with air 
+			
+			minetest.set_node(pos, {name = "air"})			
+
 end,
 }
 

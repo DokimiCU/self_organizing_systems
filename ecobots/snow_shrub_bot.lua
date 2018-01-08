@@ -17,6 +17,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_shrub_bot"},
 	interval = snow_growth,
 	chance = 14,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -132,6 +133,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_shrub_bot"},
 	interval = snow_growth,
 	chance = 14,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -274,6 +276,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_shrub_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -310,6 +313,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_shrub_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -340,12 +344,91 @@ end,
 
 
 ----------------------------------------------------------------
+-- CLEAR TRUNK IN SEAWATER
+
+minetest.register_abm{
+     	nodenames = {"ecobots:ecobots_snow_shrub_trunk"},
+	interval = 1,
+	chance = 5,
+	catch_up = false,
+	action = function(pos)
+	
+	-- to kill if within radius
+		local searadius = 1
+
+
+	--count seawater
+
+		local num_seawater= {}
+		local ps, cn = minetest.find_nodes_in_area(
+			{x = pos.x - searadius, y = pos.y - searadius, z = pos.z - searadius},
+			{x = pos.x + searadius, y = pos.y + searadius, z = pos.z + searadius}, {"default:water_source"})
+		num_seawater = (cn["default:water_source"] or 0)
+		
+
+		
+
+		if (num_seawater) > 1 then
+		
+		-- kill bot 
+			
+			minetest.set_node(pos, {name = "ecobots:ecobots_bot_dead"})	
+						
+		end
+	
+end,
+}
+
+
+----------------------------------------------------------------
+-- CLEAR TRUNK IN RIVER WATER
+
+minetest.register_abm{
+     	nodenames = {"ecobots:ecobots_snow_shrub_trunk"},
+	interval = 1,
+	chance = 5,
+	catch_up = false,
+	action = function(pos)
+	
+	-- to kill if within radius
+		local searadius = 1
+
+
+	--count seawater
+
+		local num_seawater= {}
+		local ps, cn = minetest.find_nodes_in_area(
+			{x = pos.x - searadius, y = pos.y - searadius, z = pos.z - searadius},
+			{x = pos.x + searadius, y = pos.y + searadius, z = pos.z + searadius}, {"default:river_water_source"})
+		num_seawater = (cn["default:river_water_source"] or 0)
+		
+
+		
+
+		if (num_seawater) > 1 then
+		
+		-- kill bot 
+			
+			minetest.set_node(pos, {name = "ecobots:ecobots_bot_dead"})	
+						
+		end
+	
+end,
+}
+
+
+
+
+
+
+----------------------------------------------------------------
 -- KILL BOT ICE. replaces snow death from other species
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_shrub_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -381,6 +464,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_shrub_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -442,6 +526,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_snow_shrub_bot"},
 	interval = seed_spread,
 	chance = 250,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius

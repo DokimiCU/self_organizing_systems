@@ -22,6 +22,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_grass_bot"},
 	interval = sand_growth,
 	chance = 15,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -120,6 +121,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_grass_bot"},
 	interval = up_growth,
 	chance = 500,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -244,6 +246,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_grass_bot"},
 	interval = dune_growth,
 	chance = 100,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -344,6 +347,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_grass_bot"},
 	interval = dune_growth,
 	chance = 500,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal (keep up 1 so stays at surface. Horiz should be larger than for dune growth so that over time sand is lost in the gaps between plants and accumulated around them)
@@ -461,6 +465,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_grass_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -497,6 +502,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_grass_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -533,6 +539,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_grass_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -600,6 +607,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_grass_bot"},
 	interval = seed_spread,
 	chance = 100,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius

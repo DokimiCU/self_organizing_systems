@@ -20,6 +20,8 @@ dofile(minetest.get_modpath("ecobots").."/detritivore_bot.lua")
 
 dofile(minetest.get_modpath("ecobots").."/eusocial_bot.lua")
 
+dofile(minetest.get_modpath("ecobots").."/swarmer_bot.lua")
+
 --SWAMP FOREST
 
 dofile(minetest.get_modpath("ecobots").."/forest_herb_bot.lua")
@@ -74,3 +76,12 @@ dofile(minetest.get_modpath("ecobots").."/coral_bot.lua")
 dofile(minetest.get_modpath("ecobots").."/beach_shellfish_bot.lua")
 
 dofile(minetest.get_modpath("ecobots").."/estuary_shellfish_bot.lua")
+
+
+--CAVE
+dofile(minetest.get_modpath("ecobots").."/cave_slime_bot.lua")
+
+
+--E VINE
+dofile(minetest.get_modpath("ecobots").."/evine_bot.lua")
+

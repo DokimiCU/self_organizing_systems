@@ -16,6 +16,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_pioneer_bot"},
 	interval = pioneer_growth,
 	chance = 5,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -156,6 +157,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_pioneer_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -192,6 +194,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_pioneer_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -228,6 +231,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_pioneer_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -270,6 +274,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_pioneer_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -331,6 +336,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_pioneer_bot"},
 	interval = seed_spread,
 	chance = 50,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius

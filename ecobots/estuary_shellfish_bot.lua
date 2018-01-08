@@ -22,6 +22,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_estuary_shellfish_bot"},
 	interval = sea_growth,
 	chance = 9,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -95,6 +96,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_estuary_shellfish_bot"},
 	interval = 5,
 	chance = 2,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -137,6 +139,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_estuary_shellfish_bot"},
 	interval = 5,
 	chance = 4,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -172,6 +175,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_estuary_shellfish_bot"},
 	interval = 5,
 	chance = 4,
+	catch_up = false,
 	action = function(pos)
 	
 	
@@ -196,6 +200,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_estuary_shellfish_bot"},
 	interval = 5,
 	chance = 2,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -257,6 +262,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_estuary_shellfish_bot"},
 	interval = seed_spread,
 	chance = 100,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius

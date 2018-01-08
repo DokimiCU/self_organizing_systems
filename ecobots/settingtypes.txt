@@ -67,12 +67,29 @@ ecobots_sand_growth(Sand Growth) int 20
 # default is 5.
 ecobots_sea_growth(Sea Growth) int 5
 
+# Growth rate for cave species.
+# These species grow underground.
+# Lower numbers will lead to faster growth.
+# You may wish to set this fast during early growth,
+# then raise it after they are established.
+# default is 5.
+ecobots_cave_growth(Cave Growth) int 5
+
+
 
 # Growth rate for animal species.
 # These species eat plants, dead matter, and eachother.
-# Lower numbers will lead to faster growth.
 # If animals are too rare or too abundant
 # then you may wish to change this
 # default is 5.
 ecobots_animal_growth(Animal Growth) int 5
+
+
+# Growth rate for the evolving vine.
+# Lower numbers will lead to faster growth.
+# Large numbers of the vine may reduce performance,
+# you may wish to raise this value if that is happening.
+# Note, chaning this will impact it's evolution.
+# default is 18.
+ecobots_evolve_growth(Evolve Growth) int 18
 

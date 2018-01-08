@@ -69,6 +69,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_searching"},
 	interval = animal_move_trail,
 	chance = 5,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius
@@ -121,6 +122,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_searching"},
 	interval = animal_move,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius
@@ -183,6 +185,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_returning"},
 	interval = animal_move_trail,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius
@@ -236,6 +239,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_returning"},
 	interval = animal_move,
 	chance = 6,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius
@@ -295,6 +299,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_searching"},
 	interval = 1,
 	chance = 2,
+	catch_up = false,
 	action = function(pos)
 	
 
@@ -334,6 +339,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_searching"},
 	interval = 3,
 	chance = 15,
+	catch_up = false,
 	action = function(pos)
 	
 	--distance from food item
@@ -372,6 +378,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_returning"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 
@@ -408,6 +415,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_returning"},
 	interval = 2,
 	chance = 2,
+	catch_up = false,
 	action = function(pos)
 	
 
@@ -449,6 +457,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_returning"},
 	interval = 6,
 	chance = 6,
+	catch_up = false,
 	action = function(pos)
 	
 
@@ -647,7 +656,7 @@ end,
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_searching"},
 	interval = bot_starve,
-	chance = 8,
+	chance = 12,
 	catch_up = false,
 	action = function(pos)
  		
@@ -706,8 +715,9 @@ end,
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_searching"},
-	interval = 1,
+	interval = 2,
 	chance = 2,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -748,8 +758,9 @@ end,
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_returning"},
-	interval = 1,
+	interval = 2,
 	chance = 2,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -790,8 +801,9 @@ end,
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_queen"},
-	interval = 1,
+	interval = 2,
 	chance = 4,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -982,6 +994,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_queen"},
 	interval = animal_move,
 	chance = 2,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius
@@ -1039,6 +1052,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_queen"},
 	interval = 1,
 	chance = 5,
+	catch_up = false,
 	action = function(pos)
 	
 
@@ -1138,6 +1152,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_returning"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to chirp if within radius and more than tolerance
@@ -1837,6 +1852,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_eusocial_bot_returning"},
 	interval = 5,
 	chance = 5,
+	catch_up = false,
 	action = function(pos)
 	
 	--radius for local group

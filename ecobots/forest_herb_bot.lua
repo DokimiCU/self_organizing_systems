@@ -17,6 +17,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_herb_bot"},
 	interval = forest_growth,
 	chance = 5,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -86,13 +87,17 @@ if  light_level >= 11 and light_level_ranpos >= 11  then
 
 -- But not too bright
 
-if  light_level <= 13 and light_level_ranpos <= 13  then
+if  light_level <= 14 and light_level_ranpos <= 14  then
 
 
 
--- do is below air and above soil
+-- do if above soil or leaves
 				
-if minetest.get_item_group(newplace_below.name, "soil") == 1 and  minetest.get_node(randpos_above).name == "air" then
+if minetest.get_item_group(newplace_below.name, "soil") == 1 or minetest.get_item_group(newplace_below.name, "leaves") == 1 then
+
+-- do if below air 
+
+if minetest.get_node(randpos_above).name == "air" then
 
 
 --create bot 
@@ -108,7 +113,7 @@ if minetest.get_item_group(newplace_below.name, "soil") == 1 and  minetest.get_n
 		end
 		end
 		end
-
+		end
 end,
 }
 
@@ -158,6 +163,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_herb_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -194,6 +200,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_herb_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -230,6 +237,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_herb_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -271,6 +279,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_herb_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -339,6 +348,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_forest_herb_bot"},
 	interval = seed_spread,
 	chance = 100,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius

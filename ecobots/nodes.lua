@@ -60,7 +60,7 @@ minetest.register_node("ecobots:ecobots_forest_shrub_trunk", {
 		type = "fixed",
 		fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
 	},
-	groups = {tree=1,choppy=2,oddly_breakable_by_hand=2,flammable=3, falling_node = 1},
+	groups = {tree=1,choppy=3,oddly_breakable_by_hand=2, flammable=3, falling_node = 1},
 	sounds = default.node_sound_wood_defaults(),
 	})
 
@@ -159,7 +159,7 @@ minetest.register_node("ecobots:ecobots_pioneer_shrub_trunk", {
 		type = "fixed",
 		fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
 	},
-	groups = {tree=1,choppy=2,oddly_breakable_by_hand=2,flammable=3, falling_node = 1},
+	groups = {tree=1,choppy=3,oddly_breakable_by_hand=2,flammable=3, falling_node = 1},
 	sounds = default.node_sound_wood_defaults(),
 	})
 
@@ -515,6 +515,18 @@ minetest.register_node("ecobots:ecobots_estuary_shellfish", {
 
 
 
+------------------------------------------------------------------CAVE
+
+-- Node cave slime bot
+minetest.register_node("ecobots:ecobots_cave_slime_bot", {
+	description = "Cave Slime Bot",
+	light_source = 4,
+	tiles = {"ecobots_cave_slime_bot.png"},
+	groups = {crumbly = 3, flora = 1, falling_node = 1},
+	sounds = default.node_sound_gravel_defaults(),
+})
+
+
 
 ------------------------------------------------------------------ANIMALS
 
@@ -534,7 +546,7 @@ minetest.register_node('ecobots:ecobots_predator_bot', {
 		type = "fixed",
 		fixed = {-0.1, -0.5, -0.1, 0.1, -0.3, 0.1},
 	},
-	groups = {snappy = 3, flammable = 2, falling_node = 1},
+	groups = {snappy = 3, fleshy = 3, flammable = 2, falling_node = 1},
 	sounds = default.node_sound_gravel_defaults(),
 	on_use = minetest.item_eat(2),
 	})
@@ -545,7 +557,7 @@ minetest.register_node('ecobots:ecobots_predator_bot', {
 minetest.register_node('ecobots:ecobots_predator_bot_flashing', {
 	description = 'Herbivore Bot (Flashing)',
 	drawtype = "nodebox",
-	light_source = 3,
+	light_source = 5,
 	paramtype = "light",
 	tiles = {"ecobots_predator_bot.png"},
 	node_box = {
@@ -556,7 +568,7 @@ minetest.register_node('ecobots:ecobots_predator_bot_flashing', {
 		type = "fixed",
 		fixed = {-0.1, -0.5, -0.1, 0.1, -0.3, 0.1},
 	},
-	groups = {snappy = 3, flammable = 2, falling_node = 1},
+	groups = {snappy = 3, fleshy = 3, flammable = 2, falling_node = 1},
 	sounds = default.node_sound_gravel_defaults(),
 	on_use = minetest.item_eat(2),
 	})
@@ -588,7 +600,7 @@ minetest.register_node('ecobots:ecobots_apex_bot', {
 	drawtype = "nodebox",
 	paramtype = "light",
 	tiles = {"ecobots_apex_bot.png"},
-	groups = {snappy = 1, flammable = 2, falling_node = 1},
+	groups = {snappy = 3, fleshy = 3, flammable = 2, falling_node = 1},
 	sounds = default.node_sound_gravel_defaults(),
 	node_box = {
 		type = "fixed",
@@ -605,6 +617,45 @@ minetest.register_node('ecobots:ecobots_apex_bot', {
     end,
 		})
 
+
+-- Node apex predator trap
+
+minetest.register_node('ecobots:ecobots_apex_trap', {
+	description = "Apex Predator's Trap",
+	drawtype = "glasslike",
+	waving = 1,
+	light_source = 4,
+	tiles = {"ecobots_apex_trap.png"},
+	inventory_image = "ecobots_apex_trap.png",
+	wield_image = "ecobots_apex_trap.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	groups = {flammable = 1, dig_immediate = 3},
+	})
+
+-- Node apex predator trap full
+
+minetest.register_node('ecobots:ecobots_apex_trap_full', {
+	description = "Apex Predator's Trap (full)",
+	drawtype = "glasslike",
+	waving = 1,
+	light_source = 2,
+	tiles = {"ecobots_apex_trap_full.png"},
+	inventory_image = "ecobots_apex_trap_full.png",
+	wield_image = "ecobots_apex_trap_full.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	groups = {flammable = 1, dig_immediate = 3},
+	on_use = minetest.item_eat(1),
+	})
+
+
+
+
 -- Node detritivore bot
 
 minetest.register_node('ecobots:ecobots_detritivore_bot', {
@@ -612,7 +663,7 @@ minetest.register_node('ecobots:ecobots_detritivore_bot', {
 	drawtype = "nodebox",
 	paramtype = "light",
 	tiles = {"ecobots_detritivore_bot.png"},
-	groups = {snappy = 3, flammable = 2, falling_node = 1},
+	groups = {snappy = 3, fleshy = 3, flammable = 2, falling_node = 1},
 	sounds = default.node_sound_gravel_defaults(),
 	node_box = {
 		type = "fixed",
@@ -624,6 +675,19 @@ minetest.register_node('ecobots:ecobots_detritivore_bot', {
 	},
 	on_use = minetest.item_eat(1),
 	})
+
+
+
+-- Node detritivore Dormant
+minetest.register_node("ecobots:ecobots_detritivore_dormant", {
+	description = "Dormant Detritivore Bot",
+	tiles = {"ecobots_detritivore_dormant.png"},
+	groups = {crumbly = 3, falling_node = 1},
+	sounds = default.node_sound_dirt_defaults(),
+	--dig up the shellfish
+	drop = "ecobots:ecobots_detritivore_bot",
+})
+
 
 
 
@@ -648,7 +712,7 @@ minetest.register_node("ecobots:ecobots_bot_dead", {
 minetest.register_node("ecobots:ecobots_eusocial_nest_fed", {
 	description = "Eusocial Bot Nest (fed)",
 	tiles = {"ecobots_eusocial_nest_fed.png"},
-	groups = {crumbly = 3, soil = 1, flammable = 2},
+	groups = {crumbly = 3, flammable = 2},
 	sounds = default.node_sound_dirt_defaults(),
 	drop = {
 		max_items = 1,
@@ -671,7 +735,7 @@ minetest.register_node("ecobots:ecobots_eusocial_nest_fed", {
 minetest.register_node("ecobots:ecobots_eusocial_nest_unfed", {
 	description = "Eusocial Bot Nest (unfed)",
 	tiles = {"ecobots_eusocial_nest.png"},
-	groups = {crumbly = 3, soil = 1, flammable = 2},
+	groups = {crumbly = 3, flammable = 2},
 	sounds = default.node_sound_dirt_defaults(),
 	drop = {
 		max_items = 1,
@@ -736,7 +800,7 @@ minetest.register_node('ecobots:ecobots_eusocial_bot_searching', {
 	drawtype = "nodebox",
 	paramtype = "light",
 	tiles = {"ecobots_eusocial_bot.png"},
-	groups = {snappy = 1, flammable = 2, falling_node = 1},
+	groups = {snappy = 3, fleshy = 3, flammable = 2, falling_node = 1},
 	sounds = default.node_sound_gravel_defaults(),
 	node_box = {
 		type = "fixed",
@@ -763,7 +827,7 @@ minetest.register_node('ecobots:ecobots_eusocial_bot_returning', {
 	drawtype = "nodebox",
 	paramtype = "light",
 	tiles = {"ecobots_eusocial_bot_return.png"},
-	groups = {snappy = 1, flammable = 2, falling_node = 1},
+	groups = {snappy = 3, fleshy = 3, flammable = 2, falling_node = 1},
 	sounds = default.node_sound_gravel_defaults(),
 	node_box = {
 		type = "fixed",
@@ -790,7 +854,7 @@ minetest.register_node('ecobots:ecobots_eusocial_bot_queen', {
 	drawtype = "nodebox",
 	paramtype = "light",
 	tiles = {"ecobots_eusocial_bot_queen.png"},
-	groups = {snappy = 1, flammable = 2, falling_node = 1},
+	groups = {snappy = 3, fleshy = 3, flammable = 2, falling_node = 1},
 	sounds = default.node_sound_gravel_defaults(),
 	node_box = {
 		type = "fixed",
@@ -808,3 +872,134 @@ minetest.register_node('ecobots:ecobots_eusocial_bot_queen', {
 		minetest.sound_play("ecobots_battle_clack", {pos = pos, gain = 1, max_hear_distance = 30,})
     end,
 		})
+
+------------------------------------------------------------------ E Vine
+
+
+minetest.register_node('ecobots:ecobots_evine_bot', {
+	description = 'Evolving Vine Bot',
+	drawtype = "firelike",
+	tiles = {"ecobots_evine_bot.png"},
+	inventory_image = "ecobots_evine_bot.png",
+	wield_image = "ecobots_evine_bot.png",
+	paramtype = "light",
+	sunlight_propagates = false,
+	walkable = false,
+	waving = 1,
+	climbable = true,
+	buildable_to = false,
+	groups = {snappy = 3, flammable = 1, flora = 1, falling_node = 1, oddly_breakable_by_hand=1, flower = 1, color_violet = 1},
+	sounds = default.node_sound_leaves_defaults(),
+
+	on_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		meta:set_float("grow_vs_age", 0)
+		local grow_vs_age_list_value = meta:get_float("grow_vs_age")
+		meta:set_string("formspec",
+			"size[10,10]"..
+			"button[6,6;3,1;set_default_genome;Set Default Genome]"..
+			"button[1,6;3,1;set_random_genome;Set Random Genome]"..
+			"button_exit[3.5,4.5;3,1;exit_form;Exit]"..
+			"label[2,1;Growth vs Lifespan]"..
+			"label[2,3;Lower values live fast and die young]"..			"textlist[2,2;2,1;grow_vs_age_list;"..grow_vs_age_list_value.."]"
+
+		)
+    end,
+
+	
+		on_receive_fields = function(pos, formname, fields, sender)
+			local meta = minetest.get_meta(pos)
+
+			if fields.set_default_genome then
+			meta:set_float("grow_vs_age", 0)
+			local grow_vs_age_list_value = meta:get_float("grow_vs_age")
+			meta:set_string("formspec",
+			"size[10,10]"..
+			"button[6,6;3,1;set_default_genome;Set Default Genome]"..
+			"button[1,6;3,1;set_random_genome;Set Random Genome]"..
+			"button_exit[3.5,4.5;3,1;exit_form;Exit]"..
+			"label[2,1;Growth vs Lifespan]"..
+			"label[2,3;Lower values live fast and die young]"..
+						"textlist[2,2;2,1;grow_vs_age_list;"..grow_vs_age_list_value.."]"	
+			)
+		end
+
+
+		if fields.set_random_genome then
+			meta:set_float("grow_vs_age", math.random(0, 100))
+			local grow_vs_age_list_value = meta:get_float("grow_vs_age")
+			meta:set_string("formspec",
+			"size[10,10]"..
+			"button[6,6;3,1;set_default_genome;Set Default Genome]"..
+			"button[1,6;3,1;set_random_genome;Set Random Genome]"..
+			"button_exit[3.5,4.5;3,1;exit_form;Exit]"..
+			"label[2,1;Growth vs Lifespan]"..
+			"label[2,3;Lower values live fast and die young]"..
+						"textlist[2,2;2,1;grow_vs_age_list;"..grow_vs_age_list_value.."]"				
+			)
+		end
+
+
+
+	end,
+
+
+
+	})
+
+
+
+------------------------------------------------------------------- SWARMER BOT
+
+
+minetest.register_node('ecobots:ecobots_swarmer_bot', {
+	description = 'Swarmer Bot',
+	drawtype = "glasslike",
+	tiles = {
+		{name="ecobots_swarmer_bot1.png",
+		 animation = {type="vertical_frames", length=80.0}},
+		{name="ecobots_swarmer_bot2.png",
+		 animation = {type="vertical_frames", length=80.0}},
+		{name="ecobots_swarmer_bot1.png",
+		 animation = {type="vertical_frames", length=80.0}},
+		{name="ecobots_swarmer_bot2.png",
+		 animation = {type="vertical_frames", length=80.0}},
+		{name="ecobots_swarmer_bot1.png",
+		 animation = {type="vertical_frames", length=80.0}},
+		{name="ecobots_swarmer_bot2.png",
+		 animation = {type="vertical_frames", length=80.0}}
+		 },
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	groups = {snappy = 3, fleshy = 3},
+	damage_per_second = 1,
+	on_punch = function(pos, node, puncher)
+      	local health = puncher:get_hp()
+      	puncher:set_hp(health-1)
+-- battle!	
+		minetest.sound_play("ecobots_swarmer_nomnom", {pos = pos, gain = 1, max_hear_distance = 30,})
+    	end,
+
+--give it a heading so doesn't have nil
+	on_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		meta:set_string("heading", "XP")
+	end,
+	})
+
+
+--Swarmer Bot Eggs
+
+minetest.register_node("ecobots:ecobots_swarmer_eggs", {
+	description = "Swarmer Bot Eggs",
+	drawtype = "nodebox",
+	paramtype = "light",
+	tiles = {"ecobots_swarmer_eggs.png"},
+	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3},
+	on_use = minetest.item_eat(0.5),
+	sounds = default.node_sound_wood_defaults(),
+	})
+
+

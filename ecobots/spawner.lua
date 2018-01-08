@@ -18,7 +18,7 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"default:dirt_with_grass", "default:dirt", "default:dirt_with_dry_grass", "default:dirt_with_rainforest_litter"},
 	sidelen = 16,
-	fill_ratio = 0.0007,
+	fill_ratio = 0.003,
 	y_min = 2,
 	y_max = 31000,
 	biomes = {"rainforest", "deciduous_forest", "coniferous_forest", "savanna", "grassland", "floatland_coniferous_forest", "floatland_grassland"},
@@ -53,11 +53,11 @@ minetest.register_decoration({
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
-			scale = 0.01,
-			spread = {x = 100, y = 100, z = 100},
+			scale = 0.09,
+			spread = {x = 50, y = 50, z = 50},
 			seed = 444,
-			octaves = 2,
-			persist = 0.6
+			octaves = 8,
+			persist = 0.7
 		},
 		y_min = 1,
 		y_max = 31000,
@@ -72,7 +72,7 @@ minetest.register_decoration({
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
-			scale = 0.01,
+			scale = 0.08,
 			spread = {x = 100, y = 100, z = 100},
 			seed = 444,
 			octaves = 2,
@@ -91,7 +91,7 @@ minetest.register_decoration({
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
-			scale = 0.01,
+			scale = 0.08,
 			spread = {x = 100, y = 100, z = 100},
 			seed = 444,
 			octaves = 2,
@@ -136,6 +136,62 @@ minetest.register_decoration({
 
 
 
+--Lucky Swarmer (might be by food... or might not)
+
+
+minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:dirt_with_grass", "default:dirt_with_dry_grass", "default:snow", "default:sand", "default:dirt_with_rainforest_litter", "group:leaves"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.08,
+			spread = {x = 50, y = 50, z = 50},
+			seed = 556,
+			octaves = 14,
+			persist = 0.9
+		},
+		y_min = 1,
+		y_max = 31000,
+		--biomes = {"rainforest", "rainforest_swamp", "deciduous_forest", "coniferous_forest"},
+		decoration = "ecobots:ecobots_swarmer_bot",
+	})
+
+
+
+--swarmer eggs
+
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"default:dirt_with_grass", "default:dirt", "default:dirt_with_rainforest_litter"},
+	sidelen = 16,
+	fill_ratio = 0.0005,
+	y_min = 1,
+	y_max = 31000,
+	biomes = {"rainforest", "deciduous_forest", "coniferous_forest", "floatland_coniferous_forest"},
+	schematic = {
+		size = {x=2, y=3, z=2},
+		data = {
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0}, 
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0},
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0},
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0},
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0},
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0},
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0},
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0},
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0},
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0},
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0},	
+			{name="ecobots:ecobots_swarmer_eggs", param1=255, param2=0}
+			},
+			},
+		flags = {place_center_x = true, place_center_y = false, place_center_z = true},
+		rotation = "random"
+
+})
+
+
 
 -------------------------------------------------------------------SWAMP FOREST
 ----------------------------------------------------------------
@@ -154,7 +210,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.02,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 6,
+			seed = 610,
 			octaves = 1,
 			persist = 0.76
 		},
@@ -178,7 +234,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.03,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 6,
+			seed = 611,
 			octaves = 1,
 			persist = 0.26
 		},
@@ -202,7 +258,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.03,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 6,
+			seed = 612,
 			octaves = 1,
 			persist = 0.26
 		},
@@ -248,7 +304,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.004,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 210,
 			octaves = 3,
 			persist = 0.66
 		},
@@ -273,7 +329,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.004,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 211,
 			octaves = 3,
 			persist = 0.66
 		},
@@ -298,7 +354,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.004,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 212,
 			octaves = 3,
 			persist = 0.66
 		},
@@ -324,7 +380,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.004,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 213,
 			octaves = 3,
 			persist = 0.66
 		},
@@ -352,7 +408,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.002,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 214,
 			octaves = 2,
 			persist = 0.66
 		},
@@ -377,7 +433,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.002,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 6,
+			seed = 610,
 			octaves = 2,
 			persist = 0.66
 		},
@@ -400,7 +456,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.01,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 6,
+			seed = 611,
 			octaves = 1,
 			persist = 0.46
 		},
@@ -428,7 +484,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.015,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 210,
 			octaves = 2,
 			persist = 0.36
 		},
@@ -453,7 +509,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.015,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 211,
 			octaves = 2,
 			persist = 0.56
 		},
@@ -479,7 +535,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.015,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 212,
 			octaves = 3,
 			persist = 0.76
 		},
@@ -506,7 +562,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.006,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 210,
 			octaves = 6,
 			persist = 0.9
 		},
@@ -530,7 +586,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.006,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 211,
 			octaves = 6,
 			persist = 0.8
 		},
@@ -555,7 +611,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.008,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 212,
 			octaves = 6,
 			persist = 0.9
 		},
@@ -665,7 +721,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.00015,
 			spread = {x = 250, y = 250, z = 250},
-			seed = 2,
+			seed = 222,
 			octaves = 2,
 			persist = 0.36
 		},
@@ -688,7 +744,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.00002,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 4441,
 			octaves = 6,
 			persist = 0.9
 		},
@@ -761,7 +817,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.3,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 4441,
 			octaves = 4,
 			persist = 0.5
 		},
@@ -782,7 +838,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.8,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 4442,
 			octaves = 2,
 			persist = 0.2
 		},
@@ -803,7 +859,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.001,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 4443,
 			octaves = 8,
 			persist = 0.4
 		},
@@ -823,7 +879,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.1,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 4444,
 			octaves = 1,
 			persist = 0.1
 		},
@@ -843,7 +899,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.05,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 4445,
 			octaves = 3,
 			persist = 0.4
 		},
@@ -863,7 +919,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.03,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 4446,
 			octaves = 5,
 			persist = 0.6
 		},
@@ -884,7 +940,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.003,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 4447,
 			octaves = 5,
 			persist = 0.6
 		},
@@ -905,7 +961,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.3,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 4448,
 			octaves = 2,
 			persist = 0.4
 		},
@@ -925,7 +981,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.3,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 4449,
 			octaves = 4,
 			persist = 0.3
 		},
@@ -945,7 +1001,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.003,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 44410,
 			octaves = 8,
 			persist = 0.9
 		},
@@ -966,7 +1022,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.03,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 44411,
 			octaves = 2,
 			persist = 0.3
 		},
@@ -986,7 +1042,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.003,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 44412,
 			octaves = 8,
 			persist = 0.9
 		},
@@ -1007,7 +1063,7 @@ minetest.register_decoration({
 			offset = 0,
 			scale = 0.03,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
+			seed = 44413,
 			octaves = 2,
 			persist = 0.2
 		},
@@ -1064,25 +1120,48 @@ minetest.register_decoration({
 	})
 
 
--- sand palm on sand
+-- sand palm on sand and rainforest
 
 minetest.register_decoration({
 		deco_type = "simple",
-		place_on = {"default:sand"},
+		place_on = {"default:sand", "default:dirt_with_rainforest_litter"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.008,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 544,
+			octaves = 5,
+			persist = 0.5
+		},
+		biomes = {"grassland_dunes", "savanna", "rainforest","sandstone_desert", "sandstone_desert_ocean", "desert_ocean", "grassland_ocean", "floatland_sandstone_desert", "rainforest"},
+		y_min = 1,
+		y_max = 31000,
+		decoration = "ecobots:ecobots_sand_palm_bot",
+	})
+
+
+--evine in forest
+
+minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:dirt_with_grass", "default:dirt_with_rainforest_litter"},
 		sidelen = 16,
 		noise_params = {
 			offset = 0,
 			scale = 0.005,
 			spread = {x = 100, y = 100, z = 100},
-			seed = 444,
-			octaves = 5,
-			persist = 0.5
+			seed = 4143,
+			octaves = 2,
+			persist = 0.2
 		},
-		biomes = {"grassland_dunes", "savanna", "rainforest","sandstone_desert", "sandstone_desert_ocean", "desert_ocean", "grassland_ocean", "floatland_sandstone_desert"},
-		y_min = 1,
+		y_min = 2,
 		y_max = 31000,
-		decoration = "ecobots:ecobots_sand_palm_bot",
+		biomes = {"rainforest", "rainforest_swamp", "deciduous_forest"},
+		decoration = "ecobots:ecobots_evine_bot",
 	})
+
+
 
 ------------------------------------------------------------------SEA
 ----------------------------------------------------------------
@@ -1128,7 +1207,7 @@ minetest.register_ore({
 			offset = 0,
 			scale = 0.3,
 			spread = {x = 5, y = 5, z = 5},
-			seed = 666,
+			seed = 661,
 			octaves = 2,
 			persist = 0.6
 		},
@@ -1151,12 +1230,42 @@ minetest.register_ore({
 			offset = 0,
 			scale = 0.4,
 			spread = {x = 5, y = 5, z = 5},
-			seed = 666,
+			seed = 662,
 			octaves = 2,
 			persist = 0.6
 		},
 		biomes = { "savanna_ocean","rainforest_ocean", "tundra_ocean", "taiga_ocean", "snowy_grassland_ocean", "grassland_ocean", "coniferous_forest_ocean", "deciduous_forest_ocean", "desert_ocean", "sandstone_desert_ocean", "cold_desert_ocean", "rainforest_swamp", "deciduous_forest_shore", "savanna_shore" 
 },
 	})
+
+
+------------------------------------------------------------------CAVE
+----------------------------------------------------------------
+
+
+--Cave slime
+
+
+
+minetest.register_ore({
+		ore_type        = "puff",
+		ore             = "ecobots:ecobots_cave_slime_bot",
+		wherein         = {"default:water_source", "default:river_water_source"},
+		clust_scarcity  = 16 * 16 * 16,
+		clust_size      = 3,
+		y_min           = -20000,
+		y_max           = -10,
+		noise_threshold = 0.2,
+		noise_params    = {
+			offset = 0,
+			scale = 0.02,
+			spread = {x = 5, y = 5, z = 5},
+			seed = 666,
+			octaves = 2,
+			persist = 0.6
+		},
+		biomes = {"underground"},
+	})
+
 
 

@@ -11,14 +11,14 @@
 local animal_growth = minetest.settings:get('ecobots_animal_growth') or 5
 
 
-local animal_move = 7
+local animal_move = 4
 
 --die of old age
-local animal_old = animal_growth * 100
+local animal_old = animal_growth * 170
 
 --Maintenance eating needs to be ten times more common than eating for growth to reflect how little energy goes up the food web
 ---chance to eat
-local animal_eat = 5
+local animal_eat = 2
 local eat_breed = animal_eat * 10
 
 
@@ -30,6 +30,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_predator_bot"},
 	interval = animal_growth,
 	chance = animal_eat,
+	catch_up = false,
 	action = function(pos)
 	
 
@@ -66,18 +67,20 @@ end,
 
 ---------------------------------------------------------------
 --REPLICATE HERBIVORE BOT
---force it to go to the ground to reproduce to limit pops 
+ 
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_predator_bot"},
-	neighbors = {"group:soil", "group:grass", "group:flower"},
+	--neighbors = {"group:soil", "group:grass", "group:flower"},
 	interval = animal_growth,
 	chance = eat_breed,
+	catch_up = false,
 	action = function(pos)
+
 	-----SETTINGS
 	--dispersal radius up and horizontal
-		local upradius_pr = 2
-		local horizradius_pr = 2
+		local upradius_pr = 1
+		local horizradius_pr = 1
 
 		
 	-- population limit within area	
@@ -101,24 +104,16 @@ minetest.register_abm{
 
 	local randpos = {x = pos.x + math.random(-horizradius_pr,horizradius_pr), y = pos.y + math.random(-upradius_pr,upradius_pr), z = pos.z + math.random(-horizradius_pr,horizradius_pr)}
 
---for check space is empty
-
-	local randpos_above = {x = randpos.x, y = randpos.y + 1, z = randpos.z}
-
-
--- find what the parent will eat inorder to reproduce
-
-	local pos_eat = {x = pos.x + math.random(-1,1), y = pos.y + math.random(-1,1), z = pos.z + math.random(-1,1)}
-
 		
 
 --name for new node for group check
 
 	local newplace_create = minetest.get_node(randpos)
 
---name for eaten node for group check
+-- for check randpos is supported
 
-	local newplace_eat = minetest.get_node(pos_eat)
+	local randpos_below = {x = randpos.x, y = randpos.y - 1, z = randpos.z}
+
 
 
 
@@ -128,32 +123,22 @@ minetest.register_abm{
 	if (num_pred_bot) < pred_poplim then
 
 
-	
---- if parent finds food in nearby node
-		if minetest.get_item_group(newplace_eat.name, "flora") == 1 then
+
+-- if new location has food and is supported				
+	if minetest.get_item_group(newplace_create.name, "flora") == 1 and minetest.get_node(randpos_below).name ~= "air" then
 
 
--- if new location has food child				
-		if minetest.get_item_group(newplace_create.name, "flora") == 1 then
 
--- if has space on top of food	
-		if minetest.get_node(randpos_above).name == "air" then
+-- create child in food item 
 
--- create child on top of food item to 
+			minetest.set_node(randpos, {name = "ecobots:ecobots_predator_bot"})
 
-			minetest.set_node(randpos_above, {name = "ecobots:ecobots_predator_bot"})
-
-
---parent eats food
-		
-			minetest.dig_node(pos_eat)
 
 
 --herbivore cry sound
 			minetest.sound_play("ecobots_chirp", {pos = pos, gain = 0.5, max_hear_distance = 40,})
 		
-		end
-		end	
+		
 		end
 		end	
 end,
@@ -165,8 +150,8 @@ end,
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_predator_bot"},
-	interval = 60,
-	chance = 30,
+	interval = 90,
+	chance = 35,
 	catch_up = false,
 	action = function(pos)
  		--distance to prey to sustain
@@ -202,8 +187,9 @@ end,
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_predator_bot"},
-	interval = 1,
+	interval = 2,
 	chance = 2,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -245,7 +231,7 @@ end,
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_predator_bot"},
 	interval = animal_old,
-	chance = 10,
+	chance = 30,
 	catch_up = false,
 	action = function(pos)
  		
@@ -268,6 +254,7 @@ minetest.register_abm{
 	neighbors = {"group:soil", "group:sand", "group:stone"},
 	interval = 2,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius
@@ -338,6 +325,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_predator_bot"},
 	interval = 4,
 	chance = 5,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to chirp if within radius and more than tolerance
@@ -384,26 +372,25 @@ minetest.register_abm{
 	action = function(pos)
 			
 	
-	
---use random timer to decide when to flash
+--using random timer to decide when to flash
 --simply using the abm interval auto-synchs them, defeating the purpose
 		local timer = 0
 		minetest.register_globalstep(function(dtime)
 		timer = timer + dtime;
 		local randflash = math.random(2,10)
 		local randflash_limit = randflash + 1
-			if if timer > randflash and timer < randflash_limit then
+			if timer > randflash and timer < randflash_limit  then
 
 			--- do at night
 			local tod = minetest.get_timeofday()
 			if tod < 0.25 or tod > 0.75 then
 
+			
 			minetest.set_node(pos, {name = "ecobots:ecobots_predator_bot_flashing"})
 			timer = randflash_limit
 			end
 			end
-		end)	
-					
+		end)						
 end,
 }
 
@@ -528,7 +515,7 @@ minetest.register_abm{
 
 
 	-- population limit within area	
-		local poplim = 3
+		local poplim = 5
 			
 	-- radius for population group
 		local radius = 1
@@ -552,22 +539,27 @@ minetest.register_abm{
 			{x = pos.x + radius, y = pos.y + radius, z = pos.z + radius}, {"ecobots:ecobots_predator_bot"})
 		num_bot_there = (cn["ecobots:ecobots_predator_bot"] or 0)
 	
-	--count flashing bots here
-
-		local num_friend= {}
-		local ps, cn = minetest.find_nodes_in_area(
-			{x = pos.x - radius, y = pos.y - radius, z = pos.z - radius},
-			{x = pos.x + radius, y = pos.y + radius, z = pos.z + radius}, {"ecobots:ecobots_predator_bot_flashing"})
-		num_friend = (cn["ecobots:ecobots_predator_bot_flashing"] or 0)
 
 
---count flashing bots there
+--count flashing bots there for pop limits at destination
 
 		local num_friend_there= {}
 		local ps, cn = minetest.find_nodes_in_area(
 			{x = randpos.x - radius, y = randpos.y - radius, z = randpos.z - radius},
 			{x = randpos.x + radius, y = randpos.y + radius, z = randpos.z + radius}, {"ecobots:ecobots_predator_bot_flashing"})
 		num_friend_there = (cn["ecobots:ecobots_predator_bot_flashing"] or 0)
+
+
+-- for check light at current position
+	 
+		local light_level = {}
+		local light_level = ((minetest.get_node_light({x = pos.x, y = pos.y + 1, z = pos.z})) or 0)
+
+	-- for check light at destination
+	 
+		local light_level_ranpos = {}
+		local light_level_ranpos  = ((minetest.get_node_light(randpos)) or 0)
+
 
 
 --- do at night
@@ -577,13 +569,13 @@ minetest.register_abm{
 		if tod < 0.25 or tod > 0.75 then
 		
 
---go to the brightest group
-	if (num_friend_there) > (num_friend) then
+--go to the light
+	if light_level_ranpos > light_level then
 
 
 --if the destination isn't overcrowded... should prevent insane pile ups
 
-	if (num_bot_there) + (num_friend_there) > poplim then
+	if (num_bot_there) + (num_friend_there) < poplim then
 		
 --is the space empty and grounded?
 
@@ -608,5 +600,106 @@ minetest.register_abm{
 end,
 }
 
+
+
+---------------------------------------------------------------
+--HERD DEFENCE
+-- Attack apex bot if it is too close
+-- a group herd defence, to give it some refuge against predation
+
+minetest.register_abm{
+     	nodenames = {"ecobots:ecobots_predator_bot"},
+	interval = 1,
+	chance = 2,
+	catch_up = false,
+	action = function(pos)
+	
+
+	
+--distance away for engaging in battle
+		local battle_upradius = 1
+		local battle_horizradius = 1
+
+
+	
+--count predator
+
+		local num_apex = {}
+		local ps, cn = minetest.find_nodes_in_area(
+			{x = pos.x - battle_horizradius, y = pos.y - battle_upradius, z = pos.z - battle_horizradius},
+			{x = pos.x + battle_horizradius, y = pos.y + battle_upradius, z = pos.z + battle_horizradius}, {"ecobots:ecobots_apex_bot"})
+		num_apex = (cn["ecobots:ecobots_apex_bot"] or 0)
+
+
+--count friends
+
+		local num_defender = {}
+		local ps, cn = minetest.find_nodes_in_area(
+			{x = pos.x - battle_horizradius, y = pos.y - battle_upradius, z = pos.z - battle_horizradius},
+			{x = pos.x + battle_horizradius, y = pos.y + battle_upradius, z = pos.z + battle_horizradius}, {"ecobots:ecobots_predator_bot"})
+		num_defender = (cn["ecobots:ecobots_predator_bot"] or 0)
+
+	
+----POSITIONS
+
+--Find a predator
+	local randpos = {x = pos.x + math.random(-battle_horizradius,battle_horizradius), y = pos.y + math.random(-battle_upradius,battle_upradius), z = pos.z + math.random(-battle_horizradius,battle_horizradius)}
+
+--retreat
+	local randpos2 = {x = pos.x + math.random(-battle_horizradius,battle_horizradius), y = pos.y + math.random(-battle_upradius,battle_upradius), z = pos.z + math.random(-battle_horizradius,battle_horizradius)}
+
+
+	local randpos2_below = {x = randpos2.x, y = randpos2.y - 1, z = randpos2.z}
+
+
+
+-- Do if it found a predator and has back up
+
+	if minetest.get_node(randpos).name == "ecobots:ecobots_apex_bot" and (num_defender) > 2 then
+
+	
+--Who will win the battle?
+--defenders outnmber apex Defender wins 
+
+if (num_apex) < (num_defender) then
+
+	--repel apex 
+	--is an escape possible?
+
+	if minetest.get_node(randpos2).name == "air" and minetest.get_node(randpos2_below).name ~= "air" then
+
+	--apex runs away
+	minetest.set_node(randpos, {name = "air"})
+	minetest.set_node(randpos2, {name = "ecobots:ecobots_apex_bot"})
+
+	-- Sing!	
+		minetest.sound_play("ecobots_friendly_chirp", {pos = pos, gain = 4, max_hear_distance = 40,})
+	-- whimper!	
+		minetest.sound_play("ecobots_chirp_dark", {pos = pos, gain = 0.3, max_hear_distance = 40,})
+
+
+--apex outnmber defenders Apex wins
+if (num_apex) > (num_defender) then
+
+	--escape to empty grounded space
+	if minetest.get_node(randpos2).name == "air" and minetest.get_node(randpos2_below).name ~= "air" then
+
+ 	--defender runaway
+	minetest.set_node(randpos2, {name = "ecobots:ecobots_predator_bot"})
+	minetest.set_node(pos, {name = "air"})
+
+	-- whimper!	
+		minetest.sound_play("ecobots_friendly_chirp", {pos = pos, gain = 0.3, max_hear_distance = 40,})
+	-- Sing!	
+		minetest.sound_play("ecobots_chirp_dark", {pos = pos, gain = 5, max_hear_distance = 40,})
+
+	
+	end
+	end
+	end
+	end
+	end	
+end,
+}
 
 

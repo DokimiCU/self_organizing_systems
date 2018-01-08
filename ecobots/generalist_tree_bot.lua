@@ -33,6 +33,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_tree_bot"},
 	interval = tree_upgrowth,
 	chance = 14,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -142,6 +143,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_tree_bot"},
 	interval = tree_branchgrowth,
 	chance = 20,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -233,6 +235,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_tree_bot"},
 	interval = tree_leafygrowth,
 	chance = 13,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -312,6 +315,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_tree_bot"},
 	interval = tree_rootgrowth,
 	chance = 20,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -423,7 +427,7 @@ minetest.register_abm{
 
 	-- do if shaded
 
-		if  lightsmother_level < 11 then
+		if  lightsmother_level < 13 then
 		
 	-- to stop floating logs
 		if minetest.get_node(pos_below).name == "air" or minetest.get_node(pos_belowthat).name == "air" then
@@ -460,6 +464,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_tree_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -496,6 +501,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_tree_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -532,6 +538,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_tree_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -574,6 +581,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_tree_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -644,6 +652,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_generalist_tree_bot"},
 	interval = seed_spread,
 	chance = 250,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius

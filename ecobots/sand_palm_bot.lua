@@ -18,6 +18,7 @@ minetest.register_abm{
 	neighbors = {"group:water"},
 	interval = sand_growth,
 	chance = 25,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -85,7 +86,7 @@ minetest.register_abm{
 
 
 -- do if above default sand or grass
-	if minetest.get_node(randpos_below).name == "default:sand" or minetest.get_node(randpos_below).name == "default:dirt_with_grass"  then
+	if minetest.get_node(randpos_below).name == "default:sand" or minetest.get_item_group(newplace_below.name, "soil") == 1  then
 
 -- do if empty and below air
 				
@@ -114,6 +115,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_palm_bot"},
 	interval = sand_growth,
 	chance = 3,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius up and horizontal
@@ -264,6 +266,7 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_palm_trunk"},
 	interval = 1,
 	chance = 5,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius
@@ -294,12 +297,50 @@ end,
 
 
 ----------------------------------------------------------------
+-- CLEAR TRUNK IN RIVER WATER
+
+minetest.register_abm{
+     	nodenames = {"ecobots:ecobots_sand_palm_trunk"},
+	interval = 1,
+	chance = 5,
+	catch_up = false,
+	action = function(pos)
+	
+	-- to kill if within radius
+		local searadius = 1
+
+
+	--count seawater
+
+		local num_seawater= {}
+		local ps, cn = minetest.find_nodes_in_area(
+			{x = pos.x - searadius, y = pos.y - searadius, z = pos.z - searadius},
+			{x = pos.x + searadius, y = pos.y + searadius, z = pos.z + searadius}, {"default:river_water_source"})
+		num_seawater = (cn["default:river_water_source"] or 0)
+		
+
+		
+
+		if (num_seawater) > 1 then
+		
+		-- kill bot 
+			
+			minetest.set_node(pos, {name = "default:sand"})	
+						
+		end
+	
+end,
+}
+
+
+----------------------------------------------------------------
 -- KILL BOT SNOW.
 
 minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_palm_bot"},
 	interval = 1,
 	chance = 1,
+	catch_up = false,
 	action = function(pos)
 	
 	-- to kill if within radius and more than tolerance
@@ -367,7 +408,8 @@ minetest.register_abm{
      	nodenames = {"ecobots:ecobots_sand_palm_bot"},
 	neighbors = {"ecobots:ecobots_sand_palm_bot" },
 	interval = seed_spread,
-	chance = 1000,
+	chance = 600,
+	catch_up = false,
 	action = function(pos)
 	
 	--dispersal radius

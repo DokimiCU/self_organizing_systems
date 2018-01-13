@@ -20,8 +20,16 @@ These mods can be fun to use in a general game, or they can used as a hands on w
   - Ecobots: replaces the default vegetation with a biodiverse functional ecosystem of selfreplicating blocks. Self replication exists in the sweet spot between the limits of Selfrep and the mayhem of Selfrep Doomsday. Once established the ecobots simulate the behaviour of real ecosystems. Also incudes examples of network and swarm intelligence, and evolution. They are alive!
   
   - Autosky: mimics some of the basic process that give rise to local scale weather systems. Clouds and rain form spontaneously due to the availability of water, local topography, etc.
+  
+  
+  
+# Be Advised
 
-See the instructions in each mod folder for more details on how these work and how to use them.
+Whilst these mods are all variations on a them they will not necessarily all work well together. e.g. Ecobots and Autosky are indepedently demanding on computing power. Combining them may be excessive.
+
+These mods can display complex and unpredictable behaviour. See the instructions in each mod folder for more details on how these work and how to use them.
+
+
 
 # License:
 

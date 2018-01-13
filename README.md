@@ -109,7 +109,7 @@ Autocells:
 - added Automusic cellular automata
 
 Selfrep:
--added tunnel, "sinkhole", and ladder
+- added tunnel, "sinkhole", and ladder
 
 New mods:
 - "Autosky" weather simulator

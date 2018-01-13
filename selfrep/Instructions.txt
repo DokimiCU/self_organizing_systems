@@ -6,13 +6,20 @@ These blocks create limited self replicating structures that may be useful to th
 	- Tower: a vertical version of the road. 
 
 	- Sponge: when placed in water it will spontaneously build walls around you to keep the water out. You can then walk through the ocean with ease and/or get yourself stuck in an endless maze of your own creation.
+	
+	-Sinkhole: like the sponge but for stone. Rapidly sinks the player deep into the earth.
+
+	-Tunnel: a horizontal version of the sinkhole. Clears large chambers.
+	
+	-Ladder: extends a ladder directly up and down.
+
 
 
 
 HOW TO USE:
 Place the block. Let it go.
 
-For the sponge, walk towards a live wall to send it outwards and extend the tunnel. If you wait too long the growing surface will solidify.
+For the sponge etc, walk towards a live wall to send it outwards and extend the tunnel. If you wait too long the growing surface will solidify.
 
 
 HOW THIS WORKS:
@@ -24,8 +31,8 @@ The road and tower limit the replicators populations so severly that new replica
 
 
 CAUTIONS:
-The road destroys blocks above it.
+The road etc destroys blocks above it.
 
-The road and tower will grow forever. However they time out in unloaded areas, so if you want to kill them all then leave the area.
+The road and tower etc will grow forever. However they time out in unloaded areas, so if you want to kill them all then leave the area.
 
 

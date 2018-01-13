@@ -1,0 +1,48 @@
+WHAT IS THIS?
+This mod simulates some of the core processes that drive small scale weather.
+
+
+
+HOW TO USE:
+
+- Just let it run. Sit back and watch the clouds.
+
+- Things do take time to develop in new areas. Be patient
+
+- It's best to turn the default clouds off. This mod makes them redundant.
+
+- Most of what is going on is invisible. Colored nodes are available. See the init.lua file.
+
+- Settings for the speed of all process can be changed under settings.
+Additional paramaters can be fiddled with in the files themselves if you feel like doing that.
+
+- A "Weather Monitor" block is also included. Right clicking will display "Macro" weather data.
+These are big scale forces that change randomly over time. They will change the balance between various local processes.
+e.g. hot conditions will increase evaporation. Higher winds will move air faster in the direction of the prevailing wind (a westerly). etc.
+
+
+HOW THIS WORKS:
+
+Air is divided into different types:
+- warm Wet
+- cold Wet
+- clouds
+- and default air
+
+Simple rules decide when one type switches to another, and when and with
+whom they can swap places.
+
+Moisture is added to the air by evaporation (from water) and transpiration (from plants).
+This moist air then rises or falls based on it's temperature. It also can be heated, cooled, or moved by various processes.
+
+When enough moisture is in the air, and conditions are right, it may cool and condense into clouds and rain or snow.
+
+Real weather is much more complicated than this, but trying to put all that into Minetest would make your computer explode.
+
+CAUTIONS:
+
+Cannot be turned off (not easily anyway - fiddling with in-file settings then waiting could be used to remove these blocks).
+
+Makes the minimap difficult to see. Covers it in what is essentially a weather map - clouds are white, hot air red, cold air blue.
+
+May get demanding on computing power. Try slowing it down in settings if that's an issue.

@@ -24,7 +24,7 @@ The road and tower limit the replicators populations so severly that new replica
 
 
 CAUTIONS:
-The road and tunnel destroy blocks. Be careful where you put them.
+The road destroys blocks. Be careful where you put them.
 
 The road, tower, etc will grow forever. However they time out in unloaded areas, so if you want to kill them all then leave the area. The sponge etc is tied directly to the player - walk away and it dies.
 

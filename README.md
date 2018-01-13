@@ -30,6 +30,7 @@ These mods can display complex and unpredictable behaviour. See the instructions
 Whilst these mods are all variations on a theme, they will not necessarily all work well together, or be desirable to have on the same map. 
 
 e.g. Ecobots and Autosky are both indepedently demanding on computing power.
+
 e.g. Doomsday is the ultimate griefer's tool... it will destroy the world. 
 
 If in doubt try each mod independantly first.

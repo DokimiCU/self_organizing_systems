@@ -1,5 +1,6 @@
 
 
+dofile(minetest.get_modpath("autocell").."/automusic.lua")
 
 
 

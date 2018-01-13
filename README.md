@@ -25,9 +25,15 @@ These mods can be fun to use in a general game, or they can used as a hands on w
   
 # Be Advised
 
-Whilst these mods are all variations on a them they will not necessarily all work well together. e.g. Ecobots and Autosky are indepedently demanding on computing power. Combining them may be excessive.
-
 These mods can display complex and unpredictable behaviour. See the instructions in each mod folder for more details on how these work and how to use them.
+
+Whilst these mods are all variations on a theme, they will not necessarily all work well together, or be desirable to have on the same map. 
+
+e.g. Ecobots and Autosky are both indepedently demanding on computing power.
+e.g. Doomsday is the ultimate griefer's tool... it will destroy the world. 
+
+If in doubt try each mod independantly first.
+
 
 
 
@@ -36,7 +42,6 @@ These mods can display complex and unpredictable behaviour. See the instructions
 Code is licensed under GNU LGPLv2+.
 
 Textures and sound are licensed under CC BY-SA 3.0 Unported.
-
 
 
 

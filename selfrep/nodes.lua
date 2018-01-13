@@ -3,7 +3,8 @@
 
 
 
-------------------------------------------------------------------NODES
+----------------------------------------------------------------
+--NODES
 ----------------------------------------------------------------
 
 -- Node road
@@ -67,6 +68,85 @@ minetest.register_node('selfrep:selfrep_sponge', {
 	sounds = default.node_sound_metal_defaults(),
 
 	})
+
+-- Node sinkhole
+
+minetest.register_node('selfrep:selfrep_sinkhole', {
+	description = 'Self Replicating Sinkhole',
+	light_source = 3,
+	tiles = {"selfrep_sinkhole.png"},
+	groups = {cracky = 3, flammable = 2, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
+
+	})
+
+
+-- Node tunnel
+
+minetest.register_node('selfrep:selfrep_tunnel', {
+	description = 'Self Replicating Tunnel',
+	light_source = 3,
+	tiles = {"selfrep_tunnel.png"},
+	groups = {cracky = 3, flammable = 2, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
+
+	})
+
+
+-- Node ladder
+
+minetest.register_node('selfrep:selfrep_ladder', {
+	description = 'Self Replicating Ladder',
+	drawtype = "nodebox",
+	--paramtype2 = "facedir",
+	--light_source = 3,
+	tiles = {"selfrep_ladder.png"},
+	climbable = true,
+	groups = {cracky = 3, flammable = 2, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {-1/2, -1/2, -1/6, 1/2, 1/2, 1/6},
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {-1/2, -1/2, -1/6, 1/2, 1/2, 1/6},
+	},
+
+
+--node lifespan
+	on_construct = function(pos)
+		minetest.get_node_timer(pos):start(20)
+	end,
+	on_timer = function(pos, elapsed)
+		minetest.set_node(pos, {name = "selfrep:selfrep_ladder_dead"})
+	end,
+
+	})
+
+
+--dead ladder
+
+minetest.register_node('selfrep:selfrep_ladder_dead', {
+	description = 'Dead Self Replicating Ladder',
+	drawtype = "nodebox",
+	--paramtype2 = "facedir",
+	tiles = {"selfrep_ladder_dead.png"},
+	climbable = true,
+	groups = {cracky = 3, stone = 1, not_in_creative_inventory = 1},
+	node_box = {
+		type = "fixed",
+		fixed = {-1/2, -1/2, -1/6, 1/2, 1/2, 1/6},
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {-1/2, -1/2, -1/6, 1/2, 1/2, 1/6},
+	},
+
+	sounds = default.node_sound_stone_defaults()
+	})
+
+
 
 
 

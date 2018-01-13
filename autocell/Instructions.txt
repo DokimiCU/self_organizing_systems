@@ -1,10 +1,11 @@
 WHAT IS THIS?
-This is a cellular automation made from light blocks. It is a very simple demonstration of how order can arise from self replication governed by a simple rule set.
-
-Usually these are done in 2D. Bringing it into minetest allows you to build a house out of one! 
-
+This mod allows you to create cellular automata from minestest blocks. These are very simple demonstrations of how complex order can spontaneously arise from very simple rules. 
+Usually these are done in 2D. Bringing it into minetest allows you to build a house out of one!
 
 
+It currently has two types of cellular automata you can choose from.
+Autocells - creates a self sustaining light show.
+Automusic - uses a different rule set and uses sounds instead of light. 
 
 
 
@@ -12,20 +13,23 @@ HOW TO USE:
 
 Arrange the blocks in a large connected structure, such as a wall.
 
-Punch dark blocks to turn them on, lit blocks to turn them off.
+Punch to turn them on or off.
 
-If set up right it will create a spontaneous self sustaining light show across the whole structure.
+If set up right it will create a spontaneous self sustaining pattern across the whole structure.
 
 The pattern is interactive. Punching blocks on or off, or adding and removing blocks will cause the pattern to rearrange itself in response to your actions.
 
+Automusic, I'll admit, sounds awful. There are other sound files available, or you can delete the sounds altogether - look in the automusic file, it's all at the top. 
+
 
 HOW THIS WORKS:
-Blocks turn on if between two and five of their neighbours are on. They then go into a resting state, and then turn back off.
+For Autocells - Blocks turn on if between two and five of their neighbours are on. They then go into a resting state, and then turn back off.
 
 This simple rule set is enough to allow complex patterns to emerge just by turning on two blocks.
 
 The on blocks trigger others to turn on, causing waves of light. But because blocks turn off again the wave can continue forever.
 
+(Automusic works much the same, but with a few extra steps)
 
 CAUTIONS: 
-Cannot be turned off. You have to destroy the structure.
+Cannot be turned off. You have to destroy the structure. Large numbers of blocks can severly impact performance.

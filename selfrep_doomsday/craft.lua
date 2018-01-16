@@ -6,6 +6,43 @@
 ---CRAFT
 ----------------------------------------------------------------
 
+--Crafting Protector
+--from goo
+
+minetest.register_craft({
+	output = "selfrep_doomsday:selfrep_doomsday_protector 6",
+	recipe = {{"selfrep_doomsday:selfrep_doomsday_greygoo", "selfrep_doomsday:selfrep_doomsday_greygoo", "selfrep_doomsday:selfrep_doomsday_greygoo"}}
+})
+
+
+--from weapon
+
+minetest.register_craft({
+	output = "selfrep_doomsday:selfrep_doomsday_protector 6",
+	recipe = {{"selfrep_doomsday:selfrep_doomsday_weapon", "selfrep_doomsday:selfrep_doomsday_weapon", "selfrep_doomsday:selfrep_doomsday_weapon"}}
+})
+
+
+--from blight
+
+minetest.register_craft({
+	output = "selfrep_doomsday:selfrep_doomsday_protector 6",
+	recipe = {{"selfrep_doomsday:selfrep_blight", "selfrep_doomsday:selfrep_blight", "selfrep_doomsday:selfrep_blight"}}
+})
+
+--from terra
+
+minetest.register_craft({
+	output = "selfrep_doomsday:selfrep_doomsday_protector 6",
+	recipe = {{"selfrep_doomsday:selfrep_doomsday_terraformer", "selfrep_doomsday:selfrep_doomsday_terraformer", "selfrep_doomsday:selfrep_doomsday_terraformer"}}
+})
+
+
+
+
+-----------------------------------------------------------
+
+
 --Crafting Goo
 
 minetest.register_craft({
@@ -54,6 +91,22 @@ minetest.register_craft({
 	}
 })
 
+
+--Crafting flash
+
+minetest.register_craft({
+	output = "selfrep_doomsday:selfrep_doomsday_flash 10",
+	recipe = {
+		{"default:steel_ingot", "default:torch", "default:steel_ingot"},
+		{"default:mese_block", "tnt:tnt", "default:mese_block"},
+		{"default:mese_block", "default:mese_block", "default:mese_block"}
+	}
+})
+
+
+
+--------------------------------------------------------------
+--USES
 
 
 --Cook Goo
@@ -125,6 +178,15 @@ minetest.register_craft({
 	type = "fuel",
 	recipe = "selfrep_doomsday:selfrep_doomsday_terraformer",
 	burntime = 1,
+})
+
+
+-- Burn Flash
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "selfrep_doomsday:selfrep_doomsday_flash",
+	burntime = 10,
 })
 
 

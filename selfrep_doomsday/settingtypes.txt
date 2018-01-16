@@ -1,8 +1,5 @@
 
 
-
-
-
 # The intervals at which live bots solidify
 # Low values can lead to catastrophic die offs
 # Setting extremely low will act as a crude kill switch
@@ -45,5 +42,10 @@ selfrep_doomsday_terraformer_killrate(Terraformer Lifespan) float 15
 
 
 
+# The intervals at which live bots die
+# Low values can lead to catastrophic die offs
+# Setting extremely low will act as a crude kill switch
+# default = 35
+selfrep_doomsday_flash_killrate(Flash Lifespan) float 35
 
 

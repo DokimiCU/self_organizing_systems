@@ -2,6 +2,33 @@ local killrate = minetest.setting_get("selfrep_doomsday_greygoo_killrate") or 30
 local growthrate = minetest.setting_get("selfrep_doomsday_greygoo_growthrate") or 1
 
 
+
+---------------------------------------------------------
+-- PROTECTOR
+-- Bot dies instantly if neighbor is a protector
+
+minetest.register_abm{
+     	nodenames = {"selfrep_doomsday:selfrep_doomsday_greygoo"},
+	neighbors = {"selfrep_doomsday:selfrep_doomsday_protector"},
+	interval = 1,
+	chance = 1,
+	catch_up = true,
+	action = function(pos)
+				
+		-- kill
+			
+		minetest.set_node(pos, {name = "air"})
+
+		--Play sound
+					
+		minetest.sound_play("selfrep_doomsday_protector", {pos = pos, gain = 0.8, max_hear_distance = 15,})
+					
+		
+end,
+}
+
+
+
 ----------------------------------------------------------------
 -- GREY GOO RULE SET
 

@@ -10,11 +10,20 @@ This demonstrates the power of uncontrolled exponential growth. The effects are 
  - The Blight: Spreads through organic matter (approximated by "soil" and "flammable" groups), turning it into a harzardous wasteland filled with toxic spore gas, then a desert filled with hidden dormant spores waiting for someone to accidently reactivate them.
 
  
- - The Terraformer: Covers stone and sand in a layer of dirt, plant life, and the occassional pond. Transforms barren lands into a thriving forest. 
+ - The Terraformer: Covers stone and sand in a layer of dirt, plant life, and the occassional pond. Transforms barren lands into a thriving forest.
+ 
+ - The Flash: A roaming cloud of super-heated gas. Ignites and cooks everything in it's path. 
+
+- Protector blocks: these remove any neighboring doomsday devices. Use them to defend yourself.
 
 
 HOW TO USE:
 Place one block. Wait. Then run, if you value your life. (Unless it's the Terraformer, in which case... run and sniff the roses).
+
+This mod includes a map spawner which will add dangerous laboratories to the world. These risk releasing doomsday devices into the world.
+
+Block the spawner.lua file in the init.lua file if you want to disable the map spawner.
+
 
 
 HOW THIS WORKS:
@@ -46,4 +55,7 @@ HOW TO SURVIVE DOOMSDAY:
 3) Fight fire with fire:
 	- The Grey Goo and Weapon cancel eachother out. One creates, the other destroys.
 	- Same deal for The Blight and the Terraformer.
+	
+4) Protector blocks: these can offer some defence, but they are not fool proof, and you will need lots of them.
+
 

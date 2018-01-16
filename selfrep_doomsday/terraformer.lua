@@ -1,11 +1,35 @@
 local killrate = minetest.setting_get("selfrep_doomsday_terraformer_killrate") or 15
 
+-------------------------------------------------------------
+-- PROTECTOR
+-- Bot dies instantly if neighbor is a protector
+
+minetest.register_abm{
+     	nodenames = {"selfrep_doomsday:selfrep_doomsday_terraformer"},
+	neighbors = {"selfrep_doomsday:selfrep_doomsday_protector"},
+	interval = 1,
+	chance = 1,
+	catch_up = true,
+	action = function(pos)
+				
+		-- kill
+			
+			minetest.set_node(pos, {name = "air"})
+
+		--Play sound
+					
+			minetest.sound_play("selfrep_doomsday_protector", {pos = pos, gain = 0.8, max_hear_distance = 15,})
+					
+		
+end,
+}
 
 
 
 
-----------------------------------------------------------------TERRAFORMER RULE SET
---------------------------------------------------------------
+-----------------------------------------------------------
+--TERRAFORMER RULE SET
+------------------------------------------------------------
 
 --SPREAD OVER SAND AND STONE
 

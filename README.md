@@ -111,6 +111,11 @@ Autocells:
 Selfrep:
 - added tunnel, "sinkhole", and ladder
 
+Selfrep_doomsday:
+- brought the mod into gameplay by adding a map spawner which adds risky labs that can accidently release doomsday devices
+- added protector block which defends against doomsday devices
+- added "Flash" doomsday device
+
 New mods:
 - "Autosky" weather simulator
 

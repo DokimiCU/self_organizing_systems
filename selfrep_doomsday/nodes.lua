@@ -1,13 +1,127 @@
 
 
+-------------------------------------------------------------
+--NODES
+-------------------------------------------------------------
 
-
-
-------------------------------------------------------------------NODES
-----------------------------------------------------------------
 --------------------------------------------------------------
+--PROTECTOR
+-- defends against all doomsday devices
+
+minetest.register_node("selfrep_doomsday:selfrep_doomsday_protector", {
+	description = "Doomsday Protector",
+	tiles = {"selfrep_doomsday_protector.png"},
+	is_ground_content = false,
+	groups = {oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
+})
+
+
+-- MYSTERY BOX
+-- what will it be?
+
+minetest.register_node("selfrep_doomsday:selfrep_doomsday_mystery", {
+	description = "Doomsday Mystery Box",
+	tiles = {"selfrep_doomsday_mystery.png"},
+	is_ground_content = false,
+	groups = {oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
+		on_punch = function(pos, node, puncher)
+			local q = math.random (1,10)
+			if q ==1 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_protector"})
+			end
+			
+			if q ==2 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_greygoo"})
+			end
+
+			if q ==3 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_weapon"})
+			end
+
+			if q ==4 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_blight"})
+			end
+
+			if q ==5 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_terraformer"})
+			end
+
+			if q ==6 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_flash"})
+			end
+
+			if q ==7 then
+				minetest.set_node(pos, {name = "default:mese_block"})
+			end
+
+			if q ==8 then
+				minetest.set_node(pos, {name = "tnt:tnt"})
+			end
+
+			if q ==9 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_weapon_residue_source"})
+			end
+
+			if q ==10 then
+				minetest.set_node(pos, {name = "default:sand"})
+			end
+		end,
+
+	on_blast = function(pos)
+			
+		local q = math.random (1,10)
+			if q ==1 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_protector"})
+			end
+			
+			if q ==2 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_greygoo"})
+			end
+
+			if q ==3 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_weapon"})
+			end
+
+			if q ==4 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_blight"})
+			end
+
+			if q ==5 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_terraformer"})
+			end
+
+			if q ==6 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_flash"})
+			end
+
+			if q ==7 then
+				minetest.set_node(pos, {name = "default:mese_block"})
+			end
+
+			if q ==8 then
+				minetest.set_node(pos, {name = "tnt:tnt"})
+			end
+
+			if q ==9 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_weapon_residue_source"})
+			end
+
+			if q ==10 then
+				minetest.set_node(pos, {name = "default:sand"})
+			end
+	end,
+})
+
+
+
+
+
+
+-------------------------------------------------------------
 --GREY GOO NODES
---------------------------------------------------------------
+-------------------------------------------------------------
 
 --SOLID BLOCKS
 
@@ -297,4 +411,56 @@ minetest.register_node('selfrep_doomsday:selfrep_doomsday_terraformer', {
 	groups = {crumbly = 3, flammable = 2, oddly_breakable_by_hand=1, falling_node = 1},
 	sounds = default.node_sound_sand_defaults(),
 	})
+
+
+
+--------------------------------------------------------------
+--FLASH NODES
+--------------------------------------------------------------
+
+-- FLASH NODE
+
+minetest.register_node('selfrep_doomsday:selfrep_doomsday_flash', {
+	description = 'Self Replicating Flash',
+	light_source = 14,
+	tiles = {"selfrep_doomsday_flash.png"},
+	drawtype = "glasslike",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	--pointable = false,
+	--diggable = false,
+	buildable_to = true,
+	damage_per_second = 3,
+	groups = {igniter = 2, oddly_breakable_by_hand=1},
+	use_texture_alpha = true,
+	post_effect_color = {a = 100, r = 255, g = 255, b = 255},
+	})
+
+
+
+
+-- FLASH GLOW
+
+minetest.register_node('selfrep_doomsday:selfrep_doomsday_flash_glow', {
+	description = 'Self Replicating Flash Glow',
+	light_source = 14,
+	tiles = {"selfrep_doomsday_flash_glow.png"},
+	drawtype = "glasslike",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	damage_per_second = 1,
+	--puts out fire by being starved of oxygen
+	groups = {not_in_creative_inventory = 1, puts_out_fire = 1},
+	use_texture_alpha = true,
+	post_effect_color = {a = 50, r = 255, g = 255, b = 255},
+	})
+
+
+
+
 

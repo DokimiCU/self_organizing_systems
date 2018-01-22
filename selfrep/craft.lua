@@ -89,3 +89,17 @@ minetest.register_craft({
 	}
 })
 
+
+--Crafting platform
+
+minetest.register_craft({
+	output = "selfrep:selfrep_platform",
+	recipe = {
+		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
+		{"default:diamond", "default:mese_block", "default:diamond"},
+		{"group:stone", "group:stone", "group:stone"}
+	}
+})
+
+
+

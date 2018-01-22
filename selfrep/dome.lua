@@ -14,23 +14,10 @@ minetest.register_abm{
 	chance = 1,
 	action = function(pos)
 
-	
-
-
-		local growthlimitdome = 460
 
 		local grow_radius = 5
 		
-	--count domes
-		local num_domes = {}
-		local radius = 5
-		local ps, cn = minetest.find_nodes_in_area(
-			{x = pos.x - radius, y = pos.y - radius, z = pos.z - radius},
-			{x = pos.x + radius, y = pos.y + radius, z = pos.z + radius}, {"selfrep:selfrep_dome"})
-		num_domes = (cn["selfrep:selfrep_dome"] or 0)
-
-
-
+	
 
 		--is player near then build
 		local all_objects = minetest.get_objects_inside_radius(pos, grow_radius)
@@ -49,8 +36,7 @@ pluszpos = {x = pos.x, y = pos.y, z = pos.z + 1}
 negzpos = {x = pos.x, y = pos.y, z = pos.z - 1}
 
 
---Grow is less than limit and player is near
-	if num_domes < growthlimitdome then 
+
 
 		if minetest.get_node(plusxpos).name == "air" then
 			--spread
@@ -97,7 +83,7 @@ negzpos = {x = pos.x, y = pos.y, z = pos.z - 1}
 
 	end
 
-	end
+
 	end
 
 end,

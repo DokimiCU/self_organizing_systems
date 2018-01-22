@@ -11,6 +11,8 @@ These blocks create limited self replicating structures that may be useful to th
 
 	-Tunnel: a horizontal version of the sinkhole. Clears large chambers.
 	
+	-Dome: like the sponge but in air. Creates a building around the player.
+	
 	-Ladder: extends a ladder directly up and down.
 
 
@@ -25,7 +27,7 @@ For the sponge etc, walk towards a live wall to send it outwards and extend the 
 HOW THIS WORKS:
 These use self replication to create organized structures, but place severe limits on that replication. Therefore the growth is relatively controlled.
 
-The sponge depends on the player's presence and dies without them, but it is removed if the player gets too close. The result - it forms a wall around the player. Replicators solidify over time meaning it forms a tunnel, rather than keeping you trapped in a bubble.
+The sponge etc depends on the player's presence and dies without them, but it is removed if the player gets too close. The result - it forms a wall around the player. Replicators solidify over time meaning it forms a tunnel, rather than keeping you trapped in a bubble.
 
 The road and tower limit the replicators populations so severly that new replicators can't get far enough away from the old ones in order to escape those limits by founding a new population. Exponential growth doesn't occur. Instead one small band of replicators stays locked in an endless dance with themselves.
 

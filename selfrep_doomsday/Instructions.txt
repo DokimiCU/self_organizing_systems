@@ -14,7 +14,7 @@ This demonstrates the power of uncontrolled exponential growth. The effects are 
  
  - The Flash: A roaming cloud of super-heated gas. Ignites and cooks everything in it's path. 
 
-- Protector blocks: these remove any neighboring doomsday devices. Use them to defend yourself.
+- Protector blocks: these remove any neighboring doomsday devices. Use them to defend yourself. The Autoprotector is self-replicating, but only near the player.
 
 
 HOW TO USE:

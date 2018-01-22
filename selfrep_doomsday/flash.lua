@@ -155,6 +155,15 @@ end
 			minetest.set_node(randpos, {name = "default:clay"})
 end
 
+		
+-- finds snowy or ice? melt it
+
+		if minetest.get_item_group(newplace.name, "snowy") >= 1 or minetest.get_node(randpos).name == "default:ice" then
+	 	
+			minetest.set_node(randpos, {name = "air"})
+end
+
+
 
 
 -- finds water?

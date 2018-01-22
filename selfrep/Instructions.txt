@@ -7,13 +7,15 @@ These blocks create limited self replicating structures that may be useful to th
 
 	- Sponge: when placed in water it will spontaneously build walls around you to keep the water out. You can then walk through the ocean with ease and/or get yourself stuck in an endless maze of your own creation.
 	
-	-Sinkhole: like the sponge but for stone. Rapidly sinks the player deep into the earth.
+	- Sinkhole: like the sponge but for stone. Rapidly sinks the player deep into the earth.
 
-	-Tunnel: a horizontal version of the sinkhole. Clears large chambers.
+	- Tunnel: a horizontal version of the sinkhole. Clears large chambers.
 	
-	-Dome: like the sponge but in air. Creates a building around the player.
+	- Dome: like the sponge but in air. Creates a building around the player.
 	
-	-Ladder: extends a ladder directly up and down.
+	- Ladder: extends a ladder directly up and down.
+	
+	- Platform: builds a flat surface under the player.
 
 
 

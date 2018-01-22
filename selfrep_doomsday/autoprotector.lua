@@ -1,9 +1,10 @@
 --how long they last
-local killrate = minetest.setting_get("selfrep_doomsday_autoprotector_killrate") or 80
+local killrate = 80
 
 
 
------------------------------------------------------------------- PROTECTOR
+----------------------------------------------------------------
+-- PROTECTOR
 -- Bot dies instantly if neighbor is a protector
 -- smaller chance
 -- helps clear itself out
@@ -35,7 +36,7 @@ end,
 
 ----------------------------------------------------------------
 -- autoprotector RULE SET
-
+--can only be created near player
 
 
 minetest.register_abm{

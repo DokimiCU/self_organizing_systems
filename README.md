@@ -109,7 +109,8 @@ Autocells:
 - added Automusic cellular automata
 
 Selfrep:
-- added tunnel, "sinkhole", and ladder
+- added tunnel, sinkhole, dome, and ladder
+- deactivate digging from selfrep road
 
 Selfrep_doomsday:
 - brought the mod into gameplay by adding a map spawner which adds risky labs that can accidently release doomsday devices

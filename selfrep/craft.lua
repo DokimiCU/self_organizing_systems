@@ -77,3 +77,15 @@ minetest.register_craft({
 	}
 })
 
+
+--Crafting dome
+
+minetest.register_craft({
+	output = "selfrep:selfrep_dome",
+	recipe = {
+		{"default:steel_ingot", "default:mese_block", "default:steel_ingot"},
+		{"default:diamond", "group:stone", "default:diamond"},
+		{"group:stone", "default:steel_ingot", "group:stone"}
+	}
+})
+

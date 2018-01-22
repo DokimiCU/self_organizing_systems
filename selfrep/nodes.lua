@@ -148,6 +148,37 @@ minetest.register_node('selfrep:selfrep_ladder_dead', {
 
 
 
+-- Node dome
+
+minetest.register_node('selfrep:selfrep_dome', {
+	description = 'Self Replicating Dome',
+	--light_source = 3,
+	tiles = {"selfrep_dome.png"},
+	groups = {cracky = 3, flammable = 2, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
+
+	})
+
+
+-- Dome gas
+--provides a second type of air to hold the dome back
+
+minetest.register_node('selfrep:selfrep_dome_gas', {
+	description = 'Selfrep Dome gas',
+	light_source = 10,
+	tiles = {"selfrep_dome.png"},
+	drawtype = "airlike",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	groups = {not_in_creative_inventory = 1},
+	})
+
+
+
 
 
 

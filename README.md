@@ -109,7 +109,7 @@ Autocells:
 - added Automusic cellular automata
 
 Selfrep:
-- added tunnel, sinkhole, dome, and ladder
+- added tunnel, sinkhole, dome, platform, and ladder
 - deactivate digging from selfrep road
 
 Selfrep_doomsday:

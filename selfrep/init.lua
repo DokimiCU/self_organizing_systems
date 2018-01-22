@@ -17,7 +17,7 @@ dofile(minetest.get_modpath("selfrep").."/tunnel.lua")
 
 dofile(minetest.get_modpath("selfrep").."/ladder.lua")
 
-
+dofile(minetest.get_modpath("selfrep").."/dome.lua")
 
 
 

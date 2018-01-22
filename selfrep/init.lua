@@ -19,6 +19,7 @@ dofile(minetest.get_modpath("selfrep").."/ladder.lua")
 
 dofile(minetest.get_modpath("selfrep").."/dome.lua")
 
+dofile(minetest.get_modpath("selfrep").."/platform.lua")
 
 
 

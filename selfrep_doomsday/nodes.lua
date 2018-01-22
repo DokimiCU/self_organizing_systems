@@ -3,7 +3,8 @@
 
 
 
-------------------------------------------------------------------NODES
+---------------------------------------------------------------
+--NODES
 ----------------------------------------------------------------
 
 --------------------------------------------------------------
@@ -17,6 +18,30 @@ minetest.register_node("selfrep_doomsday:selfrep_doomsday_protector", {
 	groups = {oddly_breakable_by_hand=3, cracky = 3},
 	sounds = default.node_sound_metal_defaults(),
 })
+
+
+--AUTOPROTECTOR
+-- defends against all doomsday devices
+-- self replicating near player only
+
+minetest.register_node("selfrep_doomsday:selfrep_doomsday_autoprotector", {
+	description = "Doomsday Auto-Protector",
+	tiles = {"selfrep_doomsday_autoprotector.png"},
+	light_source = 5,
+	drawtype = "glasslike",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	--pointable = false,
+	--diggable = false,
+	buildable_to = true,
+	is_ground_content = false,
+	groups = {oddly_breakable_by_hand=3, cracky = 3},
+	sounds = default.node_sound_metal_defaults(),
+})
+
+
+
 
 
 -- MYSTERY BOX

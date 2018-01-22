@@ -1,8 +1,6 @@
 
 
 
-
-
 ----------------------------------------------------------------
 --NODES
 ----------------------------------------------------------------
@@ -178,6 +176,16 @@ minetest.register_node('selfrep:selfrep_dome_gas', {
 	})
 
 
+
+-- Node platform
+
+minetest.register_node('selfrep:selfrep_platform', {
+	description = 'Self Replicating Platform',
+	--light_source = 4,
+	tiles = {"selfrep_platform.png"},
+	groups = {cracky = 3, flammable = 2, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
+	})
 
 
 

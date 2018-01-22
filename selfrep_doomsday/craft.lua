@@ -38,6 +38,12 @@ minetest.register_craft({
 })
 
 
+--from flash
+
+minetest.register_craft({
+	output = "selfrep_doomsday:selfrep_doomsday_protector 6",
+	recipe = {{"selfrep_doomsday:selfrep_doomsday_flash", "selfrep_doomsday:selfrep_doomsday_flash", "selfrep_doomsday:selfrep_doomsday_flash"}}
+})
 
 
 -----------------------------------------------------------

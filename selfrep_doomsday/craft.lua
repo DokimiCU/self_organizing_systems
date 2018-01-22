@@ -46,6 +46,20 @@ minetest.register_craft({
 })
 
 
+
+--Crafting AutoProtector
+
+minetest.register_craft({
+	output = "selfrep_doomsday:selfrep_doomsday_autoprotector 12",
+	recipe = {
+		{"selfrep_doomsday:selfrep_doomsday_protector", "selfrep_doomsday:selfrep_doomsday_protector", "selfrep_doomsday:selfrep_doomsday_protector"},
+		{"default:mese_block", "selfrep_doomsday:selfrep_doomsday_protector", "default:mese_block"},
+		{"default:mese_block", "default:mese_block", "default:mese_block"}
+	}
+})
+
+
+
 -----------------------------------------------------------
 
 

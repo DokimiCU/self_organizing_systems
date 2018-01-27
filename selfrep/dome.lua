@@ -15,7 +15,7 @@ minetest.register_abm{
 	action = function(pos)
 
 
-		local grow_radius = 5
+		local grow_radius = 7
 		
 	
 
@@ -99,7 +99,7 @@ minetest.register_abm{
 	action = function(pos)
 		
 	--space around player
-		local radius = 4
+		local radius = 6
 
 --is player near then space
 

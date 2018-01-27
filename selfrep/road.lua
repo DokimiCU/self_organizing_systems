@@ -1,5 +1,6 @@
---worse than original
-------------------------------------------------------------------ROAD
+
+----------------------------------------------------------------
+--ROAD
 --------------------------------------------------------------
 
 
@@ -47,8 +48,8 @@ end,
 
 
 
---[[
---deactivated bc the tunnel does this now
+
+
 --DIG ABOVE
 
 minetest.register_abm{
@@ -75,7 +76,7 @@ minetest.register_abm{
 end,
 }
 
-]]
+
 
 --FILLERS
 

@@ -1,4 +1,13 @@
 
+-- Stairs and slab from dead road
+
+stairs.register_stair_and_slab("selfrep_road_dead", "selfrep:selfrep_road_dead",
+		{cracky = 3, stone = 1},
+		{"selfrep_road_dead.png"},
+		"Dead Self Replicator Stair",
+		"Dead Self Replicator Slab",
+		default.node_sound_stone_defaults())
+
 
 
 ----------------------------------------------------------------

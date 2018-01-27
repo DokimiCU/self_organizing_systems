@@ -24,6 +24,8 @@ dofile(minetest.get_modpath("selfrep_doomsday").."/terraformer.lua")
 
 dofile(minetest.get_modpath("selfrep_doomsday").."/flash.lua")
 
+dofile(minetest.get_modpath("selfrep_doomsday").."/chaos.lua")
+
 
 
 ---------------------------------------------------
@@ -41,7 +43,7 @@ minetest.register_abm{
 	catch_up = true,
 	action = function(pos)
 				
-		local q = math.random (1,10)
+		local q = math.random (1,11)
 			if q ==1 then
 				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_protector"})
 			end
@@ -81,8 +83,11 @@ minetest.register_abm{
 			if q ==10 then
 				minetest.set_node(pos, {name = "default:sand"})
 			end
+			
+			if q ==11 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_weapon_chaos"})
+			end
 
-		
 end,
 }
 
@@ -120,7 +125,7 @@ minetest.register_abm{
 	catch_up = true,
 	action = function(pos)
 			
-	local q = math.random (1,10)
+	local q = math.random (1,11)
 			if q ==1 then
 				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_protector"})
 			end
@@ -161,6 +166,9 @@ minetest.register_abm{
 				minetest.set_node(pos, {name = "default:sand"})
 			end
 		
+			if q ==11 then
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_weapon_chaos"})
+			end
 		
 end,
 }

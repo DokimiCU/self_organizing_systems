@@ -226,6 +226,24 @@ end
 	minetest.sound_play("selfrep_doomsday_protector", {pos = pos, gain = 0.1, max_hear_distance = 5,})
 end
 
+		-- finds chaos?
+
+	if minetest.get_node(randpos).name == "selfrep_doomsday:selfrep_doomsday_chaos"  then
+
+			minetest.set_node(randpos, {name = "selfrep_doomsday:selfrep_doomsday_protector"})
+		minetest.sound_play("selfrep_doomsday_protector", {pos = pos, gain = 0.3, max_hear_distance = 10,})
+end
+
+
+
+-- finds chaos glow?
+
+	if minetest.get_node(randpos).name == "selfrep_doomsday:selfrep_doomsday_glow" then
+
+			minetest.set_node(randpos, {name = "air"})
+	minetest.sound_play("selfrep_doomsday_protector", {pos = pos, gain = 0.1, max_hear_distance = 5,})
+end
+
 
 						
 end,

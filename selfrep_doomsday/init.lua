@@ -14,6 +14,9 @@ dofile(minetest.get_modpath("selfrep_doomsday").."/spawner.lua")
 --Devices
 dofile(minetest.get_modpath("selfrep_doomsday").."/autoprotector.lua")
 
+dofile(minetest.get_modpath("selfrep_doomsday").."/protector_dome.lua")
+
+
 dofile(minetest.get_modpath("selfrep_doomsday").."/greygoo.lua")
 
 dofile(minetest.get_modpath("selfrep_doomsday").."/weapon.lua")

@@ -40,7 +40,7 @@ minetest.register_abm{
      	nodenames = {"selfrep_doomsday:selfrep_doomsday_mystery"},
 	interval = 60,
 	chance = 60,
-	catch_up = true,
+	catch_up = false,
 	action = function(pos)
 				
 		local q = math.random (1,11)
@@ -85,7 +85,7 @@ minetest.register_abm{
 			end
 			
 			if q ==11 then
-				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_weapon_chaos"})
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_chaos"})
 			end
 
 end,
@@ -103,7 +103,7 @@ minetest.register_abm{
 	neighbors = {"selfrep_doomsday:selfrep_doomsday_protector"},
 	interval = 60,
 	chance = 60,
-	catch_up = true,
+	catch_up = false,
 	action = function(pos)
 			
 	--boom!	
@@ -167,7 +167,7 @@ minetest.register_abm{
 			end
 		
 			if q ==11 then
-				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_weapon_chaos"})
+				minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_chaos"})
 			end
 		
 end,

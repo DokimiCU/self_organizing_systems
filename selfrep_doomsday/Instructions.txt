@@ -16,7 +16,7 @@ This demonstrates the power of uncontrolled exponential growth. The effects are 
  
  - Chaos: A roaming cloud of chaotic physics. Rearranges the world, creating a shifting maze.
 
- - Protector blocks: these remove any neighboring doomsday devices. Use them to defend yourself. The Autoprotector is self-replicating, but only near the player.
+ - Protector blocks: these remove any neighboring doomsday devices. Use them to defend yourself. The Autoprotector is self-replicating, but only near the player. The protector dome builds a dome of protectors around the player.
 
 
 HOW TO USE:

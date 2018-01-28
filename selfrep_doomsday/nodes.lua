@@ -1,9 +1,8 @@
 
 
 
-
-
-------------------------------------------------------------------NODES
+---------------------------------------------------------------
+---NODES
 ----------------------------------------------------------------
 
 --------------------------------------------------------------
@@ -39,6 +38,37 @@ minetest.register_node("selfrep_doomsday:selfrep_doomsday_autoprotector", {
 	sounds = default.node_sound_metal_defaults(),
 })
 
+
+--PROTECTOR DOME
+-- creates a dome of protectors around player
+
+minetest.register_node("selfrep_doomsday:selfrep_doomsday_dome", {
+	description = "Doomsday Protector Dome",
+	tiles = {"selfrep_doomsday_dome.png"},
+	light_source = 12,
+	is_ground_content = false,
+	groups = {oddly_breakable_by_hand=3, cracky = 3},
+	sounds = default.node_sound_metal_defaults(),
+})
+
+-- dome gas... helps it function.. invisible
+
+minetest.register_node("selfrep_doomsday:selfrep_doomsday_dome_gas", {
+	description = "Doomsday Protector Dome Gas",
+	tiles = {"selfrep_doomsday_dome.png"},
+	drawtype = "airlike",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	groups = {not_in_creative_inventory = 1},
+	--sounds = default.node_sound_metal_defaults(),
+})
+
+
+----------------------------------------------------------------------------
 
 -- MYSTERY BOX
 -- what will it be?

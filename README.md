@@ -114,11 +114,12 @@ Selfrep:
 
 Selfrep_doomsday:
 - brought the mod into gameplay by adding a map spawner which adds risky labs that can accidently release doomsday devices
-- added protector block, and selfreplicating autoprotector which defend against doomsday devices
-- added "Flash" and "Chaos" doomsday device
-- simplifications to the weapon to improve performance
+- added protector block, and selfreplicating autoprotector, and protector dome which defend against doomsday devices
+- added "Flash" and "Chaos" doomsday devices
+- simplifications to the weapon, and smaller textures for devices to help with performance.
 
 New mods:
 - "Autosky" weather simulator
+- "Neuron" brain cell simulator
 
 

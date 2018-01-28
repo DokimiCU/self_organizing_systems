@@ -63,6 +63,19 @@ minetest.register_craft({
 })
 
 
+--Crafting Protector Dome
+
+minetest.register_craft({
+	output = "selfrep_doomsday:selfrep_doomsday_dome 6",
+	recipe = {
+		{"selfrep_doomsday:selfrep_doomsday_autoprotector", "selfrep_doomsday:selfrep_doomsday_autoprotector", "selfrep_doomsday:selfrep_doomsday_autoprotector"},
+		{"default:mese_block", "selfrep_doomsday:selfrep_doomsday_autoprotector", "default:mese_block"},
+		{"default:mese_block", "default:mese_block", "default:mese_block"}
+	}
+})
+
+
+
 -----------------------------------------------------------
 
 --Crafting Goo

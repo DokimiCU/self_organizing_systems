@@ -19,7 +19,6 @@ These blocks create limited self replicating structures that may be useful to th
 
 
 
-
 HOW TO USE:
 Place the block. Let it go.
 
@@ -35,8 +34,7 @@ The road and tower limit the replicators populations so severly that new replica
 
 
 CAUTIONS:
+
 The road etc destroys blocks above it.
 
 The road and tower etc will grow forever. However they time out in unloaded areas, so if you want to kill them all then leave the area.
-
-

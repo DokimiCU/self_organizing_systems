@@ -2,7 +2,8 @@ local killrate = minetest.setting_get("selfrep_doomsday_weapon_killrate") or 15
 
 
 
------------------------------------------------------------------- PROTECTOR
+----------------------------------------------------------------
+-- PROTECTOR
 -- Bot dies instantly if neighbor is a protector
 
 minetest.register_abm{
@@ -25,6 +26,28 @@ minetest.register_abm{
 end,
 }
 
+
+---------------------------------------------------------------
+--- Weakness to Water
+-- Bot turns to gas if near water
+-- so it has a chance of being defeated otherwise it is too evil
+--
+
+minetest.register_abm{
+     	nodenames = {"selfrep_doomsday:selfrep_doomsday_weapon", "selfrep_doomsday:selfrep_doomsday_weapon_residue_source"},
+	neighbors = {"group:water"},
+	interval = 1,
+	chance = 1,
+	catch_up = true,
+	action = function(pos)
+				
+		-- kill
+			
+			minetest.set_node(pos, {name = "selfrep_doomsday:selfrep_doomsday_weapongas"})
+	
+							
+end,
+}
 
 
 ----------------------------------------------------------------

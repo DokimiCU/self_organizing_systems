@@ -7,19 +7,19 @@
 --unblock the set you want.. just don't double up
 
 --piano
---local note_1 = "automusic_c"
---local note_2 = "automusic_e"
---local note_3 = "automusic_g"
+local note_1 = "automusic_c"
+local note_2 = "automusic_e"
+local note_3 = "automusic_g"
 
 --drums
-local note_1 = "automusic_tom1"
+--local note_1 = "automusic_tom1"
 --local note_2 = "automusic_tom2"
 --local note_3 = "automusic_tom3"
 
 --creepy long notes
 --local note_1 = "automusic_creepy_bflat"
-local note_2 = "automusic_creepy_d"
-local note_3 = "automusic_creepy_f"
+--local note_2 = "automusic_creepy_d"
+--local note_3 = "automusic_creepy_f"
 
 
 

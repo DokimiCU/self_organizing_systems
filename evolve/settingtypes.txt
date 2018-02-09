@@ -1,0 +1,49 @@
+
+
+
+# % chance of a gene mutating when mating
+# Mostly only applies to manual mating
+# default is 25.
+evolve_mutate (Mutation % Chance) int 25
+
+
+# The medium through which the bot can destructively dig
+# Must be a group
+# e.g. sand, leaves, soil etc
+# Called "Stone" in gene codes, but could be any group
+# default is stone
+evolve_medium (Digging Medium) string stone
+
+# The medium through which the bot can destructively move
+# For undiggable and replenishing nodes like air, water, or lava.
+# (if they are simply dug the bot can never move because the space refills)
+# must be a specific node
+# e.g. default:water_source, default:lava_source, default:river_water_source etc
+# Called "Air" in gene codes, but could be any node
+# default is air
+evolve_air (Moving Medium) string air
+
+
+# The type of block the bot is rewarded for mining
+# must be a specific node
+# e.g. default:stone_with_iron, default:stone_with_diamond, default:clay etc
+# default is default:stone_with_coal.
+evolve_target (Target) string default:stone_with_coal
+
+
+# The type of block the bot leaves behind after it has mined the Deposit Threshold number of the target.
+# Logically this should be a concentrated node crafted from the target
+# but you can set anything
+# Must be a specific node
+# e.g. default:steelblock, default:diamondblock, default:brick etc
+# default is default:coalblock.
+evolve_deposit (Deposit) string default:coalblock
+
+
+
+# The number of target blocks the bot must mine before it can create a deposit.
+# Logically this should be the number
+# of target blocks needed to craft the deposit block,
+# but this could be set to anything.
+# default is 9.
+evolve_depot_num (Deposit threshold) int 9

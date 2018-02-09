@@ -23,7 +23,7 @@ These mods can be fun to use in a general game, or they can used as a hands on w
   
   - Neuron: allows the player to build neurons, and basic neural networks.
   
-  - Evolve: a mining bot that uses an evolutionary algorithim to find the best mining strategy.
+  - Evolve: a mining bot that uses an evolutionary algorithm to find the best mining strategy.
   
 # Be Advised
 

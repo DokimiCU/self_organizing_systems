@@ -21,7 +21,9 @@ These mods can be fun to use in a general game, or they can used as a hands on w
   
   - Autosky: mimics some of the basic process that give rise to local scale weather systems. Clouds and rain form spontaneously due to the availability of water, local topography, etc.
   
+  - Neuron: allows the player to build neurons, and basic neural networks.
   
+  - Evolve: a mining bot that uses an evolutionary algorithim to find the best mining strategy.
   
 # Be Advised
 

@@ -10,11 +10,22 @@ This demonstrates the power of uncontrolled exponential growth. The effects are 
  - The Blight: Spreads through organic matter (approximated by "soil" and "flammable" groups), turning it into a harzardous wasteland filled with toxic spore gas, then a desert filled with hidden dormant spores waiting for someone to accidently reactivate them.
 
  
- - The Terraformer: Covers stone and sand in a layer of dirt, plant life, and the occassional pond. Transforms barren lands into a thriving forest. 
+ - The Terraformer: Covers stone and sand in a layer of dirt, plant life, and the occassional pond. Transforms barren lands into a thriving forest.
+ 
+ - The Flash: A roaming cloud of super-heated gas. Ignites and cooks everything in it's path.
+ 
+ - Chaos: A roaming cloud of chaotic physics. Rearranges the world, creating a shifting maze.
+
+ - Protector blocks: these remove any neighboring doomsday devices. Use them to defend yourself. The Autoprotector is self-replicating, but only near the player. The protector dome builds a dome of protectors around the player.
 
 
 HOW TO USE:
 Place one block. Wait. Then run, if you value your life. (Unless it's the Terraformer, in which case... run and sniff the roses).
+
+This mod includes a map spawner which will add dangerous laboratories to the world. These risk releasing doomsday devices into the world.
+
+Block the spawner.lua file in the init.lua file if you want to disable the map spawner.
+
 
 
 HOW THIS WORKS:
@@ -36,14 +47,17 @@ HOW TO SURVIVE DOOMSDAY:
 
 1) Blocks only grow in loaded map areas... you can run away and never return.
 
-2) Prepare:
+2) Prepare: e.g.
 	- The weapon can't spread through air. Build floating platforms above it.
 	- The weapon can't spread through ice, but it can destroy ice. Use ice if you need to move around, but don't count on it lasting.
 	- The Grey Goo can't spread through solids. You can wall it out or in.
 	- The Blight requires soil and flammables to spread. You can build "fire-breaks". Make them wide. It can jump gaps.
 	- The Terraformer only covers sand and stone. A wall of anything else will stop it. It doesn't climb well either.
 
-3) Fight fire with fire:
+3) Fight fire with fire: e.g.
 	- The Grey Goo and Weapon cancel eachother out. One creates, the other destroys.
 	- Same deal for The Blight and the Terraformer.
+	
+4) Protector blocks: these can offer some defence, but they are not fool proof, and you will need lots of them.
+
 

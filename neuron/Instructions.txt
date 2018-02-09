@@ -1,0 +1,86 @@
+What is this?
+This mod allows you to create functional neurons.
+These are simplified versions of real neurons. Even so you can use them to build basic structures that behave like a brain.
+
+
+How do I use this?
+
+These are the nodes:
+- Cell body: integrates incoming signals from synapses, and sends them via axons. Triggers other cell bodies, and axons. Triggered by excitatory synapses.
+- Receptors: specialized cell bodies that generate a signal. e.g. in response to light. Trigger axons.
+- Effectors: specialized cell bodies that output an action. e.g. glowing. Triggered by excitatory synapses.
+- Axons: transmits signals. Triggers other axons.
+- Synapses: convert the signals from the axon into a message for the cell. The balance of synaptic activity determines if the cell will be triggered.
+  Excitatory synapses trigger cells. Inhibitory synapses reduce the effect of excitatory synapses.
+  Strong synapses can reach the threshold for triggering on their own. Weak synapses must be combined to trigger a cell.
+
+
+  List of Receptor nodes:
+  - Light receptor: fires in sufficient light
+  - Excitor: fires constantly
+  - Clock cell (10sec): fires every 10sec.
+  - Touch: Sends a signal when punched.
+  - Switch: turns on when punched. Turns off when punched.
+  - Player: senses player presence.
+
+  List of Effectors
+  - Glow Cell: produces a light for a few tens of seconds.
+  - Color Cell (black/white): changes from black to white.
+  - Iris: turns from opaque to transparent. Controls entry of light, like the iris of the eye.
+  - Ghost cell: turns from solid to air. A door.
+
+
+A basic neuron is arranged like this:
+
+ Cell -> axon -> synapse -> cell
+
+With receptors and effectors it goes like this:
+
+Receptor -> axon -> synapse -> cell -> axon -> synapse -> effector
+
+
+The cell in the middle of this arrangement could receive synapses from multiple different pathways.
+ It would then act to integrate these different signals and "decide" if it should then trigger the effector.
+ The cell could have multiple outputs too, some going to the effector, others going to other cells...
+
+ All this can then be used to build feedback loops and do logical functions.
+
+
+Feedback loops:
+The cell sends a signal which loops back to itself.
+- positive: the loop ends with an excitatory synapse. Whenever this cell is triggered it will get caught in an endless loop triggering itself, until some other signal inhibits it.
+- negative: the loop ends with an inhibitory synapse. Whenever this cell is triggered it will damp down any future firing.
+
+
+Logical Functions:
+- From http://www.ruf.rice.edu/~lngbrain/Farh/cell.html
+
+"Logical Functions: Two Excitatory Inputs
+
+    Two strong excitatory inputs: logical OR. If either input is active, the neuron will be stimulated enough to fire.
+    Two weak excitatory inputs: logical AND. Both inputs must be active for the neuron to be stimulated enough to fire.
+    One weak, one strong excitatory input: logical IF. The strong input must be active for the weak input to exercise its effect. The activity of the neuron depends on the activity of the weak signal, but only if the strong signal is active.
+
+
+
+Logical Functions: Mixed Inputs
+
+    Stronger inhibitory input, weaker excitatory input: logical IF-NOT. The inhibitory input will overwhelm the excitatory input if it is active. The neuronal activity depends on the weak excitatory input, but only if the strong inhibitory input is inactive.
+    Weaker inhibitory input, stronger excitatory input: logical MINUS. If the inhibitory input is sufficiently strong, it will cancel enough of the excitatory input to keep the neuron from firing. "
+
+
+Larger Structures:
+Once you've created small logic gates and feedback loops these can be combined into larger structures which copy how the brain is arranged.
+
+- Cortical Columns:
+  Six layers of neurons. Acts like a subroutine that chooses some action based on it's state and inputs.
+  - The supragranular layers: the top three. Send and receive signals from other columns. Layer II connects to distant columns, layer III to those next door.
+  - The infragranular layers: the bottom three. Receive inputs from the columns next door. Send signals to other places (not other columns), such as the thalamus. Layer IV receives inputs from the thalamus.
+
+- The Thalamus:
+   Acts like a central hub. Creates feedback loops. Receives signals from the columns (and elsewhere), and sends signals back to those columns. Signals from receptors go to the thalamus.
+
+
+- The Cortex:
+  Columns are grouped together in "maps". Columns dealing with similar things are found close together (e.g. those for the foot and close to those for the leg).
+  The further away from columns dealing with direct sensory data, the more abstract and high level the columns jobs become.

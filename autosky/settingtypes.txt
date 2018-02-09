@@ -1,0 +1,6 @@
+
+
+# Speed at which all processes occur.
+# Lower numbers are faster.
+# You may wish to set this slow if is getting laggy,
+autosky_speed(Speed) int 90

@@ -2,3 +2,5 @@ default
 fire
 tnt
 flowers
+doors
+vessels

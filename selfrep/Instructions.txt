@@ -7,6 +7,16 @@ These blocks create limited self replicating structures that may be useful to th
 
 	- Sponge: when placed in water it will spontaneously build walls around you to keep the water out. You can then walk through the ocean with ease and/or get yourself stuck in an endless maze of your own creation.
 	
+	- Sinkhole: like the sponge but for stone. Rapidly sinks the player deep into the earth.
+
+	- Tunnel: a horizontal version of the sinkhole. Clears large chambers.
+	
+	- Dome: like the sponge but in air. Creates a building around the player.
+	
+	- Ladder: extends a ladder directly up and down.
+	
+	- Platform: builds a flat surface under the player.
+
 
 
 HOW TO USE:
@@ -18,14 +28,13 @@ For the sponge etc, walk towards a live wall to send it outwards and extend the 
 HOW THIS WORKS:
 These use self replication to create organized structures, but place severe limits on that replication. Therefore the growth is relatively controlled.
 
-The sponge depends on the player's presence and dies without them, but it is removed if the player gets too close. The result - it forms a wall around the player. Replicators solidify over time meaning it forms a tunnel, rather than keeping you trapped in a bubble.
+The sponge etc depends on the player's presence and dies without them, but it is removed if the player gets too close. The result - it forms a wall around the player. Replicators solidify over time meaning it forms a tunnel, rather than keeping you trapped in a bubble.
 
 The road and tower limit the replicators populations so severly that new replicators can't get far enough away from the old ones in order to escape those limits by founding a new population. Exponential growth doesn't occur. Instead one small band of replicators stays locked in an endless dance with themselves.
 
 
 CAUTIONS:
-The road destroys blocks. Be careful where you put them.
 
-The road, tower, etc will grow forever. However they time out in unloaded areas, so if you want to kill them all then leave the area. The sponge etc is tied directly to the player - walk away and it dies.
+The road etc destroys blocks above it.
 
-
+The road and tower etc will grow forever. However they time out in unloaded areas, so if you want to kill them all then leave the area.

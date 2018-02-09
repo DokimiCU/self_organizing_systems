@@ -1,5 +1,6 @@
 
-------------------------------------------------------------------SPONGE
+--------------------------------------------------------------
+--SPONGE
 --------------------------------------------------------------
 
 
@@ -13,18 +14,10 @@ minetest.register_abm{
 	interval = 1,
 	chance = 1,
 	action = function(pos)
-		local growthlimitsponge = 460
-
+		
 		local grow_radius = 5
 		
-	--count sponges
-		local num_sponges = {}
-		local radius = 5
-		local ps, cn = minetest.find_nodes_in_area(
-			{x = pos.x - radius, y = pos.y - radius, z = pos.z - radius},
-			{x = pos.x + radius, y = pos.y + radius, z = pos.z + radius}, {"selfrep:selfrep_sponge"})
-		num_sponges = (cn["selfrep:selfrep_sponge"] or 0)
-
+	
 
 
 
@@ -38,8 +31,6 @@ minetest.register_abm{
 
 	
 
---Grow is less than limit and player is near
-if num_sponges < growthlimitsponge then 
 
 	--expand x positive
 		plusxpos = {x = pos.x + 1, y = pos.y, z = pos.z}
@@ -125,7 +116,6 @@ if num_sponges < growthlimitsponge then
 			
 			end
 	end
-end
 end
 
 

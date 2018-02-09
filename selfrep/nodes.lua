@@ -1,9 +1,17 @@
 
+-- Stairs and slab from dead road
+
+stairs.register_stair_and_slab("selfrep_road_dead", "selfrep:selfrep_road_dead",
+		{cracky = 3, stone = 1},
+		{"selfrep_road_dead.png"},
+		"Dead Self Replicator Stair",
+		"Dead Self Replicator Slab",
+		default.node_sound_stone_defaults())
 
 
 
-
-------------------------------------------------------------------NODES
+----------------------------------------------------------------
+--NODES
 ----------------------------------------------------------------
 
 -- Node road
@@ -66,6 +74,126 @@ minetest.register_node('selfrep:selfrep_sponge', {
 	groups = {cracky = 3, flammable = 2, oddly_breakable_by_hand=1},
 	sounds = default.node_sound_metal_defaults(),
 
+	})
+
+-- Node sinkhole
+
+minetest.register_node('selfrep:selfrep_sinkhole', {
+	description = 'Self Replicating Sinkhole',
+	light_source = 3,
+	tiles = {"selfrep_sinkhole.png"},
+	groups = {cracky = 3, flammable = 2, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
+
+	})
+
+
+-- Node tunnel
+
+minetest.register_node('selfrep:selfrep_tunnel', {
+	description = 'Self Replicating Tunnel',
+	light_source = 3,
+	tiles = {"selfrep_tunnel.png"},
+	groups = {cracky = 3, flammable = 2, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
+
+	})
+
+
+-- Node ladder
+
+minetest.register_node('selfrep:selfrep_ladder', {
+	description = 'Self Replicating Ladder',
+	drawtype = "nodebox",
+	--paramtype2 = "facedir",
+	--light_source = 3,
+	tiles = {"selfrep_ladder.png"},
+	climbable = true,
+	groups = {cracky = 3, flammable = 2, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {-1/2, -1/2, -1/6, 1/2, 1/2, 1/6},
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {-1/2, -1/2, -1/6, 1/2, 1/2, 1/6},
+	},
+
+
+--node lifespan
+	on_construct = function(pos)
+		minetest.get_node_timer(pos):start(20)
+	end,
+	on_timer = function(pos, elapsed)
+		minetest.set_node(pos, {name = "selfrep:selfrep_ladder_dead"})
+	end,
+
+	})
+
+
+--dead ladder
+
+minetest.register_node('selfrep:selfrep_ladder_dead', {
+	description = 'Dead Self Replicating Ladder',
+	drawtype = "nodebox",
+	--paramtype2 = "facedir",
+	tiles = {"selfrep_ladder_dead.png"},
+	climbable = true,
+	groups = {cracky = 3, stone = 1, not_in_creative_inventory = 1},
+	node_box = {
+		type = "fixed",
+		fixed = {-1/2, -1/2, -1/6, 1/2, 1/2, 1/6},
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {-1/2, -1/2, -1/6, 1/2, 1/2, 1/6},
+	},
+
+	sounds = default.node_sound_stone_defaults()
+	})
+
+
+
+-- Node dome
+
+minetest.register_node('selfrep:selfrep_dome', {
+	description = 'Self Replicating Dome',
+	--light_source = 3,
+	tiles = {"selfrep_dome.png"},
+	groups = {cracky = 3, flammable = 2, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
+
+	})
+
+
+-- Dome gas
+--provides a second type of air to hold the dome back
+
+minetest.register_node('selfrep:selfrep_dome_gas', {
+	description = 'Selfrep Dome gas',
+	light_source = 10,
+	tiles = {"selfrep_dome.png"},
+	drawtype = "airlike",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	pointable = false,
+	diggable = false,
+	buildable_to = true,
+	groups = {not_in_creative_inventory = 1},
+	})
+
+
+
+-- Node platform
+
+minetest.register_node('selfrep:selfrep_platform', {
+	description = 'Self Replicating Platform',
+	--light_source = 4,
+	tiles = {"selfrep_platform.png"},
+	groups = {cracky = 3, flammable = 2, oddly_breakable_by_hand=1},
+	sounds = default.node_sound_metal_defaults(),
 	})
 
 

@@ -121,5 +121,5 @@ Selfrep_doomsday:
 New mods:
 - "Autosky" weather simulator
 - "Neuron" brain cell simulator
-
+- "Evolve" evolving autonomous mining bot
 

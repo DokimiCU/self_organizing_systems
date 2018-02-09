@@ -128,40 +128,24 @@ minetest.register_abm{
 	catch_up = false, 
 	action = function(pos)
 
-		minetest.set_node(pos, {name = "selfrep:selfrep_road_dead"})
+		local q = math.random (1,10)
+
+			if q >=1 and q <= 6 then
+				minetest.set_node(pos, {name = "selfrep:selfrep_road_dead"})
+			end
+			
+			if q >=7 and q <= 9 then
+				minetest.set_node(pos, {name = "default:glass"})
+			end
+
+			if q ==10 then
+				minetest.set_node(pos, {name = "default:meselamp"})
+
+			end
+
+
 	end,
 }
-
-
---- KILL dome TO glass
-
-
-minetest.register_abm{
-     	nodenames = {"selfrep:selfrep_dome"},
-	interval = 42,
-	chance = 5,
-	catch_up = false,
-	action = function(pos)
-
-		minetest.set_node(pos, {name = "default:glass"})
-	end,
-}
-
-
---- KILL dome TO LIGHT
-
-
-minetest.register_abm{
-     	nodenames = {"selfrep:selfrep_dome"},
-	interval = 42,
-	chance = 30,
-	catch_up = false,
-	action = function(pos)
-
-		minetest.set_node(pos, {name = "default:meselamp"})
-	end,
-}
-
 
 
 

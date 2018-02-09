@@ -7,7 +7,7 @@
 ---------------------------------------------------------------
 
 --settings
-local speed = minetest.settings:get('autosky_speed') or 30
+local speed = minetest.settings:get('autosky_speed') or 90
 
 local slow_speed = speed + speed + 3
 local slowest_speed = speed + speed + speed + 3

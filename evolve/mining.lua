@@ -98,19 +98,19 @@ minetest.register_abm{
 
 
       -- act on the strategy of the allele
-      if string.find(allele, "DB") and inv_score < 9 then
+      if string.find(allele, "DB") and inv_score < depot_num_1 then
         minetest.dig_node(below)
 
         evolve.score_digging (pos, below_check)
       end
 
-      if string.find(allele, "DA") and inv_score < 9 then
+      if string.find(allele, "DA") and inv_score < depot_num_1 then
         minetest.dig_node(above)
 
         evolve.score_digging (pos, above_check)
       end
 
-      if string.find(allele, "DS") and inv_score < 9 then
+      if string.find(allele, "DS") and inv_score < depot_num_1 then
         minetest.dig_node(ranside)
 
         evolve.score_digging (pos, side_check)

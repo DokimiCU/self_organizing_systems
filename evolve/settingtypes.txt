@@ -1,0 +1,104 @@
+
+# The interval (seconds) between genome selections.
+# i.e. 180 means selection will occur every 3min.
+# Bots need enough time explore
+# Luck is more important for fast steps.
+# Bots are less likely to discover new strategies with fast steps
+# Evolution is slower with long steps.
+# default is 180.
+evolve_step_size (Rate) int 180
+
+# Number of genes mutated during reproduction
+# default is 4.
+evolve_mutate (Mutation Count) int 4
+
+
+# For "Red" Bot
+# The medium through which the bot can destructively dig
+# Must be a group
+# e.g. sand, leaves, soil etc
+# Called "Stone" in gene codes, but could be any group
+# default is stone
+evolve_medium_red (Red's Digging Medium) string stone
+
+# For "Red" Bot
+# The medium through which the bot can destructively move
+# For undiggable and replenishing nodes like air, water, or lava.
+# (if they are simply dug the bot can never move because the space refills)
+# must be a specific node
+# e.g. default:water_source, default:lava_source, default:river_water_source etc
+# Called "Air" in gene codes, but could be any node
+# default is air
+evolve_air_red (Red's Moving Medium) string air
+
+# For "Red" Bot
+# The type of block the bot is rewarded for mining
+# must be a specific node
+# e.g. default:stone_with_iron, default:stone_with_diamond, default:clay etc
+# default is default:stone_with_coal.
+evolve_target_red (Red's Target) string default:stone_with_coal
+
+# For "Red" Bot
+# The type of block the bot leaves behind after it has mined the Deposit Threshold number of the target.
+# Logically this should be a concentrated node crafted from the target
+# but you can set anything
+# Must be a specific node
+# e.g. default:steelblock, default:diamondblock, default:brick etc
+# default is default:coalblock.
+evolve_deposit_red (Red's Deposit) string default:coalblock
+
+
+# For "Red" Bot
+# The number of target blocks the bot must mine before it can create a deposit.
+# Logically this should be the number
+# of target blocks needed to craft the deposit block,
+# but this could be set to anything.
+# default is 9.
+evolve_depot_num_red (Red's Deposit threshold) int 9
+
+
+# For "Blue" Bot
+# The medium through which the bot can destructively dig
+# Must be a group
+# e.g. sand, leaves, soil etc
+# Called "Stone" in gene codes, but could be any group
+# default is stone
+evolve_medium_blue (Blue's Digging Medium) string stone
+
+
+# For "Blue" Bot
+# The medium through which the bot can destructively move
+# For undiggable and replenishing nodes like air, water, or lava.
+# (if they are simply dug the bot can never move because the space refills)
+# must be a specific node
+# e.g. default:water_source, default:lava_source, default:river_water_source etc
+# Called "Air" in gene codes, but could be any node
+# default is air
+evolve_air_blue (Blue's Moving Medium) string air
+
+
+# For "Blue" Bot
+# The type of block the bot is rewarded for mining
+# must be a specific node
+# e.g. default:stone_with_iron, default:stone_with_diamond, default:clay etc
+# default is default:stone_with_coal.
+evolve_target_blue (Blue's Target) string default:stone_with_iron
+
+
+# For "Blue" Bot
+# The type of block the bot leaves behind after it has mined the Deposit Threshold number of the target.
+# Logically this should be a concentrated node crafted from the target
+# but you can set anything
+# Must be a specific node
+# e.g. default:steelblock, default:diamondblock, default:brick etc
+# default is default:coalblock.
+evolve_deposit_blue (Blue's Deposit) string default:steelblock
+
+
+# For "Blue" Bot
+# The number of target blocks the bot must mine before it can create a deposit.
+# Logically this should be the number
+# of target blocks needed to craft the deposit block,
+# but this could be set to anything.
+# default is 9.
+evolve_depot_num_blue (Blue's Deposit threshold) int 9

@@ -85,3 +85,10 @@ dofile(minetest.get_modpath("ecobots").."/cave_slime_bot.lua")
 --E VINE
 dofile(minetest.get_modpath("ecobots").."/evine_bot.lua")
 
+------------------------------------------------
+--ANIMALS
+dofile(minetest.get_modpath("ecobots").."/ecobots_animals_api.lua")
+
+dofile(minetest.get_modpath("ecobots").."/fish_bot.lua")
+
+

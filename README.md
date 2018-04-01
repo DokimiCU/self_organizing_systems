@@ -125,3 +125,8 @@ New mods:
 - "Neuron" brain cell simulator
 - "Evolve" evolving autonomous mining bot
 
+# Verion 0.3.1
+Evolve:
+- generalized code, and added a second bot
+Ecobots:
+- an unfinished attempt at transitioning the animals from blocks to entities (only adds a fish, accessible in creative mode)

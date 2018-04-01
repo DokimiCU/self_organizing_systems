@@ -85,11 +85,12 @@ meta:set_string ("formspec",
 	"button[3.5,11;2.5,0.7;set_default_genome;Set Default Genome]"..
 	"button[6.5,11;2.5,0.7;set_best_genome;Set Best Genome]"..
 	"button[9.5,11;2.5,0.7;set_mated_genome;Mate Genome]"..
-	"button[9.5,9.5;2.5,0.7;mutate_genome;Mutate Genome]"..
+	"button[9.5,9.5;2.4,0.7;mutate_genome;Mutate Genome]"..
+	"button[10,0.2;2.1,0.7;set_as_best;Set As Best]"..
 
 
 	"label[5,0.5;"..paused_value.."]"..
-	"button_exit[4,9.5;3.5,1;exit_form;Exit and Activate]"..
+	"button_exit[4,9.5;3.5,0.7;exit_form;Exit and Activate]"..
 
 	"label[1.5,1;Genome Score]"..
 	"label[5,1;Inventory]"..
@@ -111,20 +112,43 @@ end
 
 
 --form for computer to check the best genome and it's score
-evolve.computer_form = function(pos)
+evolve.computer_form = function(pos, name)
 
 local meta = minetest.get_meta(pos)
 
 --get best genome
-local b = evolve.restore_genome_best()
+local b = evolve.restore_genome_best(name)
 
 --for display settings
-local target = minetest.settings:get('evolve_target') or "default:stone_with_coal"
-local deposit = minetest.settings:get('evolve_deposit') or "default:coalblock"
-local depot_num = minetest.settings:get('evolve_depot_num') or 9
-local medium = minetest.settings:get('evolve_medium') or "stone"
-local air = minetest.settings:get('evolve_air') or "air"
-local mutatepercent = minetest.settings:get('evolve_mutate') or 25
+local target = nil
+local deposit = nil
+local depot_num = nil
+local medium = nil
+local air = nil
+local mutate = minetest.settings:get('evolve_mutate') or 4
+local step_size = minetest.settings:get('evolve_step_size') or 180
+
+
+if minetest.get_node(pos).name == "evolve:computer" then
+	target = minetest.settings:get('evolve_target_red') or "default:stone_with_coal"
+	deposit = minetest.settings:get('evolve_deposit_red') or "default:coalblock"
+	depot_num = minetest.settings:get('evolve_depot_num_red') or 9
+	medium = minetest.settings:get('evolve_medium_red') or "stone"
+	air = minetest.settings:get('evolve_air_red') or "air"
+end
+
+if minetest.get_node(pos).name == "evolve:computer_blue" then
+	target = minetest.settings:get('evolve_target_blue') or "default:stone_with_iron"
+	deposit = minetest.settings:get('evolve_deposit_blue') or "default:steelblock"
+	depot_num = minetest.settings:get('evolve_depot_num_blue') or 9
+	medium = minetest.settings:get('evolve_medium_blue') or "stone"
+	air = minetest.settings:get('evolve_air_blue') or "air"
+end
+
+
+
+
+
 
 --can't find a best data set
 if b == nil or b == "blank" then
@@ -132,8 +156,8 @@ if b == nil or b == "blank" then
 	meta:set_string ("formspec",
 		"size[12,12]"..
 
-		"button_exit[6.5,10;3.5,1;exit_form;Exit ]"..
-		"button[1.5,10;3.5,1;update_top;Update ]"..
+		"button_exit[6.5,9.5;3.5,1;exit_form;Exit ]"..
+		"button[1.5,9.5;3.5,1;update_top;Update ]"..
 
 		"label[1.5,1;Genome Score]"..
 		"textlist[3.2,1;1,0.5;score_list; No Data]"..
@@ -143,13 +167,14 @@ if b == nil or b == "blank" then
 		"label[4.5,0.1;~~~ TOP GENOME ~~~]"..
 		--"button[9,0.1;2.5,0.4;purge_top;Purge Best Genome!]"..
 
-		"label[5,11;Global Settings]"..
-		"label[3.8,11.5;Target: "..target.."]"..
-		"label[3.8,11.8;Mutation %: "..mutatepercent.."]"..
-		"label[1,11.5;Digging: "..medium.."]"..
-		"label[1,11.8;Moving: "..air.."]"..
-		"label[8,11.5;Deposit: "..deposit.."]"..
-		"label[8,11.8;Deposit #: "..depot_num.."]"..
+		"label[5,10.5;Global Settings]"..
+		"label[4.5,11;Target: "..target.."]"..
+		"label[4.5,11.3;Mutation #: "..mutate.."]"..
+		"label[1,11;Digging: "..medium.."]"..
+		"label[1,11.3;Moving: "..air.."]"..
+		"label[1,11.6;Rate(sec): "..step_size.."]"..
+		"label[8,11;Deposit: "..deposit.."]"..
+		"label[8,11.3;Deposit #: "..depot_num.."]"..
 
 
 		"label[1.5,8.3;Gene Codes: S=Stone, T=Target, O=Other, A=Air. In order of Below/Above/Side]"..
@@ -237,8 +262,8 @@ local OAA = b.OAA
 meta:set_string ("formspec",
 	"size[12,12]"..
 
-	"button_exit[6.5,10;3.5,1;exit_form;Exit ]"..
-	"button[1.5,10;3.5,1;update_top;Update ]"..
+	"button_exit[6.5,9.5;3.5,1;exit_form;Exit ]"..
+	"button[1.5,9.5;3.5,1;update_top;Update ]"..
 
 	"label[1.5,1;Genome Score]"..
 	"textlist[3.2,1;1,0.5;score_list;"..score_list_value.."]"..
@@ -248,13 +273,14 @@ meta:set_string ("formspec",
 	"label[4.5,0.1;~~~ TOP GENOME ~~~]"..
 	"button[9,0.1;2.5,0.4;purge_top;Purge Best Genome!]"..
 
-	"label[5,11;Global Settings]"..
-	"label[3.8,11.5;Target: "..target.."]"..
-	"label[3.8,11.8;Mutation %: "..mutatepercent.."]"..
-	"label[1,11.5;Digging: "..medium.."]"..
-	"label[1,11.8;Moving: "..air.."]"..
-	"label[8,11.5;Deposit: "..deposit.."]"..
-	"label[8,11.8;Deposit #: "..depot_num.."]"..
+	"label[5,10.5;Global Settings]"..
+	"label[4.5,11;Target: "..target.."]"..
+	"label[4.5,11.3;Mutation #: "..mutate.."]"..
+	"label[1,11;Digging: "..medium.."]"..
+	"label[1,11.3;Moving: "..air.."]"..
+	"label[1,11.6;Rate(sec): "..step_size.."]"..
+	"label[8,11;Deposit: "..deposit.."]"..
+	"label[8,11.3;Deposit #: "..depot_num.."]"..
 
 
 	"label[1.5,8.3;Gene Codes: S=Stone, T=Target, O=Other, A=Air. In order of Below/Above/Side]"..
@@ -265,6 +291,7 @@ meta:set_string ("formspec",
 	"textlist[7.5,2;2,6;genome_list4;	OSS "..OSS..",	OST "..OST..",	OSO "..OSO..",	OSA "..OSA..",	OTS "..OTS..",	OTT "..OTT..",	OTO "..OTO..",	OTA "..OTA..",	OOS "..OOS..",	OOT "..OOT..",	OOO "..OOO..",	OOA "..OOA..",	OAS "..OAS..",	OAT "..OAT..",	OAO "..OAO..",	OAA "..OAA..",]"
 )
 	end
+
 end
 
 
@@ -274,17 +301,25 @@ end
 --------------------------------------------------------------------------
 ---NODES
 --------------------------------------------------------------------------
+--Naming
+-- have to give them all nicknames to feed through the file save.
+-- for diff settings has to be fed through the mining, ID, scoring too
+-- so split them into color teams: Red, Blue...
+-- All bots are identicle, just allows seperate pops
 
---EVOLUTION MINER
+
+--EVOLUTION MINER RED
 
 minetest.register_node('evolve:evolve_miner', {
-	description = 'Evolving Miner Bot',
+	description = 'Evolution Bot (Red)',
 	light_source = 5,
 	tiles = {"evolve_miner.png"},
 	groups = {cracky = 3, oddly_breakable_by_hand=1},
 ------------
 	on_construct = function(pos)
-
+		--start them out as active, prevents dud bots...such was the idea...
+		local meta = minetest.get_meta(pos)
+    meta:set_string("paused", "active")
 		evolve.update_form(pos)
 
     end,
@@ -311,7 +346,7 @@ minetest.register_node('evolve:evolve_miner', {
 	----------
 			if fields.set_best_genome then
 					--get the best_ever
-					local g = evolve.restore_genome_best()
+					local g = evolve.restore_genome_best("red")
 					--so can keep it's own inventory
 					local inv_score = meta:get_float("inv_score")
 					--only do if there is a best
@@ -332,7 +367,7 @@ minetest.register_node('evolve:evolve_miner', {
 			if fields.set_mated_genome then
 				--mate it with the best ever
 					local genome = evolve.retain_genome(pos)
-						evolve.mate_genome_3_click(pos, genome)
+						evolve.mate_genome_3_click(pos, genome, "red")
 						--reset and correct... just need to keep on pause
 						meta:set_string("paused", "paused")
 						--bleep only, form already updates
@@ -346,6 +381,14 @@ minetest.register_node('evolve:evolve_miner', {
 
 						evolve.update_form(pos)
 			end
+
+			----------
+					if fields.set_as_best then
+							local g = evolve.retain_genome(pos)
+							evolve.save_genome_best(g, "red")
+							minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
+				end
+
 
 		----------
 		--activate bot on exit
@@ -370,14 +413,122 @@ end
 })
 
 
+
+--EVOLUTION BOT BLUE
+--same as red, just allows diff settings and pop
+
+minetest.register_node('evolve:evolve_blue', {
+	description = 'Evolution Bot (Blue)',
+	light_source = 5,
+	tiles = {"evolve_blue.png"},
+	groups = {cracky = 3, oddly_breakable_by_hand=1},
+------------
+	on_construct = function(pos)
+		--start them out as active, prevents dud bots... such was the idea...
+		local meta = minetest.get_meta(pos)
+    meta:set_string("paused", "active")
+		evolve.update_form(pos)
+
+    end,
+
+-------------
+--take action for each button pushed
+		on_receive_fields = function(pos, formname, fields, sender)
+			local meta = minetest.get_meta(pos)
+-----------
+			if fields.set_default_genome then
+					evolve.set_default (pos)
+					minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
+
+					evolve.update_form(pos)
+		end
+----------
+		if fields.set_random_genome then
+				evolve.set_random (pos)
+				minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
+
+				evolve.update_form(pos)
+	end
+
+	----------
+			if fields.set_best_genome then
+					--get the best_ever
+					local g = evolve.restore_genome_best("blue")
+					--so can keep it's own inventory
+					local inv_score = meta:get_float("inv_score")
+					--only do if there is a best
+						if g ~= nil and g ~= "blank" then
+	        		evolve.retain_genome_2 (pos, g)
+							--reset and correct
+							meta:set_float("inv_score", inv_score)
+							meta:set_float("score", 0)
+							meta:set_string("paused", "paused")
+							--bleep!
+							minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
+							evolve.update_form(pos)
+						end
+		end
+
+
+	----------
+			if fields.set_mated_genome then
+				--mate it with the best ever
+					local genome = evolve.retain_genome(pos)
+						evolve.mate_genome_3_click(pos, genome, "blue")
+						--reset and correct... just need to keep on pause
+						meta:set_string("paused", "paused")
+						--bleep only, form already updates
+						minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
+		end
+
+		----------
+				if fields.mutate_genome then
+						evolve.mutate(pos)
+						minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
+
+						evolve.update_form(pos)
+			end
+
+			----------
+					if fields.set_as_best then
+							local g = evolve.retain_genome(pos)
+							evolve.save_genome_best(g, "blue")
+							minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
+				end
+
+
+		----------
+		--activate bot on exit
+				if fields.exit_form then
+						meta:set_string("paused", "active")
+						minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
+						evolve.update_form(pos)
+				end
+
+	end,
+
+
+	-----------------------------------
+	--pause bot
+	on_punch = function(pos, node, player, pointed_thing)
+			local meta = minetest.get_meta(pos)
+			meta:set_string("paused", "paused")
+			minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
+			evolve.update_form(pos)
+end
+
+})
+
+
+
 --------------------------------------------------------------------------
+--COMPUTER
 
-
---laptop
+--laptop RED
 minetest.register_node("evolve:computer", {
 	drawtype = "mesh",
 	mesh = "computer_laptop.obj",
-	description = "Evolution Computer",
+	description = "Evolution Computer (Red)",
 	inventory_image = "evolve_laptop_inv.png",
 	tiles = {"evolve_laptop.png"},
 	paramtype = "light",
@@ -392,23 +543,67 @@ minetest.register_node("evolve:computer", {
 
 	on_construct = function(pos)
 
-		evolve.computer_form(pos)
+		evolve.computer_form(pos, "red")
 
 		end,
 
 	on_receive_fields = function(pos, formname, fields, sender)
 		if fields.update_top then
 				minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
-				evolve.computer_form(pos)
+				evolve.computer_form(pos, "red")
 		end
 
 		if fields.purge_top then
 				minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
 
 				local shit_score = "blank"
-				evolve.save_genome_best(shit_score)
+				evolve.save_genome_best(shit_score, "red")
 
-				evolve.computer_form(pos)
+				evolve.computer_form(pos, "red")
+		end
+
+
+	end,
+
+})
+
+
+--laptop BLUE
+minetest.register_node("evolve:computer_blue", {
+	drawtype = "mesh",
+	mesh = "computer_laptop.obj",
+	description = "Evolution Computer (Blue)",
+	inventory_image = "evolve_laptop_inv_b.png",
+	tiles = {"evolve_laptop_b.png"},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	light_source = 4,
+	groups = {snappy=3},
+	walkable = false,
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.35, -0.5, -0.35, 0.35, 0.05, 0.35},
+	},
+
+	on_construct = function(pos)
+
+		evolve.computer_form(pos, "blue")
+
+		end,
+
+	on_receive_fields = function(pos, formname, fields, sender)
+		if fields.update_top then
+				minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
+				evolve.computer_form(pos, "blue")
+		end
+
+		if fields.purge_top then
+				minetest.sound_play("evolve_beep", {pos = pos, gain = 0.5, max_hear_distance = 10,})
+
+				local shit_score = "blank"
+				evolve.save_genome_best(shit_score, "blue")
+
+				evolve.computer_form(pos, "blue")
 		end
 
 
@@ -423,7 +618,7 @@ minetest.register_node("evolve:computer", {
 minetest.register_craft({
 	output = "evolve:evolve_miner 99",
 	recipe = {
-		{"default:steelblock", "default:diamond", "default:tinblock"},
+		{"default:steelblock", "default:diamond", "default:copperblock"},
 		{"default:diamond", "default:mese_block", "default:diamond"},
 		{"default:copperblock", "default:diamond", "default:steelblock"}
 	}
@@ -434,6 +629,26 @@ minetest.register_craft({
 	recipe = {
 		{"", "default:glass", ""},
 		{"", "evolve:evolve_miner", ""},
+		{"", "", ""}
+	}
+})
+
+---------------
+
+minetest.register_craft({
+	output = "evolve:evolve_blue 99",
+	recipe = {
+		{"default:steelblock", "default:diamond", "default:tinblock"},
+		{"default:diamond", "default:mese_block", "default:diamond"},
+		{"default:tinblock", "default:diamond", "default:steelblock"}
+	}
+})
+
+minetest.register_craft({
+	output = "evolve:computer_blue",
+	recipe = {
+		{"", "default:glass", ""},
+		{"", "evolve:evolve_blue", ""},
 		{"", "", ""}
 	}
 })

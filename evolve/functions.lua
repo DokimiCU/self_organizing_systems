@@ -1,36 +1,47 @@
 
---threshold for mutation (out of 100)
--- random number must be higher than this for one gene to get randomly mutated
-local mutatepercent = minetest.settings:get('evolve_mutate') or 25
-local mutate = 100 - mutatepercent
+-- SETTINGS
 
-
---the medium through which it can destructively dig
---"Stone" in codes, but could be any group
---must be a group
---(this setting is also in mining.lua)
-local medium = minetest.settings:get('evolve_medium') or "stone"
-
---medium through which it can move
---A in codes
--- so can get it too move through water etc as well
-local air = minetest.settings:get('evolve_air') or "air"
-
-
-
-local depot_num = minetest.settings:get('evolve_depot_num') or 9
---trying to fix the depot bug
---whenever depot_num is changed it then decides that is a string, despite finctioning fine before the changed
---this includes changing directly in the code... the conflict is with the config file?
---so just force the bastard back to a number? It works
-local depot_num_1 = tonumber(depot_num)
-
+--number of genes mutated with reproduction
+local mutate_count1 = minetest.settings:get('evolve_mutate') or 4
+--weird settings bug?
+--so just force the bastard back to a number?
+local mutate_count = tonumber(mutate_count1)
 
 --points for digging target and for digging, and for moving
 -- high target scores allows bots to luck out too easy, swamping past failures in one big hit
 local target_score = 15
 local dig_score = -1
 local move_score = -1
+
+-------------------------------------------------------------
+-- SETTINGS FOR RED
+
+--the medium through which it can destructively dig
+--"Stone" in codes, but could be any group
+--must be a group
+--(this setting is also in mining.lua)
+local medium_red = minetest.settings:get('evolve_medium_red') or "stone"
+
+--medium through which it can move
+--A in codes
+-- so can get it too move through water etc as well
+local air_red = minetest.settings:get('evolve_air_red') or "air"
+
+
+local depot_num_red = minetest.settings:get('evolve_depot_num_red') or 9
+--trying to fix the depot bug
+--whenever depot_num is changed it then decides that is a string, despite finctioning fine before the changed
+--this includes changing directly in the code... the conflict is with the config file?
+--so just force the bastard back to a number? It works
+local depot_num_1_red = tonumber(depot_num_red)
+
+-------------------------------------------------------------
+-- SETTINGS FOR BLUE
+local medium_blue = minetest.settings:get('evolve_medium_blue') or "stone"
+local air_blue = minetest.settings:get('evolve_air_blue') or "air"
+local depot_num_blue = minetest.settings:get('evolve_depot_num_blue') or 9
+local depot_num_1_blue = tonumber(depot_num_blue)
+
 
 ------------------------------------------------------------------------
 ---FUNCTIONS
@@ -40,7 +51,7 @@ local move_score = -1
 
 --ID SITUATION
 
-evolve.get_situation = function(target, medium, below, above, ranside, below_check, above_check, side_check)
+evolve.get_situation = function(target, medium, air, below, above, ranside, below_check, above_check, side_check)
   local below_type = "O"
   local above_type = "O"
   local side_type = "O"
@@ -274,13 +285,22 @@ end
 
 --SCORING FOR BOTH TYPES OF DIGGING...pos of node, pos of dug node, name of dug node pos for group check
 
-evolve.score_digging = function(pos, dig_pos_name)
+evolve.score_digging = function(pos, dig_pos_name, name)
 
   local meta = minetest.get_meta(pos)
   local score = meta:get_float("score")
   local inv_score = meta:get_float("inv_score")
 
   local dug_check = dig_pos_name
+
+  --match to bot
+  if name == "red" then
+    medium = medium_red
+  end
+
+  if name == "blue" then
+    medium = medium_blue
+  end
 
 
   --ID and score...should only call when digging medium or target so don't need double check
@@ -664,7 +684,7 @@ evolve.math_random = function(gene, ban1, ban2, ban3, ban4, ban5, ban6)
 --it may be because the bot moved before it could finish?
 -- making the mining ABM chance lower reduces issue? gives them a chance to finish?
 
-evolve.mate_genome_1 = function(pos)
+evolve.mate_genome_1 = function(pos,name)
 
   --get the bot's genome and relevant data therein
   local meta = minetest.get_meta(pos)
@@ -675,16 +695,26 @@ evolve.mate_genome_1 = function(pos)
 
 
   --open the current best of group to compare
-  local cur_best = evolve.restore_genome()
+  local cur_best = evolve.restore_genome(name)
 
+--right settings for right type
+  local depot_num = nil
+
+  if minetest.get_node(pos).name == "evolve:evolve_miner" then
+    depot_num = depot_num_1_red
+  end
+
+  if minetest.get_node(pos).name == "evolve:evolve_blue" then
+      depot_num = depot_num_1_blue
+    end
 
   --restrict who can get saved to prevent new randoms taking top spot
   --only save those who have dug some, or are not newbies
-  if g_inv_score >= ((depot_num_1+2) - depot_num_1) or g_generation >=1 then
+  if g_inv_score >= ((depot_num + 2) - depot_num) or g_generation >=1 then
 
     --save if no cur_best file or it has been reset previously
     if cur_best == nil or cur_best == "blank" then
-      evolve.save_genome(genome)
+      evolve.save_genome(genome,name)
       --sound to let me know...acts like a bell to signal beginning of selection
       minetest.sound_play("evolve_bell", {pos = pos, gain = 2, max_hear_distance = 50,})
 
@@ -699,20 +729,17 @@ evolve.mate_genome_1 = function(pos)
         if g_score >= cur_score then
 
         --save bot as new current best
-        evolve.save_genome(genome)
+        evolve.save_genome(genome, name)
         end
     end
-
-  end
-
   -- move on to next stage
   -- some mate before a new true current champion emerges
   -- but they should all mate with the best in sequence so far
   -- only the last bot done will truly use the best of the bunch
 
-      evolve.mate_genome_2(pos)
+      evolve.mate_genome_2(pos, name)
 
-
+    end
 end
 
 
@@ -720,13 +747,13 @@ end
 -- if the current best is better it is saved as the new best ever
 -- afterwards the current best score is reset so that a new wave can unseat it
 -- this is just a check, most will fail and pass to next step
-evolve.mate_genome_2 = function(pos)
+evolve.mate_genome_2 = function(pos, name)
 
   --open the current best of group to compare
-  local cur_best = evolve.restore_genome()
+  local cur_best = evolve.restore_genome(name)
 
   --open the best ever to compare
-  local best_ever = evolve.restore_genome_best()
+  local best_ever = evolve.restore_genome_best(name)
 
 
   --only the current file exists... it is best by default
@@ -736,7 +763,7 @@ evolve.mate_genome_2 = function(pos)
 
     --will not save a blank file
     if cur_best ~= "blank" then
-      evolve.save_genome_best(cur_best)
+      evolve.save_genome_best(cur_best, name)
       --play sound to indicate a new top dog
       minetest.sound_play("evolve_best", {pos = pos, gain = 1, max_hear_distance = 20,})
     end
@@ -754,7 +781,7 @@ evolve.mate_genome_2 = function(pos)
       --and the current genome is the better
       if cur_score > best_score then
       --save the current as new top dog
-      evolve.save_genome_best(cur_best)
+      evolve.save_genome_best(cur_best, name)
       --play sound to indicate a new top dog
       minetest.sound_play("evolve_best", {pos = pos, gain = 1, max_hear_distance = 20,})
     end
@@ -762,17 +789,17 @@ evolve.mate_genome_2 = function(pos)
 end
 
   -- move on to next stage
-  evolve.mate_genome_3(pos)
+  evolve.mate_genome_3(pos, name)
 end
 
 
 
 --STEP 3 mates the best ever and current best and sets bot's new genome
-evolve.mate_genome_3 = function(pos)
+evolve.mate_genome_3 = function(pos,name)
 
   --get the two parents
-  local cur_best = evolve.restore_genome()
-  local best_ever = evolve.restore_genome_best()
+  local cur_best = evolve.restore_genome(name)
+  local best_ever = evolve.restore_genome_best(name)
 
 
   --for dealing with the bot
@@ -792,14 +819,11 @@ evolve.mate_genome_3 = function(pos)
 
       --genomes are mated and the child genome is set
       evolve.mix_genomes(pos, best_ever, cur_best)
-      --mutate several times to create variants
-      --helps deal with identicle genomes being mated
+
       --can't simply ask is best=cur bc inventory etc differs despite genes being same
       -- this mainly an issue whenever a new top dog emerges bc it will be best ever and current best
-      -- also helps create a new spread
-      evolve.mutate(pos)
-      evolve.mutate(pos)
-      evolve.mutate(pos)
+      -- mutation should help create spread then
+
 
       --reset and correct the non-relevant parts of new genome
       meta:set_float("score", 0)
@@ -822,12 +846,12 @@ end
 
 -- Optional mating with the best
 -- called when click "mate" button
--- just Step 3 (without all the mutation) but lets you set which other genome gets mated
-evolve.mate_genome_3_click = function(pos, genome)
+-- Basically Step 3 but lets you set which other genome gets mated
+evolve.mate_genome_3_click = function(pos, genome, name)
 
   --get the two parents
   local cur_best = genome
-  local best_ever = evolve.restore_genome_best()
+  local best_ever = evolve.restore_genome_best(name)
 
 
   --for dealing with the bot
@@ -864,12 +888,13 @@ end
 
 ----------------------------------------------------------------------
 --FILE SAVING AND READING
+--name is so can save for any node
 
 --SAVE the CURRENT best genome to file
-evolve.save_genome = function(genome)
+evolve.save_genome = function(genome, name)
 
    local data = minetest.serialize( genome );
-   local path = minetest.get_worldpath().."/mod_evolve.data";
+   local path = minetest.get_worldpath().."/mod_evolve_"..name..".data";
 
    local file = io.open( path, "w" );
    if( file ) then
@@ -883,9 +908,9 @@ end
 
 
 --READ CURRENT best saved genome from file
-evolve.restore_genome = function()
+evolve.restore_genome = function(name)
 
-   local path = minetest.get_worldpath().."/mod_evolve.data";
+   local path = minetest.get_worldpath().."/mod_evolve_"..name..".data";
 
    local file = io.open( path, "r" );
    if( file ) then
@@ -901,10 +926,10 @@ end
 
 ---------------------------------------------
 --SAVE BEST EVER genome to file
-evolve.save_genome_best = function(genome)
+evolve.save_genome_best = function(genome, name)
 
    local data = minetest.serialize( genome );
-   local path = minetest.get_worldpath().."/mod_evolve_best.data";
+   local path = minetest.get_worldpath().."/mod_evolve_best_"..name..".data";
 
    local file = io.open( path, "w" );
    if( file ) then
@@ -918,9 +943,9 @@ end
 
 
 --READ BEST EVER saved genome from file
-evolve.restore_genome_best = function()
+evolve.restore_genome_best = function(name)
 
-   local path = minetest.get_worldpath().."/mod_evolve_best.data";
+   local path = minetest.get_worldpath().."/mod_evolve_best_"..name..".data";
 
    local file = io.open( path, "r" );
    if( file ) then
@@ -1137,10 +1162,16 @@ evolve.mix_genomes = function(pos,genome1, genome2)
     meta:set_string("OAA", newgene)
 
     --now MUTATE
-    local q = math.random (1,100)
-    if q > mutate then
-    evolve.mutate(pos)
-  end
+    --keep track of number of repeats
+    local mutate_run = 0
+    repeat
+      evolve.mutate(pos)
+      mutate_run = mutate_run + 1
+    --keep going until matches number of genes to mutate set in settings
+    until (mutate_run >= mutate_count)
+
+    --reset count
+    mutate_run = 0
 
   end
 

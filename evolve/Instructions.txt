@@ -3,7 +3,9 @@ What is this?
 
 This mod uses evolution to get a mining bot to choose the best autonomous mining strategy.
 
-By default this bot digs for coal, and leaves coal blocks behind it, but it can be set to mine anything you like.
+By default this bot digs for coal or iron, and leaves coal or steel blocks behind it, but it can be set to do all sorts of tasks, limited only be your creativity.
+
+Two identicle bots (Red, and Blue) are available so you can experiment with seperate populations, co-evolution etc.
 
 
 ===============================================================
@@ -22,7 +24,7 @@ Click on the bot to open it's settings. Set one of the optional genomes:
 
 Exit to activate the bot. Allow it to mine. Punch the bot to pause it so you can check settings again without it running away.
 
-The details of your best evolved genome can be seen using the Evolution Computer (wont work until they've had a chance to evolve).
+The details of your best evolved genome can be seen using the Evolution Computer.
 
 
 
@@ -62,33 +64,30 @@ As to the mining, once the bot has dug a certain number of its target it will de
  ===============================================================
  Tips:
 
- Evolution can take a long time. Effective mining is actually a very difficult problem to solve.
- Ore is rare, and the bot can only look at the three blocks next door.
- Using random genomes starts out very ineffective. Flailing wildly is not a winning strategy. Have some patience!
+ - Be patient! Evolution takes time. Effective mining is actually a very difficult problem to solve. Using random genomes starts out very ineffective, and takes a while to improve. Flailing wildly is not a winning strategy. I have provided a few pre-evolved genomes below...
 
 
  - It's best to put the bots in an area with lots of their target. Evolution is harder if the target is rare.
 
-
  - Occasionally bad genomes become top by sheer dumb luck, especially early on:
 
-    - Purging helps get things unstuck. Remove the best genome by clicking "Purge Best Genome" in the Evolution computer. This will wipe the file, allowing it to begin again.
+    	- Purging helps get things unstuck. Remove the best genome by clicking "Purge Best Genome" in the Evolution computer. This will wipe the file, allowing it to begin again.
 
-    - Sometimes a bot doesn't get reset as it should, and can accumulate score for longer than anyone else. Keep an eye out for unusually high scores (especially if they have an unusually low Generation # - they've not been updated).
+    	- Sometimes a bot doesn't get reset as it should, and can accumulate score for longer than anyone else. Keep an eye out for unusually high scores (especially if they have an unusually low Generation # - they've not been updated).
 
-    - Small populations are more affected by chance. The more bots the less chance.
+    	- Small populations are more affected by chance. The more bots the less chance.
 
-    - Don't put new random bots in huge piles of the target. They will instantly become the best genome through the accident of their birth place.
+    	- Don't put new random bots in huge piles of the target. They will instantly become the best genome through the accident of their birth place.
 
 
- - The best genome is saved in "mod_evolve_best.data" in the "Worlds" folder for that map. You can fiddle with this file.
+ - The best genome is saved in "mod_evolve_best.data" in the "Worlds" folder for that map. You can fiddle with this file. Copy it, changes value...
 
-    - Really like this genome? Copy paste the data (or the whole file) to new maps.
 
-    - Want to design your own genome? Change the values in this file for a custom "best ever" (caution not all genes should take all possible alleles e.g. you shouldn't move into a stone wall, or dig "other")
+- One of the greatest weakness of evolution is the problem of Local Maxima: a solution that works locally, but isn't the best overall. You can help force the bots out of local maxima by increasing diversity (mutation, randomizing), and purging the best genome.
 
-    - Things really can take a long time to evolve. I have left a few pre-evolved genomes below...
+- The most interesting challanges to set for your bots are ones that involve feedback loops: where the bot's actions to solve the problem impinge on it's future ability to solve the problem. For an example see  "For the Curious: Same Problem, Different Solutions?" below.
 
+- Bot's can be made to self replicate by setting "deposit" to the name of the bot itself.
 
  ================================================================
  Cautions:
@@ -99,6 +98,8 @@ As to the mining, once the bot has dug a certain number of its target it will de
  - Bots will run away. They have minds of their own.
    Keep tabs on them if you don't want to lose them.
 
+ - Bots set to self replicate can grow exponentially. You can get "grey goo" problems.
+
 - Bots can get stuck in one situation: OOO - if all blocks around them are Other. e.g. they drowned themselves. You'll need to pull them out.
 
 
@@ -106,7 +107,7 @@ As to the mining, once the bot has dug a certain number of its target it will de
 ===============================================================
 Some Key Genes (when on default settings at least):
 
-Looking at these will help you understand the bot's behavior.
+Looking at these will help you understand the bot's behavior when digging underground.
 (Code order: Below/Above/Side)
 
 Narrow Tunnels
@@ -257,6 +258,63 @@ Dirter did avoid the risk of getting lost for example.
 So, despite the subtly different challenges the Bot evolved similar but distinct strategies - and for problems that are not at all obvious to see how they should be solved.
 
 
+===============================================================
+For the Curious: Same Problem, Different Solutions?
+
+Can more than one strategy evolve for the same challenge?
+
+I set bots to evolve in an "aquatic lava challenge". The Bot lives in water, feeds on air, and deposits lava. The result is an ocean that slowly gets covered in a layer of stone around the bots.
+
+A successful bot must do two things:
+- find air
+- cope with diminshing access to air
+
+They bots soon evolved to plug themselves to the surface and suck at the air. But after they had cut themselves off from the air with their waste products they weren't very good at escaping out to sea.
+
+Instead something unexpected happened.
+
+They found another solution I hadn't considered at the start. All the bots migrated down to the sea bed and hugged the bottom. Why?
+
+I had also allowed them to dig sand - thinking this would be irrelevant. Instead, the bots discovered that if they plugged themselves to the sandy bottom and dug a hole, then they would create a sealed air pocket. Water tight.
+
+Now they had an air supply again.
+
+One problem. They were still covering themselves in stone. Filling their air holes. Risking entombing themselves at the bottom of the sea.
+
+With the sea bed increasingly stony the bots now abandoned the sand digging idea. They headed up. Time for something new?
+
+Slowly they started to figure out the only longterm solution to their problem - migration. Heading out into the deep ocean, off they went, digging holes in the sea bed.
+
+
+
+===============================================================
+For the Curious: Co-evolution
+
+We have two bots. This means they can evolve to deal with the presence of the other, getting trapped in co-evolutionary spirals, where the evolution of Red leads to the evolution of the Blue which leads to more evolution of Red.
+
+
+I set up Red and Blue as self-replicating bots. Red was an air-living bot that feeds on water. Blue was an aquatic bot, that feeds on Red. Like crocodiles versus wildebeast.
+
+Red must solve two problems:
+1. access water
+2. not get eaten
+
+Blue must solve one problem:
+1. Find Red.
+
+Considered seperately, the best strategy for both is to simply plug themselves to the water's surface. So what did they actually do?
+
+Red started growing mats, exploding across the water's surface (Key genes: AAO = MB -moving down the mat edges. AOA = MS - finding the mat edges. TAO = DB, feed when locked in the mat).
+
+Slowly Blue figured out how to feed, bobbing up and down beneath the mat plucking off its victims. (Key genes: AAA = MA -go to surface). Blue's population grew rapidly in the centre of the mat, gouging out big chuncks.
+
+Now for Red, being near the centre of the mat, at the water's surface had changed from being prime territory to being extremely risky. The two mats were now interpentrating as Blue grew above the surface - forming immobile clonal clumps -  forcing water up through the mat, and eating more Red.
+
+Red started to adapt to this with TAT = MA, flying up away from the water when the water rose around its sides - a key sign of an upwelling of Blue. TAO also changed to MA. Escape was chosen over feeding when at the water's surface when an "Other" came up alongside - that other was increasingly likely to be a dangerous Blue.
+
+Soon the pressure to escape was so big that clouds of Red started to fly up into the air - abandoning their food altogether. And on the dance goes...
+
+
 
 ===============================================================
 Credits:
@@ -267,7 +325,7 @@ Computer node from Computers by Diego Martínez
 
 ===============================================================
 Some Pre-evolved Genomes:
-- Overwrite the data in mod_evolve_best.data with these genomes if you want to save some time.
+- Overwrite the data in mod_evolve_best.data (Red or Blue) with these genomes if you want to save some time.
 
 The "Pumping" Genome:
 
@@ -297,6 +355,23 @@ Dirter Mountain Builder Genome (For: Targets = air; Moves, and deposits = stone.
 
 return {["SSA"] = "DB", ["OAO"] = "MA", ["TSA"] = "DA", ["SAO"] = "DB", ["TAO"] = "DB", ["AOT"] = "MB", ["OOT"] = "DS", ["OOO"] = "NA", ["ASA"] = "MS", ["STO"] = "DA", ["TTO"] = "DB", ["OSA"] = "MS", ["SSS"] = "DB", ["TOO"] = "DB", ["TSS"] = "DB", ["STT"] = "DB", ["SOO"] = "DB", ["score"] = 1113, ["OOA"] = "MS", ["TTT"] = "DB", ["TTS"] = "DB", ["TST"] = "DS", ["ATT"] = "DA", ["STS"] = "DS", ["OSS"] = "DS", ["OTT"] = "DS", ["SST"] = "DS", ["AST"] = "DA", ["OAS"] = "MA", ["SAS"] = "MA", ["TOA"] = "MS", ["TAS"] = "DS", ["OST"] = "DS", ["OTA"] = "MS", ["ATA"] = "DA", ["OTS"] = "DS", ["OOS"] = "DS", ["AAA"] = "MS", ["TOT"] = "DB", ["SOT"] = "DB", ["AOS"] = "MB", ["TSO"] = "DB", ["SSO"] = "DA", ["OAA"] = "MS", ["SAA"] = "DB", ["ASS"] = "MB", ["OTO"] = "DA", ["AOO"] = "MB", ["ATO"] = "DA", ["TOS"] = "DB", ["SOS"] = "DB", ["TAA"] = "DB", ["AOA"] = "MS", ["ATS"] = "MB", ["OAT"] = "MA", ["SOA"] = "DB", ["AAS"] = "MA", ["ASO"] = "MB", ["AAO"] = "MA", ["TTA"] = "DA", ["AAT"] = "MB", ["TAT"] = "MA", ["STA"] = "MS", ["paused"] = "active", ["generation"] = 7, ["inv_score"] = 1, ["SAT"] = "MA", ["OSO"] = "DA"}
 
+
+
+Aquatic Lava Bot (For: Targets = air; Moves = default:water_source; deposits = default:lava_source. Digs = sand):
+
+return {["SSA"] = "DB", ["OAO"] = "MA", ["TSA"] = "DB", ["SAO"] = "MA", ["TAO"] = "MA", ["AOT"] = "MB", ["OOT"] = "DS", ["OOO"] = "NA", ["ASA"] = "DA", ["STO"] = "DB", ["TTO"] = "DB", ["OSA"] = "DA", ["SSS"] = "DA", ["TOO"] = "DB", ["TSS"] = "DA", ["STT"] = "DA", ["SOO"] = "DB", ["score"] = 614, ["OOA"] = "MS", ["TTT"] = "DA", ["TTS"] = "DS", ["TST"] = "DA", ["ATT"] = "DS", ["STS"] = "DB", ["OSS"] = "DA", ["OTT"] = "DA", ["SST"] = "DA", ["AST"] = "DA", ["OAS"] = "DS", ["SAS"] = "MA", ["TOA"] = "MS", ["TAS"] = "DB", ["OST"] = "DA", ["OTA"] = "DA", ["ATA"] = "DA", ["OTS"] = "DS", ["OOS"] = "DS", ["AAA"] = "MS", ["TOT"] = "DS", ["SOT"] = "DS", ["AOS"] = "DS", ["TSO"] = "DB", ["SSO"] = "DB", ["OAA"] = "MS", ["SAA"] = "MS", ["ASS"] = "MB", ["OTO"] = "DA", ["AOO"] = "MB", ["ATO"] = "DA", ["TOS"] = "DS", ["SOS"] = "DB", ["TAA"] = "DB", ["AOA"] = "MS", ["ATS"] = "DS", ["OAT"] = "DS", ["SOA"] = "DB", ["AAS"] = "MB", ["ASO"] = "DA", ["AAO"] = "MB", ["TTA"] = "MS", ["AAT"] = "DS", ["TAT"] = "DS", ["STA"] = "DA", ["paused"] = "active", ["generation"] = 14, ["inv_score"] = 1, ["SAT"] = "MA", ["OSO"] = "DA"}
+
+
+
+"Crocodile" Aquatic Predator (For: Targets = other bots; Moves = default:water_source; deposits = itself. Digs = sand)
+
+return {["SSA"] = "DB", ["OAO"] = "MA", ["TSA"] = "DB", ["SAO"] = "MA", ["TAO"] = "MA", ["AOT"] = "MB", ["OOT"] = "DS", ["OOO"] = "NA", ["ASA"] = "MB", ["STO"] = "DB", ["TTO"] = "DA", ["OSA"] = "DA", ["SSS"] = "DB", ["TOO"] = "DB", ["TSS"] = "DS", ["STT"] = "DB", ["SOO"] = "DB", ["score"] = 215, ["OOA"] = "MS", ["TTT"] = "DA", ["TTS"] = "DS", ["TST"] = "DA", ["ATT"] = "DA", ["STS"] = "DA", ["OSS"] = "DA", ["OTT"] = "DS", ["SST"] = "DB", ["AST"] = "DS", ["OAS"] = "DS", ["SAS"] = "DB", ["TOA"] = "MS", ["TAS"] = "DS", ["OST"] = "DA", ["OTA"] = "MS", ["ATA"] = "DA", ["OTS"] = "DA", ["OOS"] = "DS", ["AAA"] = "MA", ["TOT"] = "DB", ["SOT"] = "DS", ["AOS"] = "DS", ["TSO"] = "DA", ["SSO"] = "DA", ["OAA"] = "MS", ["SAA"] = "DB", ["ASS"] = "DS", ["OTO"] = "DA", ["AOO"] = "MB", ["ATO"] = "DA", ["TOS"] = "DB", ["SOS"] = "DS", ["TAA"] = "DB", ["AOA"] = "MS", ["ATS"] = "DS", ["OAT"] = "MA", ["SOA"] = "MS", ["AAS"] = "MB", ["ASO"] = "DA", ["AAO"] = "MA", ["TTA"] = "DB", ["AAT"] = "MA", ["TAT"] = "DS", ["STA"] = "MS", ["paused"] = "active", ["generation"] = 2, ["inv_score"] = 4, ["SAT"] = "MA", ["OSO"] = "DA"}
+
+
+
+The "Wildebeast" to the previous "Crocodile" (For: Targets = default:water_source; Moves = air; deposits = itself. Digs = sand)
+
+return {["SSA"] = "MS", ["OAO"] = "MA", ["TSA"] = "MS", ["SAO"] = "DB", ["TAO"] = "DB", ["AOT"] = "DS", ["OOT"] = "DS", ["OOO"] = "NA", ["ASA"] = "MB", ["STO"] = "DA", ["TTO"] = "DB", ["OSA"] = "MS", ["SSS"] = "DA", ["TOO"] = "DB", ["TSS"] = "DS", ["STT"] = "DB", ["SOO"] = "DB", ["score"] = 1063, ["OOA"] = "MS", ["TTT"] = "DB", ["TTS"] = "DA", ["TST"] = "DB", ["ATT"] = "MB", ["STS"] = "DA", ["OSS"] = "DS", ["OTT"] = "DA", ["SST"] = "DS", ["AST"] = "DA", ["OAS"] = "DS", ["SAS"] = "DB", ["TOA"] = "DB", ["TAS"] = "DB", ["OST"] = "DS", ["OTA"] = "DA", ["ATA"] = "DA", ["OTS"] = "DA", ["OOS"] = "DS", ["AAA"] = "MA", ["TOT"] = "DB", ["SOT"] = "DS", ["AOS"] = "MB", ["TSO"] = "DB", ["SSO"] = "DA", ["OAA"] = "MS", ["SAA"] = "MS", ["ASS"] = "MB", ["OTO"] = "DA", ["AOO"] = "MB", ["ATO"] = "DA", ["TOS"] = "DB", ["SOS"] = "DB", ["TAA"] = "DB", ["AOA"] = "MS", ["ATS"] = "DA", ["OAT"] = "DS", ["SOA"] = "DB", ["AAS"] = "DS", ["ASO"] = "DA", ["AAO"] = "MB", ["TTA"] = "DA", ["AAT"] = "MA", ["TAT"] = "MA", ["STA"] = "MS", ["paused"] = "active", ["generation"] = 9, ["inv_score"] = 18, ["SAT"] = "DB", ["OSO"] = "DA"}
 
 
 

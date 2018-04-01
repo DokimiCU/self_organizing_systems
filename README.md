@@ -1,7 +1,7 @@
 # self_organizing_systems
 # by Dokimi
 
-Current Version: 0.3.0
+Current Version: 0.3.1
 
 Adds a number of self organizing systems to Minetest. These use the scientific principles underlying real world complex systems to create unpredictable and often astonishing results. These blocks spontenously create their own strutures. Some can adapt and change in response to their own actions and those of the player, mimicking the behaviour of living things. Some even possess rudimentary intelligence... and that's not a joke. 
 
